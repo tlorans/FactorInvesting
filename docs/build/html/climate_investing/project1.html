@@ -1,0 +1,844 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Project 1: Emissions Data Search with ChatGPT &#8212; Climate Risks in Finance 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'climate_investing/project1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Project 2: ChatGPT as a Carbon Data Analyst" href="project_2.html" />
+    <link rel="prev" title="Portfolio Alignment" href="portfolio_alignment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Climate Risks in Finance 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/lowcarbon.html">Portfolio Decarbonization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/net_zero.html">Towards a Net Zero Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/intro_langchain_v2.html">Project 0: Information Extraction with ChatGPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net_zero_investing.html">Net Zero Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_decarbonization_pathway.html">Portfolio Decarbonization Pathway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_alignment.html">Portfolio Alignment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project 1: Emissions Data Search with ChatGPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_2.html">Project 2: ChatGPT as a Carbon Data Analyst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="self_decarbonization.html">Net Zero Backtesting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integratingtransition.html">Integrating the Transition Dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/climate_investing/project1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Project 1: Emissions Data Search with ChatGPT</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-tools">Custom Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-and-acting">Reasoning and Acting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt-as-a-financial-information-extractor">ChatGPT as a Financial Information Extractor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-report-as-a-knowledge-base">Sustainability Report as a Knowledge Base</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="project-1-emissions-data-search-with-chatgpt">
+<h1>Project 1: Emissions Data Search with ChatGPT<a class="headerlink" href="#project-1-emissions-data-search-with-chatgpt" title="Permalink to this headline">#</a></h1>
+<p>Gathering data needed for portfolio decarbonization can be challenging for three reasons:</p>
+<ul class="simple">
+<li><p>Emissions reporting is not well-standardized yet, and not freely available in a centralized platform</p></li>
+<li><p>Data disclosed by companies can be misleading (especially for Scope 3)</p></li>
+<li><p>A majority of companies still doesn’t disclose any data about carbon emissions, or only disclose partial data (especially without Scope 3 reporting)</p></li>
+</ul>
+<p>Let’s test if we can use <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> to find data about corporate emissions on internet.</p>
+<p>In the first part, we are going to introduce the custom tools to give <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> an access to a search engine.</p>
+<p>Before starting the project, please make sure that libraries are installed and your API key is loaded:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install openai
+!pip install langchain
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;key.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You will also need to instantiate your access to <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.chat_models</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
+
+<span class="n">chat</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                  <span class="p">)</span>
+</pre></div>
+</div>
+<section id="custom-tools">
+<h2>Custom Tools<a class="headerlink" href="#custom-tools" title="Permalink to this headline">#</a></h2>
+<p>A known issue with LLMs is that they don’t have access to external information and need to rely on knowledge that was captured from its training data, which cuts off at a certain data.</p>
+<p>For example:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">LLMChain</span>
+
+<span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Question: </span><span class="si">{question}</span><span class="s2"></span>
+<span class="s2">Answer:</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+<span class="n">llm_chain</span> <span class="o">=</span> <span class="n">LLMChain</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">,</span>
+    <span class="n">llm</span> <span class="o">=</span> <span class="n">chat</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">llm_chain</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;What are Tesla&#39;s revenue in 2022?&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">As</span> <span class="n">an</span> <span class="n">AI</span> <span class="n">language</span> <span class="n">model</span><span class="p">,</span> <span class="n">I</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">access</span> <span class="n">to</span> <span class="n">future</span> <span class="n">information</span> <span class="ow">or</span> <span class="n">predictions</span><span class="o">.</span> <span class="n">Therefore</span><span class="p">,</span> <span class="n">I</span> <span class="n">cannot</span> <span class="n">provide</span> <span class="n">an</span> <span class="n">accurate</span> <span class="n">answer</span> <span class="n">to</span> <span class="n">this</span> <span class="n">question</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>To fix the issue regarding access to more recent data, we can give <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> access to a web search engine tool.</p>
+<p>Let’s install <code class="docutils literal notranslate"><span class="pre">duckduckgo-search</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install duckduckgo-search
+</pre></div>
+</div>
+<p>Let’s test it:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.tools</span> <span class="kn">import</span> <span class="n">DuckDuckGoSearchRun</span>
+
+<span class="n">search</span> <span class="o">=</span> <span class="n">DuckDuckGoSearchRun</span><span class="p">()</span>
+<span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Tesla stock price?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It gives us:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get the latest Tesla Inc (TSLA) real-time quote, historical performance, charts, and other financial information to help you make more informed trading and investment decisions. Quotes Summary May 26, 2023 6:00 am 8:00 am 10:00 am 12:00 pm 2:00 pm 4:00 pm 6:00 pm 182.5 185 187.5 190 192.5 195 197.5 200 Previous Close $184.47 Key Data Bid Price and Ask Price The bid &amp;... Discover historical prices for TSLA stock on Yahoo Finance. View daily, weekly or monthly format back to when Tesla, Inc. stock was issued. 1y 3y 5y max Mountain-Chart Date Compare with Compare with up to 5 Stocks On Friday morning 06/02/2023 the Tesla share started trading at the price of $210.00. Compared to the closing price... Tesla&#39;s $212 share price is its highest since mid-February—a massive boon for Musk and his fortune: The 51-year-old&#39;s $204 billion net worth is 19% higher than it was just a month ago,...
+</pre></div>
+</div>
+<p>Unfortunately, it is not part of the pre-built tool. We need to create a custom tool:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.tools</span> <span class="kn">import</span> <span class="n">Tool</span>
+
+<span class="n">duckduckgo_tool</span> <span class="o">=</span> <span class="n">Tool</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;DuckDuckGo Search&#39;</span><span class="p">,</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Useful for when you need to do a search on the internet to find information that another tool can&#39;t find. be specific with your input.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We now can create an agent, with an access to our <code class="docutils literal notranslate"><span class="pre">duckduckgo_tool</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">AgentType</span>
+<span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">load_tools</span><span class="p">,</span> <span class="n">initialize_agent</span>
+
+<span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">duckduckgo_tool</span><span class="p">]</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">initialize_agent</span><span class="p">(</span>
+    <span class="n">tools</span><span class="p">,</span>
+    <span class="n">chat</span><span class="p">,</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">AgentType</span><span class="o">.</span><span class="n">CHAT_ZERO_SHOT_REACT_DESCRIPTION</span><span class="p">,</span>
+    <span class="n">handle_parsing_errors</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>And let’s test it:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;What are Tesla&#39;s revenue in 2022?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That returns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Entering new AgentExecutor chain...
+Thought: I need to search for Tesla&#39;s revenue for the year 2022, but it is not possible to know the revenue for a future year. I will search for Tesla&#39;s revenue for the latest year available and check if there are any predictions for 2022.
+
+Action:
+{
+  &quot;action&quot;: &quot;DuckDuckGo Search&quot;,
+  &quot;action_input&quot;: &quot;Tesla revenue latest year and predictions for 2022&quot;
+}
+
+
+Observation: Antuan Goodwin Jan. 25, 2023 4:52 p.m. PT 3 min read Enlarge Image The Model 3 and Model Y make up around 95% of the 1.31 million Teslas sold in 2022. Tesla finished 2022 on a tear, bolstered... Mar 17, 2023 Tesla&#39;s revenue grew to nearly 81.5 billion U.S. dollars in the 2022 fiscal year, a 51 percent increase from the previous year. The United States is Tesla&#39;s largest sales... For Q4 2022, the Wall Street consensus is a gain of $1.13 per share, while Estimize&#39;s prediction is higher with a profit of $1.19 per share. The estimates have a wide range this quarter because... That represents a 59 percent increase year over year compared to $2.8 billion in revenue in Q4 2021. It was also Tesla&#39;s third year ending in the black, with $14.1 billion in net income for 2022 ... Tesla ended 2021 with a net income of $5.51 billion (a 665% increase from 2020). Aside from the constant swirl of buzz that surrounds Tesla&#39;s founder, the recent stock split and Inflation...
+Thought:According to the search results, Tesla&#39;s revenue grew to nearly 81.5 billion U.S. dollars in the 2022 fiscal year, a 51 percent increase from the previous year. This is the latest information available and there are no predictions for 2022 revenue. 
+
+Final Answer: Tesla&#39;s revenue in 2022 was nearly 81.5 billion U.S. dollars.
+
+&gt; Finished chain.
+Tesla&#39;s revenue in 2022 was nearly 81.5 billion U.S. dollars.
+</pre></div>
+</div>
+<p>Cool! We now have access to recent data!</p>
+</section>
+<section id="reasoning-and-acting">
+<h2>Reasoning and Acting<a class="headerlink" href="#reasoning-and-acting" title="Permalink to this headline">#</a></h2>
+<p>At this stage, we need to take a step back regarding the output from the agent. We want to underline the fact that <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> processed the web search by different steps:</p>
+<ol class="arabic simple">
+<li><p>Thought</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thought</span><span class="p">:</span> <span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">search</span> <span class="k">for</span> <span class="n">Tesla</span><span class="s1">&#39;s revenue for the year 2022, but it is not possible to know the revenue for a future year. I will search for Tesla&#39;</span><span class="n">s</span> <span class="n">revenue</span> <span class="k">for</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">year</span> <span class="n">available</span> <span class="ow">and</span> <span class="n">check</span> <span class="k">if</span> <span class="n">there</span> <span class="n">are</span> <span class="nb">any</span> <span class="n">predictions</span> <span class="k">for</span> <span class="mf">2022.</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Action</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Action</span><span class="p">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;DuckDuckGo Search&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;action_input&quot;</span><span class="p">:</span> <span class="s2">&quot;Tesla revenue latest year and predictions for 2022&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Observation</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Observation: Antuan Goodwin Jan. 25, 2023 4:52 p.m. PT 3 min read Enlarge Image The Model 3 and Model Y make up around 95% of the 1.31 million Teslas sold in 2022. Tesla finished 2022 on a tear, bolstered... Mar 17, 2023 Tesla&#39;s revenue grew to nearly 81.5 billion U.S. dollars in the 2022 fiscal year, a 51 percent increase from the previous year. The United States is Tesla&#39;s largest sales... For Q4 2022, the Wall Street consensus is a gain of $1.13 per share, while Estimize&#39;s prediction is higher with a profit of $1.19 per share. The estimates have a wide range this quarter because... That represents a 59 percent increase year over year compared to $2.8 billion in revenue in Q4 2021. It was also Tesla&#39;s third year ending in the black, with $14.1 billion in net income for 2022 ... Tesla ended 2021 with a net income of $5.51 billion (a 665% increase from 2020). Aside from the constant swirl of buzz that surrounds Tesla&#39;s founder, the recent stock split and Inflation...
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>New Thought</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thought</span><span class="p">:</span><span class="n">According</span> <span class="n">to</span> <span class="n">the</span> <span class="n">search</span> <span class="n">results</span><span class="p">,</span> <span class="n">Tesla</span><span class="s1">&#39;s revenue grew to nearly 81.5 billion U.S. dollars in the 2022 fiscal year, a 51 percent increase from the previous year. This is the latest information available and there are no predictions for 2022 revenue. </span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Finished Chain</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Final</span> <span class="n">Answer</span><span class="p">:</span> <span class="n">Tesla</span><span class="s1">&#39;s revenue in 2022 was nearly 81.5 billion U.S. dollars.</span>
+</pre></div>
+</div>
+<p>What seems to be quite trivial is in fact impressive: the agent was able to reason about:</p>
+<ul class="simple">
+<li><p>what tool to use depending on the user input (determining the action)</p></li>
+<li><p>formulating the research query (formulating the <code class="docutils literal notranslate"><span class="pre">action_input</span></code>)</p></li>
+<li><p>reasoning about the result of the search query, and if the result answers correctly the initial question from the user (Thought)</p></li>
+</ul>
+<p>To do so, it makes use of the ReAct (for Reasoning and Acting) framework developed by Yao et al. (2022) <span id="id1">[<a class="reference internal" href="../references.html#id39" title="Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao. React: synergizing reasoning and acting in language models. arXiv preprint arXiv:2210.03629, 2022.">YZY+22</a>]</span>, using specific prompt template under the hood.</p>
+<p>It makes information search particularly efficient, as <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> is able to reason about the usefulness of a first search result and continue further if needed. It can also reason about looking for complementary information.</p>
+</section>
+<section id="chatgpt-as-a-financial-information-extractor">
+<h2>ChatGPT as a Financial Information Extractor<a class="headerlink" href="#chatgpt-as-a-financial-information-extractor" title="Permalink to this headline">#</a></h2>
+<p>In the previous project, we’ve found that <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> can be a useful tool as a zero-shot information extractor (Wei et al., 2023 and Shi et al., 2023).
+In fact, building on this finding, Yue et al. (2023) <span id="id2">[]</span>  found that one can leverage on these zero-shot IE capacity for financial information extraction.</p>
+<p>To do so, we can make an adaptation of the numerical value extraction prompt proposed by Yue et al. (2023), such as:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">LLMChain</span>
+
+<span class="n">extraction_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Your task:</span><span class="se">\n\</span>
+<span class="s2">Find the value of revenue in the given content.</span><span class="se">\n\</span>
+<span class="s2">If you can&#39;t find the value, please output &quot;None&quot;.</span><span class="se">\n\</span>
+
+<span class="s2">Example 1:</span><span class="se">\n\</span>
+<span class="s2">The amount of Apple&#39;s annual revenue in 2021 was $365.817B.</span>
+<span class="s2">Result: 365.817</span>
+
+<span class="s2">Given content: </span><span class="si">{text}</span><span class="s2"></span>
+<span class="s2">Result:</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">extraction_prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="n">extraction_template</span><span class="p">)</span>
+
+<span class="n">extraction_chain</span> <span class="o">=</span> <span class="n">LLMChain</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">extraction_prompt</span><span class="p">,</span>
+    <span class="n">llm</span> <span class="o">=</span> <span class="n">chat</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>As before, we can make use of the <code class="docutils literal notranslate"><span class="pre">SimpleSequentialChain</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">SimpleSequentialChain</span>
+
+<span class="n">overall_chain</span> <span class="o">=</span> <span class="n">SimpleSequentialChain</span><span class="p">(</span><span class="n">chains</span> <span class="o">=</span> <span class="p">[</span><span class="n">agent</span><span class="p">,</span> <span class="n">extraction_chain</span><span class="p">],</span>
+                                      <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">overall_chain</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;What are Tesla&#39;s revenue in 2022?&quot;</span><span class="p">)</span>                                    
+</pre></div>
+</div>
+<p>And we get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> Entering new SimpleSequentialChain chain...
+
+
+&gt; Entering new AgentExecutor chain...
+Thought: I need to search for Tesla&#39;s revenue for the year 2022, but it is not possible to know the revenue for a future year. I will search for Tesla&#39;s revenue for the latest year available and check if there are any predictions for 2022.
+
+Action:
+{
+  &quot;action&quot;: &quot;DuckDuckGo Search&quot;,
+  &quot;action_input&quot;: &quot;Tesla revenue latest year and predictions for 2022&quot;
+}
+
+Observation: Antuan Goodwin Jan. 25, 2023 4:52 p.m. PT 3 min read Enlarge Image The Model 3 and Model Y make up around 95% of the 1.31 million Teslas sold in 2022. Tesla finished 2022 on a tear, bolstered... That represents a 59 percent increase year over year compared to $2.8 billion in revenue in Q4 2021. It was also Tesla&#39;s third year ending in the black, with $14.1 billion in net income for 2022 ... Mar 17, 2023 Tesla&#39;s revenue grew to nearly 81.5 billion U.S. dollars in the 2022 fiscal year, a 51 percent increase from the previous year. The United States is Tesla&#39;s largest sales... For Q4 2022, the Wall Street consensus is a gain of $1.13 per share, while Estimize&#39;s prediction is higher with a profit of $1.19 per share. The estimates have a wide range this quarter because... Tesla is expected to report adjusted EPS of $1.19 for the fourth quarter of 2022, compared with $0.85 for the prior-year quarter. Revenue likely climbed about 38% to $24.4 billion. Tesla...
+Thought:Based on the search results, Tesla&#39;s revenue for the 2022 fiscal year was nearly 81.5 billion U.S. dollars, a 51 percent increase from the previous year. Additionally, the fourth quarter of 2022 saw a revenue of $24.4 billion and an adjusted EPS of $1.19. 
+
+Action:
+
+{
+  &quot;action&quot;: &quot;None&quot;,
+  &quot;action_input&quot;: &quot;&quot;
+}
+
+
+Observation: None is not a valid tool, try another one.
+Thought:I don&#39;t need to take any further action as I have already found the answer to the question.
+
+Final Answer: Tesla&#39;s revenue for the 2022 fiscal year was nearly 81.5 billion U.S. dollars, a 51 percent increase from the previous year.
+
+&gt; Finished chain.
+Tesla&#39;s revenue for the 2022 fiscal year was nearly 81.5 billion U.S. dollars, a 51 percent increase from the previous year.
+81.5
+
+&gt; Finished chain.
+81.5
+</pre></div>
+</div>
+<p>The numerical information was successfully extracted!</p>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>We now are going to test if <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> can be of any use for emissions data retrieval.</p>
+<p>In this exercise, you need to:</p>
+<ol class="arabic simple">
+<li><p>Adapt the previous prompt template for Scope 1 Emissions.</p></li>
+<li><p>Try your entire chain (search engine and extraction prompt) for a company of your choice</p></li>
+<li><p>Apply this process to the following companies (think about a Python function):</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;AT&amp;T&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Apple Inc.&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bank of America&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Boeing&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;CVS Health&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Chevron Corporation&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Cisco&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Citigroup&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Disney&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dominion Energy&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;ExxonMobil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ford Motor Company&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;General Electric&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Home Depot (The)&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;IBM&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Intel&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;JPMorgan Chase&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Johnson &amp; Johnson&#39;</span><span class="p">,</span>
+ <span class="s2">&quot;Kellogg&#39;s&quot;</span><span class="p">,</span>
+ <span class="s1">&#39;McKesson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Merck &amp; Co.&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Microsoft&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Oracle Corporation&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Pfizer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Procter &amp; Gamble&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;United Parcel Service&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;UnitedHealth Group&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Verizon&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Walmart&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Wells Fargo&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Did you encountered any issue applying this process to a list of companies? Please provide ideas to make the process working for multiple companies.</p></li>
+</ol>
+</section>
+<section id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h2>
+<p>The main idea here was to adapt the extraction prompt for your use case:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">LLMChain</span>
+
+<span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Your task:</span><span class="se">\n\</span>
+<span class="s2">Find the value of Scope 1 emissions in the given content.</span><span class="se">\n\</span>
+<span class="s2">If you can&#39;t find the value, please output &quot;None&quot;.</span><span class="se">\n\</span>
+
+<span class="s2">Example 1:</span><span class="se">\n\</span>
+<span class="s2">TotalEnergies&#39; latest Scope 1 emissions were 32 million metric tons</span><span class="se">\</span>
+<span class="s2"> of carbon dioxide in 2021.</span>
+<span class="s2">Result: 32.0</span>
+
+<span class="s2">Given content: </span><span class="si">{text}</span><span class="s2"></span>
+<span class="s2">Result:</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+<span class="n">llm_chain</span> <span class="o">=</span> <span class="n">LLMChain</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">,</span>
+    <span class="n">llm</span> <span class="o">=</span> <span class="n">chat</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>And to built the following <code class="docutils literal notranslate"><span class="pre">SimpleSequentialChain</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">SimpleSequentialChain</span>
+
+<span class="n">overall_chain</span> <span class="o">=</span> <span class="n">SimpleSequentialChain</span><span class="p">(</span>
+    <span class="n">chains</span> <span class="o">=</span> <span class="p">[</span><span class="n">agent</span><span class="p">,</span> <span class="n">llm_chain</span><span class="p">],</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>As an example with TotalEnergies, we have:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>Observation: In early 2019, TotalEnergies made public our aim to reduce our net Scope 1+2 emissions from our operated activities by at least 40% from 2015 levels. In 2022, GHG emissions from our operated assets were 13% lower than in 2015, stand¬ing at close to 40 million tons of CO 2 e. Our objectives include emissions generated by the growth strategy in ... Scope 1 GHG emissions: direct emissions of greenhouse gases from sites or activities that are included in the scope of reporting for climate change-related indicators. ... TotalEnergies reports Scope 3 GHG emissions, category 11, which correspond to indirect GHG emissions related to the use of energy products by customers, i.e. from their ... Scope 1 emissions are direct emissions generated by TotalEnergies&#39; activities. Scope 2 emissions are indirect emissions associated with the purchase of energy (electricity, heat and steam), i.e. emissions associated with the production by a third party of the energy purchased by TotalEnergies. TotalEnergies SE&#39;s operated greenhouse gas emissions were 37 million metric tons of carbon dioxide equivalent (MtCO2e) in 2021 - a reduction of roughly 10 percent compared to the previous year.... Greenpeace France also found Scope 1 greenhouse gas emissions - or the company&#39;s direct emissions - of about 160 million tonnes, which TotalEnergies described as &quot;fanciful and false&quot; as...
+Thought:There are a few different numbers mentioned in the search results, so I&#39;ll need to clarify which year&#39;s emissions I&#39;m looking for. 
+
+Action:
+
+{
+  &quot;action&quot;: &quot;DuckDuckGo Search&quot;,
+  &quot;action_input&quot;: &quot;TotalEnergies Scope 1 Emissions 2021&quot;
+}
+
+
+
+Observation: We are moving aggressively to curtail emissions at our operated sites. In early 2019, TotalEnergies made public our aim to reduce our net Scope 1+2 emissions from our operated activities by at least 40% from 2015 levels. In 2022, GHG emissions from our operated assets were 13% lower than in 2015, stand¬ing at close to 40 million tons of CO 2 e. In 2021, TotalEnergies&#39; Scope 1+2 operated emissions amounted to 37 million tons of GHGs (excluding Covid 19 effect), down 20% from 2015. TotalEnergies&#39; Scope 1 + 2 equity share emissions amounted to 54 million tons in 2021 (49 million tons for Scope 1 alone). TotalEnergies SE&#39;s operated greenhouse gas emissions were 37 million metric tons of carbon dioxide equivalent (MtCO2e) in 2021 - a reduction of roughly 10 percent compared to the previous... This accounted for 54 percent of TotalEnergies total Scope 1 emissions in 2021. TotalEnergies SE changed their name from Total S.A. in 2021. Direct greenhouse gas emissions released... TotalEnergies SE&#39;s direct carbon dioxide emissions were 32 million metric tons (MtCO2) in 2021. This accounted for roughly 95 percent of the company&#39;s Scope 1 emissions that year....
+Thought:Based on the search results, it looks like TotalEnergies&#39; Scope 1 emissions were 49 million tons in 2021.
+
+Final Answer: TotalEnergies&#39; Scope 1 emissions were 49 million tons in 2021.
+
+&gt; Finished chain.
+TotalEnergies&#39; Scope 1 emissions were 49 million tons in 2021.
+49.0
+
+&gt; Finished chain.
+49.0
+</pre></div>
+</div>
+<p>Then, you can use a simple loop with exception:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">list_companies</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AT&amp;T&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Apple Inc.&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bank of America&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Boeing&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;CVS Health&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Chevron Corporation&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Cisco&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Citigroup&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Disney&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dominion Energy&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;ExxonMobil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ford Motor Company&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;General Electric&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Home Depot (The)&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;IBM&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Intel&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;JPMorgan Chase&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Johnson &amp; Johnson&#39;</span><span class="p">,</span>
+ <span class="s2">&quot;Kellogg&#39;s&quot;</span><span class="p">,</span>
+ <span class="s1">&#39;McKesson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Merck &amp; Co.&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Microsoft&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Oracle Corporation&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Pfizer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Procter &amp; Gamble&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;United Parcel Service&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;UnitedHealth Group&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Verizon&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Walmart&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Wells Fargo&#39;</span><span class="p">]</span>
+
+<span class="n">list_results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_companies</span><span class="p">))):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">overall_chain</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;What is the amount of </span><span class="si">{</span><span class="n">list_companies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2"> Scope 1 emissions?&quot;</span><span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+  <span class="n">list_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However, you will find that most results are <code class="docutils literal notranslate"><span class="pre">None</span></code>. That is, it seems that Scope 1 emissions amount is not readily available through interest research.</p>
+</section>
+<section id="sustainability-report-as-a-knowledge-base">
+<h2>Sustainability Report as a Knowledge Base<a class="headerlink" href="#sustainability-report-as-a-knowledge-base" title="Permalink to this headline">#</a></h2>
+<p>A beginning of an extended solution is to use the Sustainability report as a knowledge base for <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code>.</p>
+<p>Let’s first download the supplementary libraries needed for parsing the report pdf and convert it to our knowledge base:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install unstructured
+!pip install pypdf
+!pip install pdf2image
+</pre></div>
+</div>
+<p>We now can load the online pdf for Tesla:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">UnstructuredPDFLoader</span>
+<span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">OnlinePDFLoader</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.tesla.com/ns_videos/2021-tesla-impact-report.pdf&quot;</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">OnlinePDFLoader</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The report was chunked into smaller elements.</p>
+<p>We can now install libraries for knowledge base creation:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install docarray
+!pip install tiktoken
+</pre></div>
+</div>
+<p>Let’s create our knowledge base:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.indexes</span> <span class="kn">import</span> <span class="n">VectorstoreIndexCreator</span>
+<span class="kn">from</span> <span class="nn">langchain.vectorstores</span> <span class="kn">import</span> <span class="n">DocArrayInMemorySearch</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">VectorstoreIndexCreator</span><span class="p">(</span>
+    <span class="n">vectorstore_cls</span><span class="o">=</span><span class="n">DocArrayInMemorySearch</span>
+<span class="p">)</span><span class="o">.</span><span class="n">from_loaders</span><span class="p">([</span><span class="n">loader</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can now interact with the pdf report. Let’s ask a question about Scope 1:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;What is the Scope 1 Emissions?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And we get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">185</span><span class="p">,</span><span class="mi">000</span> <span class="n">tCO2e</span>
+</pre></div>
+</div>
+<p>Let’s check into the report itself:</p>
+<figure class="align-default" id="emissions-from-report">
+<img alt="../_images/emissions_from_report.png" src="../_images/emissions_from_report.png" />
+<figcaption>
+<p><span class="caption-text">Figure: Emissions From Tesla Impact Report</span><a class="headerlink" href="#emissions-from-report" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="portfolio_alignment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Portfolio Alignment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="project_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Project 2: ChatGPT as a Carbon Data Analyst</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-tools">Custom Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-and-acting">Reasoning and Acting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt-as-a-financial-information-extractor">ChatGPT as a Financial Information Extractor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-report-as-a-knowledge-base">Sustainability Report as a Knowledge Base</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Lorans
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022, Thomas Lorans.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

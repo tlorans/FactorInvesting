@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Project 2: Estimating Emissions with ChatGPT &#8212; Climate Risks in Finance 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'climate_investing/project_2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Net Zero Backtesting" href="self_decarbonization.html" />
+    <link rel="prev" title="Project 1: Emissions Data Search with ChatGPT" href="project1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Climate Risks in Finance 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/lowcarbon.html">Portfolio Decarbonization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/net_zero.html">Towards a Net Zero Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/intro_langchain_v2.html">Project 0: Information Extraction with ChatGPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net_zero_investing.html">Net Zero Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_decarbonization_pathway.html">Portfolio Decarbonization Pathway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_alignment.html">Portfolio Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project1.html">Project 1: Emissions Data Search with ChatGPT</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project 2: Estimating Emissions with ChatGPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="self_decarbonization.html">Net Zero Backtesting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integratingtransition.html">Integrating the Transition Dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/climate_investing/project_2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Project 2: Estimating Emissions with ChatGPT</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-for-our-knowledge-base">Getting Data for our Knowledge Base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-knowledge-base-with-embeddings">Creating Knowledge Base with Embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-base-as-a-tool">Knowledge Base as a Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interacting-with-other-tools">Interacting with Other Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="project-2-estimating-emissions-with-chatgpt">
+<h1>Project 2: Estimating Emissions with ChatGPT<a class="headerlink" href="#project-2-estimating-emissions-with-chatgpt" title="Permalink to this headline">#</a></h1>
+<p>In this project, we are investigating if we can directly use <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> for simple estimate of Scope 3 upstream emissions (supply chain emissions).</p>
+<p>As we have seen in the previous project, LLMs have a problem about recent events or specific domain knowledge</p>
+<p>It creates problems for any use case that relies on up-to-date information or a specific dataset.</p>
+<p>The first challenge is to add this dataset to the LLM. To do so, we can use retrieval augmentation. This approach allows us to retrieve relevant information from an external knowledge based an give that information to our LLM.</p>
+<p>First, we need to make sure our libraries are installed and the API key loaded:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install openai
+!pip install langchain
+
+import os
+os.environ[&quot;OPENAI_API_KEY&quot;] = open(&#39;key.txt&#39;,&#39;r&#39;).read()
+</pre></div>
+</div>
+<section id="getting-data-for-our-knowledge-base">
+<h2>Getting Data for our Knowledge Base<a class="headerlink" href="#getting-data-for-our-knowledge-base" title="Permalink to this headline">#</a></h2>
+<p>Let’s retrieve a CSV file and save it in our working path directory:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/tlorans/ClimateRisks/blob/main/DEXUSEU.csv?raw=true&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;DEXUSEU&quot;</span><span class="p">:</span><span class="s2">&quot;Exchange Rate Dollar to Euro&quot;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;exchange_rate.csv&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">CSVLoader</span></code> from <code class="docutils literal notranslate"><span class="pre">langchain</span></code> to load the documents:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">CSVLoader</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;exchange_rate.csv&quot;</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">CSVLoader</span><span class="p">(</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>It creates one document per row of the CSV file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">page_content</span><span class="o">=</span><span class="s1">&#39;DATE: 2018-06-04</span><span class="se">\n</span><span class="s1">Exchange Rate Dollar to Euro: 1.1696&#39;</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;exchange_rate.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;row&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-knowledge-base-with-embeddings">
+<h2>Creating Knowledge Base with Embeddings<a class="headerlink" href="#creating-knowledge-base-with-embeddings" title="Permalink to this headline">#</a></h2>
+<p>We need to install other libraries:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install docarray
+!pip install tiktoken
+</pre></div>
+</div>
+<p>We can now create our knowledge base:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.indexes</span> <span class="kn">import</span> <span class="n">VectorstoreIndexCreator</span>
+<span class="kn">from</span> <span class="nn">langchain.vectorstores</span> <span class="kn">import</span> <span class="n">DocArrayInMemorySearch</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">VectorstoreIndexCreator</span><span class="p">(</span>
+    <span class="n">vectorstore_cls</span><span class="o">=</span><span class="n">DocArrayInMemorySearch</span>
+<span class="p">)</span><span class="o">.</span><span class="n">from_loaders</span><span class="p">([</span><span class="n">loader</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>And let’s test a query:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;What is the last exchange rate? Gives the date&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It gives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">The</span> <span class="n">last</span> <span class="n">exchange</span> <span class="n">rate</span> <span class="ow">is</span> <span class="mf">1.0979</span> <span class="n">on</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">14.</span>
+</pre></div>
+</div>
+<p>What happened here?</p>
+<p>The object we’ve instantiated has transformed each row of our CSV file into a numeric vector representation, with the use of an embedding model.</p>
+<figure class="align-default" id="numeric-transform">
+<img alt="../_images/numeric_transform.png" src="../_images/numeric_transform.png" />
+<figcaption>
+<p><span class="caption-text">Figure: Embedding Model and Vector Representation, from the LangChain AI Handbook, Pinecone</span><a class="headerlink" href="#numeric-transform" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once all our CSV elements are transformed into a numerical vector, and stored as a Vector base, our query is also transformed into a numerical vector and the most similar elements into our CSV file are returned, based on the calculation of the distance between embeddings in vector space (with cosine similarity for example).</p>
+<figure class="align-default" id="similarity">
+<img alt="../_images/similarity.png" src="../_images/similarity.png" />
+<figcaption>
+<p><span class="caption-text">Figure: Similarity for Knowledge Base Element Retrieval, from the LangChain AI Handbook, Pinecone</span><a class="headerlink" href="#similarity" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="knowledge-base-as-a-tool">
+<h2>Knowledge Base as a Tool<a class="headerlink" href="#knowledge-base-as-a-tool" title="Permalink to this headline">#</a></h2>
+<p>We can now give access to this tool to <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.tools</span> <span class="kn">import</span> <span class="n">Tool</span>
+
+<span class="n">knowledge_tool</span> <span class="o">=</span> <span class="n">Tool</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;FX Rate&quot;</span><span class="p">,</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Useful for when you need to search for the exchange rate. Provides your input as a search query.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">AgentType</span>
+<span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">load_tools</span><span class="p">,</span> <span class="n">initialize_agent</span>
+<span class="kn">from</span> <span class="nn">langchain.chat_models</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
+
+<span class="n">chat</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">)</span>
+
+
+<span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">knowledge_tool</span><span class="p">]</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">initialize_agent</span><span class="p">(</span>
+    <span class="n">tools</span><span class="p">,</span>
+    <span class="n">chat</span><span class="p">,</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">AgentType</span><span class="o">.</span><span class="n">CHAT_ZERO_SHOT_REACT_DESCRIPTION</span><span class="p">,</span>
+    <span class="n">handle_parsing_errors</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;What was the exchange rate in April 2022?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> understands the need to use this tool:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Entering new AgentExecutor chain...
+Question: What was the exchange rate in April 2022?
+Thought: I need to use the FX Rate tool to get the exchange rate for April 2022.
+Action:
+{
+  &quot;action&quot;: &quot;FX Rate&quot;,
+  &quot;action_input&quot;: &quot;exchange rate April 2022&quot;
+}
+
+Observation:  The exchange rate for the US Dollar to the Euro in April 2022 ranged from 1.079 to 1.1043.
+Thought:I have found the exchange rate range for the US Dollar to the Euro in April 2022. 
+Final Answer: The exchange rate for the US Dollar to the Euro in April 2022 ranged from 1.079 to 1.1043.
+
+&gt; Finished chain.
+The exchange rate for the US Dollar to the Euro in April 2022 ranged from 1.079 to 1.1043.
+</pre></div>
+</div>
+</section>
+<section id="interacting-with-other-tools">
+<h2>Interacting with Other Tools<a class="headerlink" href="#interacting-with-other-tools" title="Permalink to this headline">#</a></h2>
+<p>We can now give to <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> a task to test its capacity for using tools in interaction.</p>
+<p>Let’s ask for:</p>
+<ol class="arabic simple">
+<li><p>Finding Tesla’s Revenue in 2022</p></li>
+<li><p>Finding the FX rate in December 2022</p></li>
+<li><p>Convert Tesla’s Revenue into Euro.</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install duckduckgo-search
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">tools</span> <span class="o">=</span> <span class="n">load_tools</span><span class="p">([</span><span class="s2">&quot;llm-math&quot;</span><span class="p">],</span> <span class="n">llm</span> <span class="o">=</span> <span class="n">chat</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">langchain.tools</span> <span class="kn">import</span> <span class="n">DuckDuckGoSearchRun</span>
+<span class="n">search</span> <span class="o">=</span> <span class="n">DuckDuckGoSearchRun</span><span class="p">()</span>
+
+<span class="n">duckduckgo_tool</span> <span class="o">=</span> <span class="n">Tool</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;DuckDuckGo Search&#39;</span><span class="p">,</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Useful for when you need to do a search on the internet to find information that another tool can&#39;t find. be specific with your input.&quot;</span>
+<span class="p">)</span>
+
+<span class="n">tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knowledge_tool</span><span class="p">)</span>
+<span class="n">tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">duckduckgo_tool</span><span class="p">)</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">initialize_agent</span><span class="p">(</span>
+    <span class="n">tools</span><span class="p">,</span>
+    <span class="n">chat</span><span class="p">,</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">AgentType</span><span class="o">.</span><span class="n">CHAT_ZERO_SHOT_REACT_DESCRIPTION</span><span class="p">,</span>
+    <span class="n">handle_parsing_errors</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Process as follow:</span><span class="se">\n\</span>
+<span class="s2">1. Search for Tesla&#39;s revenue in 2022. </span><span class="se">\n\</span>
+<span class="s2">2. Find the exchange rate in December 2022. </span><span class="se">\n\</span>
+<span class="s2">3. Multiply Tesla&#39;s revenue in 2022 with the exchange rate. </span><span class="se">\n\</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And we get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Entering</span> <span class="n">new</span> <span class="n">AgentExecutor</span> <span class="n">chain</span><span class="o">...</span>
+<span class="n">Thought</span><span class="p">:</span> <span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">find</span> <span class="n">Tesla</span><span class="s1">&#39;s revenue in 2022. I&#39;</span><span class="n">m</span> <span class="ow">not</span> <span class="n">sure</span> <span class="n">where</span> <span class="n">to</span> <span class="n">find</span> <span class="n">this</span> <span class="n">information</span><span class="o">.</span>
+<span class="n">Action</span><span class="p">:</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;DuckDuckGo Search&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;action_input&quot;</span><span class="p">:</span> <span class="s2">&quot;Tesla revenue 2022&quot;</span>
+<span class="p">}</span>
+
+
+<span class="n">Observation</span><span class="p">:</span> <span class="n">The</span> <span class="n">automaker</span><span class="s1">&#39;s full-year 2022 earnings statement, released at the close of market Wednesday, revealed it delivered 405,278 electric cars in the fourth quarter -- up from 343,830 deliveries in... AUSTIN, Texas, January 25, 2023 - Tesla has released its financial results for the fourth quarter and full year ended December 31, 2022 by posting an update on its Investor Relations website. Please visit https://ir.tesla.com to view the update. Tesla&#39;</span><span class="n">s</span> <span class="n">revenue</span> <span class="n">grew</span> <span class="n">to</span> <span class="n">nearly</span> <span class="mf">81.5</span> <span class="n">billion</span> <span class="n">U</span><span class="o">.</span><span class="n">S</span><span class="o">.</span> <span class="n">dollars</span> <span class="ow">in</span> <span class="n">the</span> <span class="mi">2022</span> <span class="n">fiscal</span> <span class="n">year</span><span class="p">,</span> <span class="n">a</span> <span class="mi">51</span> <span class="n">percent</span> <span class="n">increase</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">previous</span> <span class="n">year</span><span class="o">.</span> <span class="n">The</span> <span class="n">United</span> <span class="n">States</span> <span class="ow">is</span> <span class="n">Tesla</span><span class="s1">&#39;s largest sales market. Revenue... 540 Tesla published its financial results for the fourth quarter of 2022 on Wednesday afternoon. The company brought in $24.3 billion in revenue, a 37 percent increase on Q4 2021. Automotive... Sep 8, 2022,07:30am EDT Listen to article Share to Facebook Share to Twitter Share to Linkedin An aerial view of Tesla Shanghai Gigafactory. Getty Images Key takeaways: There&#39;</span><span class="n">s</span> <span class="n">more</span> <span class="n">to</span> <span class="n">Tesla</span><span class="o">...</span>
+<span class="n">Thought</span><span class="p">:</span><span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">exchange</span> <span class="n">rate</span> <span class="k">for</span> <span class="n">December</span> <span class="mf">2022.</span> <span class="n">I</span><span class="s1">&#39;m not sure where to find this information.</span>
+<span class="n">Action</span><span class="p">:</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;FX Rate&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;action_input&quot;</span><span class="p">:</span> <span class="s2">&quot;Exchange rate December 2022&quot;</span>
+<span class="p">}</span>
+
+
+<span class="n">Observation</span><span class="p">:</span>  <span class="n">The</span> <span class="n">exchange</span> <span class="n">rate</span> <span class="k">for</span> <span class="n">December</span> <span class="mi">2022</span> <span class="n">was</span> <span class="n">between</span> <span class="mf">1.0588</span> <span class="ow">and</span> <span class="mf">1.0622</span><span class="o">.</span>
+<span class="n">Thought</span><span class="p">:</span><span class="n">Now</span> <span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">multiply</span> <span class="n">Tesla</span><span class="s1">&#39;s revenue in 2022 with the exchange rate for December 2022 to get the revenue in another currency.</span>
+<span class="n">Action</span><span class="p">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;Calculator&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;action_input&quot;</span><span class="p">:</span> <span class="s2">&quot;81500000000 * 1.0605&quot;</span>
+<span class="p">}</span>
+
+
+<span class="n">Observation</span><span class="p">:</span> <span class="n">Answer</span><span class="p">:</span> <span class="mf">86430750000.0</span>
+<span class="n">Thought</span><span class="p">:</span><span class="n">I</span> <span class="n">now</span> <span class="n">know</span> <span class="n">the</span> <span class="n">final</span> <span class="n">answer</span><span class="o">.</span>
+<span class="n">Final</span> <span class="n">Answer</span><span class="p">:</span> <span class="n">Tesla</span><span class="s1">&#39;s revenue in December 2022, converted to the exchange rate of 1.0605, is $86,430,750,000.</span>
+
+<span class="o">&gt;</span> <span class="n">Finished</span> <span class="n">chain</span><span class="o">.</span>
+<span class="n">Tesla</span><span class="s1">&#39;s revenue in December 2022, converted to the exchange rate of 1.0605, is $86,430,750,000.</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>We are going to use the Supply Chain Greenhouse Gas Emissions Factors by NAICS-6 from the United States Environmental Protection Agency as a source for our knowledge base.</p>
+<p>Let’s download it and put it into our working path directory:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;	https://pasteur.epa.gov/uploads/10.23719/1528686/SupplyChainGHGEmissionFactors_v1.2_NAICS_CO2e_USD2021.csv&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">emissions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">emissions</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;emissions_factors.csv&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;emissions_factors.csv&quot;</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">CSVLoader</span><span class="p">(</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">VectorstoreIndexCreator</span><span class="p">(</span>
+    <span class="n">vectorstore_cls</span><span class="o">=</span><span class="n">DocArrayInMemorySearch</span>
+<span class="p">)</span><span class="o">.</span><span class="n">from_loaders</span><span class="p">([</span><span class="n">loader</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Let’s have a test:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;What is the emission factor with margins for automobile industry?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And we get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">The</span> <span class="n">emission</span> <span class="n">factor</span> <span class="k">with</span> <span class="n">margins</span> <span class="k">for</span> <span class="n">the</span> <span class="n">automobile</span> <span class="n">industry</span> <span class="ow">is</span> <span class="mf">0.279</span> <span class="n">kg</span> <span class="n">CO2e</span><span class="o">/</span><span class="mi">2021</span> <span class="n">USD</span><span class="p">,</span> <span class="n">purchaser</span> <span class="n">price</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>What you need for this exercise is:</p>
+<ol class="arabic simple">
+<li><p>Determine the main activity of a company.</p></li>
+<li><p>Find the revenue for this company.</p></li>
+<li><p>Apply the corresponding emission factor.</p></li>
+</ol>
+</section>
+<section id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h2>
+<p>The solution is the similar to what we’ve done with the exchange rate stuff.</p>
+<p>Let’s first ensure that all libraries needed are installed:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>!pip install openai
+!pip install langchain
+!pip install docarray
+!pip install tiktoken
+!pip install duckduckgo-search
+</pre></div>
+</div>
+<p>You need to load your OpenAI API key:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;key.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We will use the emissions factors knowledge base as a tool:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.tools</span> <span class="kn">import</span> <span class="n">Tool</span>
+
+<span class="n">knowledge_tool</span> <span class="o">=</span> <span class="n">Tool</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Supply Chain Emissions Factors&quot;</span><span class="p">,</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Useful for when you need to find the emissions supply-chain for a specific industry. You want to return the emissions factors from the </span><span class="se">\</span>
+<span class="s2">    most related industry.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We give access to internet to <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.tools</span> <span class="kn">import</span> <span class="n">DuckDuckGoSearchRun</span>
+<span class="n">search</span> <span class="o">=</span> <span class="n">DuckDuckGoSearchRun</span><span class="p">()</span>
+
+<span class="n">duckduckgo_tool</span> <span class="o">=</span> <span class="n">Tool</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;DuckDuckGo Search&#39;</span><span class="p">,</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Useful for when you need to do a search on the internet to find information that another tool can&#39;t find. be specific with your input.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">ChatGPT</span></code> can be bad at maths, we give him access to <code class="docutils literal notranslate"><span class="pre">llm-math</span></code>, a calculator tool, and instantiate our agent:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">AgentType</span>
+<span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">load_tools</span><span class="p">,</span> <span class="n">initialize_agent</span>
+<span class="kn">from</span> <span class="nn">langchain.chat_models</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
+
+<span class="n">chat</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">)</span>
+<span class="n">tools</span> <span class="o">=</span> <span class="n">load_tools</span><span class="p">([</span><span class="s2">&quot;llm-math&quot;</span><span class="p">],</span> <span class="n">llm</span> <span class="o">=</span> <span class="n">chat</span><span class="p">)</span>
+
+<span class="n">tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knowledge_tool</span><span class="p">)</span>
+<span class="n">tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">duckduckgo_tool</span><span class="p">)</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">initialize_agent</span><span class="p">(</span>
+    <span class="n">tools</span><span class="p">,</span>
+    <span class="n">chat</span><span class="p">,</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">AgentType</span><span class="o">.</span><span class="n">CHAT_ZERO_SHOT_REACT_DESCRIPTION</span><span class="p">,</span>
+    <span class="n">handle_parsing_errors</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now test the entire process:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Please follow the following process: </span><span class="se">\n\</span>
+<span class="s2">1. Find Tesla&#39;s main activity and last available revenue.</span><span class="se">\n\</span>
+<span class="s2">2. Find the emissions factor with margin corresponding to Tesla&#39;s activity</span><span class="se">\n\</span>
+<span class="s2">3. Multiply the emissions factor with the revenue</span><span class="se">\n\</span>
+<span class="s2">Result:</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And we have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Entering new AgentExecutor chain...
+Question: What is Tesla&#39;s carbon footprint based on their revenue and industry?
+Thought: I need to find Tesla&#39;s main activity and last available revenue to determine the emissions factor with margin corresponding to their activity.
+Action:
+{
+  &quot;action&quot;: &quot;DuckDuckGo Search&quot;,
+  &quot;action_input&quot;: &quot;Tesla main activity and last available revenue&quot;
+}
+
+Observation: Tesla&#39;s revenue 2008-2022 Published by Mathilde Carlier , Mar 17, 2023 Tesla&#39;s revenue grew to nearly 81.5 billion U.S. dollars in the 2022 fiscal year, a 51 percent increase from the... Car Industry Tesla Reports Record Revenue for 2022, With 1.31 Million EVs Sold Tesla sold more cars and made more money than ever, despite its average transaction price falling. The automaker... Tesla ended 2021 with a net income of $5.51 billion (a 665% increase from 2020). Aside from the constant swirl of buzz that surrounds Tesla&#39;s founder, the recent stock split and Inflation... Mar 17, 2023 Revenue generated by Tesla increased to around 81.5 billion U.S. dollars in the 2022 fiscal year, with the United States spearheading demand. The U.S. generated about 40.6 billion... As much as 44.5% of Tesla&#39;s revenue was generated within the U.S. during FY 2021, up 57.6% compared to FY 2020. Revenue from China more than doubled over the year and now accounts for about...
+
+Thought:Now that I have found Tesla&#39;s revenue, I need to find the emissions factor with margin corresponding to their activity.
+Action:
+
+{
+  &quot;action&quot;: &quot;Supply Chain Emissions Factors&quot;,
+  &quot;action_input&quot;: &quot;Electric vehicle manufacturing&quot;
+}
+
+
+Observation:  Electric vehicle manufacturing is not listed in the given context.
+Thought:I need to find the closest industry to Tesla&#39;s main activity that has emissions factors available.
+Action:
+
+{
+  &quot;action&quot;: &quot;Supply Chain Emissions Factors&quot;,
+  &quot;action_input&quot;: &quot;Automobile manufacturing&quot;
+}
+
+
+
+Observation:  The supply chain emission factors with margins for automobile manufacturing (NAICS Code: 336111) is 0.279 kg CO2e/2021 USD, purchaser price.
+Thought:Now that I have the emissions factor with margin for automobile manufacturing, I need to multiply it with Tesla&#39;s revenue to get their carbon footprint.
+Action:
+
+{
+  &quot;action&quot;: &quot;Calculator&quot;,
+  &quot;action_input&quot;: &quot;81.5 billion * 0.279 kg CO2e/2021 USD&quot;
+}
+
+
+
+Observation: Answer: 11251113.310242455
+Thought:The carbon footprint of Tesla based on their revenue and industry is 11,251,113.31 kg CO2e.
+Final Answer: The carbon footprint of Tesla based on their revenue and industry is 11,251,113.31 kg CO2e.
+
+&gt; Finished chain.
+The carbon footprint of Tesla based on their revenue and industry is 11,251,113.31 kg CO2e.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="project1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Project 1: Emissions Data Search with ChatGPT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="self_decarbonization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Net Zero Backtesting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-for-our-knowledge-base">Getting Data for our Knowledge Base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-knowledge-base-with-embeddings">Creating Knowledge Base with Embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-base-as-a-tool">Knowledge Base as a Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interacting-with-other-tools">Interacting with Other Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Lorans
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022, Thomas Lorans.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
