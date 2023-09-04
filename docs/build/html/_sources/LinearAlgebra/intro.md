@@ -144,6 +144,98 @@ which output:
 (6,)
 ```
 
+### Index, Slice and Reshape NumPy Arrays
+
+#### From List to Arrays
+
+You can load you data and have access to it as a list. You can convert this one-dimensional list of data to an array by calling the `array()` function.
+
+```
+data = [11, 45, 67]
+data = np.array(data)
+print(data)
+print(type(data))
+```
+which output:
+```
+[11 45 67]
+<class 'numpy.ndarray'>
+```
+
+It is however more likely that you will have two-dimensional data. For example, a table of data where each row represents a new observation and each column a new feature. For example, you can have a list of lists. Each list represents a new observation. You can convert you list of lists to a `NumPy` array by calling the `array()` function:
+
+```Python
+data = [[1,2,3],
+        [3,4,5]]
+data = np.array(data)
+print(data)
+print(type(data))
+```
+which output:
+```
+[[1 2 3]
+ [3 4 5]]
+<class 'numpy.ndarray'>
+```
+
+#### Array Indexing
+
+You can access elements using the bracket operator `[]` specifying the zero-offset index for the value to retrieve.
+
+```Python
+data = np.array([1,2,3])
+print(data[0])
+```
+which output:
+```
+1
+```
+
+You can use negative indexes to retrieve values offset from the end of the array. For example, the index -1 refers to the last item in the array. 
+The index -2 returns the second last item all the way back to -5 for the first item in the current example.
+
+```Python
+data = np.array([2,3,4,4,6,7])
+print(data[-1])
+print(data[-2])
+```
+which outputs:
+```
+7
+6
+```
+
+Indexing two-dimensional data is similar to indexing one-dimensional data, except that a comma is used to separate the index for each dimension.
+
+```Python
+data = np.array([[1,2,3],
+                 [4,5,6]])
+print(data[0,1])
+```
+which output:
+```
+2
+```
+
+If we want all items in the first row, we can leave the second dimension index empty.
+
+```Python
+data = np.array([[1,2,3],
+                 [4,5,6]])
+print(data[0,])
+```
+which output:
+```
+[1 2 3]
+```
+
+#### Array Slicing
+
+Slicing means that a subsequence of the structure can be indexed and retrieved. This is most useful in ML when specifying input variables and output variables, or splitting training rows from testing rows. 
+
+Slicing is specified using the colon operate `:` with a from and to index before and after the column respectively.
+
+
 ## Vectors
 
 ## Norms

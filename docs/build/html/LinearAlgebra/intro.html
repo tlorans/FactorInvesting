@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'LinearAlgebra/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear Regression" href="../LinearRegressions/intro.html" />
+    <link rel="next" title="Linear Regression : Static Models with Observable Factors" href="../LinearRegressions/intro.html" />
     <link rel="prev" title="Factor Models with Machine Learning" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -128,9 +128,9 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Algebra Review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression : Static Models with Observable Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -284,6 +284,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-arrays">Combining Arrays</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index-slice-and-reshape-numpy-arrays">Index, Slice and Reshape NumPy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-list-to-arrays">From List to Arrays</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array Indexing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-slicing">Array Slicing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
@@ -308,14 +314,14 @@ document.write(`
 <p>Linear algebra is the the maths of data, with vectors and matrices of numbers. Classical methods such as linear regression are linear algebra methods, and other methods such as PCA were born from the marriage of linear algebra and stats.</p>
 <p>To understand machine learning, you need to be able to read and understand linear algebra.</p>
 <p>Linear equation is a serie of terms and operations where some terms are unknown, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6772cb05-a419-4066-a1b2-2055320a6573">
-<span class="eqno">(1)<a class="headerlink" href="#equation-6772cb05-a419-4066-a1b2-2055320a6573" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9da10120-fa1c-4a51-8169-8f91653e0d9a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-9da10120-fa1c-4a51-8169-8f91653e0d9a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = 4 \times x + 1
 \end{equation}\]</div>
 <p>This equation is linear as it describes a line on a two-dimensional graph. The line comes from plugging in different values into the unknown <span class="math notranslate nohighlight">\(x\)</span> to find out what the model does to the value of <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>We can have a system of equations with the same form with three unknowns for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba56f463-9117-48e9-be91-0709a79d3cbb">
-<span class="eqno">(2)<a class="headerlink" href="#equation-ba56f463-9117-48e9-be91-0709a79d3cbb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6a841263-35d6-4b43-92b2-ae96a8c87ba8">
+<span class="eqno">(2)<a class="headerlink" href="#equation-6a841263-35d6-4b43-92b2-ae96a8c87ba8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = 0.1 \times x_1 + 0.4 \times x_2 \\
 y = 0.3 \times x_2 + 0.9 \times x_2 \\
 y = 0.2 \times x_1 + 0.3 \times x2
@@ -323,8 +329,8 @@ y = 0.2 \times x_1 + 0.3 \times x2
 <p>The column of <span class="math notranslate nohighlight">\(y\)</span> values can be taken as a column vector of the outputs from the equation.</p>
 <p>The two columns of integer are the data columns, which can be for example <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>, and can be taken as a matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>The two unknown values <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be taken as the coefficients of the equation and form a vector of unknowns <span class="math notranslate nohighlight">\(b\)</span> to be solve. This can be written compactly using linear algebra:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9af68c5d-d489-459e-a5c5-910b1491271b">
-<span class="eqno">(3)<a class="headerlink" href="#equation-9af68c5d-d489-459e-a5c5-910b1491271b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-39a85091-7277-4523-9121-46148305a34a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-39a85091-7277-4523-9121-46148305a34a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = A \cdot b
 \end{equation}\]</div>
 <p>However, in real life, we have generally more unknowns than equations to solve, and we often need to approximate the solutions (ie. finding a solution approximating <span class="math notranslate nohighlight">\(y\)</span>).</p>
@@ -425,6 +431,87 @@ y = A \cdot b
 </div>
 </section>
 </section>
+<section id="index-slice-and-reshape-numpy-arrays">
+<h3>Index, Slice and Reshape NumPy Arrays<a class="headerlink" href="#index-slice-and-reshape-numpy-arrays" title="Permalink to this headline">#</a></h3>
+<section id="from-list-to-arrays">
+<h4>From List to Arrays<a class="headerlink" href="#from-list-to-arrays" title="Permalink to this headline">#</a></h4>
+<p>You can load you data and have access to it as a list. You can convert this one-dimensional list of data to an array by calling the <code class="docutils literal notranslate"><span class="pre">array()</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>which output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[11 45 67]
+&lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+<p>It is however more likely that you will have two-dimensional data. For example, a table of data where each row represents a new observation and each column a new feature. For example, you can have a list of lists. Each list represents a new observation. You can convert you list of lists to a <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> array by calling the <code class="docutils literal notranslate"><span class="pre">array()</span></code> function:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>which output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [3 4 5]]
+&lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</section>
+<section id="array-indexing">
+<h4>Array Indexing<a class="headerlink" href="#array-indexing" title="Permalink to this headline">#</a></h4>
+<p>You can access elements using the bracket operator <code class="docutils literal notranslate"><span class="pre">[]</span></code> specifying the zero-offset index for the value to retrieve.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>which output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>You can use negative indexes to retrieve values offset from the end of the array. For example, the index -1 refers to the last item in the array.
+The index -2 returns the second last item all the way back to -5 for the first item in the current example.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>which outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span>
+<span class="mi">6</span>
+</pre></div>
+</div>
+<p>Indexing two-dimensional data is similar to indexing one-dimensional data, except that a comma is used to separate the index for each dimension.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>which output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>If we want all items in the first row, we can leave the second dimension index empty.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,])</span>
+</pre></div>
+</div>
+<p>which output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="array-slicing">
+<h4>Array Slicing<a class="headerlink" href="#array-slicing" title="Permalink to this headline">#</a></h4>
+<p>Slicing means that a subsequence of the structure can be indexed and retrieved. This is most useful in ML when specifying input variables and output variables, or splitting training rows from testing rows.</p>
+<p>Slicing is specified using the colon operate <code class="docutils literal notranslate"><span class="pre">:</span></code> with a from and to index before and after the column respectively.</p>
+</section>
+</section>
 </section>
 <section id="vectors">
 <h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h2>
@@ -469,7 +556,7 @@ y = A \cdot b
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Regression</p>
+        <p class="prev-next-title">Linear Regression : Static Models with Observable Factors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -492,6 +579,12 @@ y = A \cdot b
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-n-dimensional-array">NumPy N-dimensional Array</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-to-create-arrays">Functions to Create Arrays</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-arrays">Combining Arrays</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index-slice-and-reshape-numpy-arrays">Index, Slice and Reshape NumPy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-list-to-arrays">From List to Arrays</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array Indexing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-slicing">Array Slicing</a></li>
 </ul>
 </li>
 </ul>
