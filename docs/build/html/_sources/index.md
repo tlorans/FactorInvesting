@@ -15,5 +15,10 @@ In this course, I propose a step-by-step implementation of a net zero strategy w
 :caption: 'Contents:'
 :maxdepth: 2
 
+LinearAlgebra/intro.md
+LinearRegressions/intro.md
+PCA/intro.md
+InstrumentedPCA/intro.md
+
 references
 ```
