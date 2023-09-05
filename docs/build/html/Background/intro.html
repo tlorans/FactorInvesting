@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Background/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear Regression: Static Models with Observable Factors" href="../LinearRegressions/intro.html" />
+    <link rel="next" title="Testing Asset Pricing Models" href="../TestFramework/intro.html" />
     <link rel="prev" title="Factor Models with Machine Learning" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -128,6 +128,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TestFramework/intro.html">Testing Asset Pricing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors</a></li>
@@ -283,7 +284,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra">Linear Algebra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-1-norm">Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-2-norm">Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-max-norm">Vector Max Norm</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">Matrices</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-matrices">Types of Matrices</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a></li>
@@ -326,14 +333,14 @@ document.write(`
 <p>Linear algebra is the the maths of data, with vectors and matrices of numbers. Classical methods such as linear regression are linear algebra methods, and other methods such as PCA were born from the marriage of linear algebra and stats.</p>
 <p>To understand machine learning, you need to be able to read and understand linear algebra.</p>
 <p>Linear equation is a serie of terms and operations where some terms are unknown, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-716b682a-9325-4f0d-9ce8-efa3b9ded279">
-<span class="eqno">(1)<a class="headerlink" href="#equation-716b682a-9325-4f0d-9ce8-efa3b9ded279" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4746ca29-27e8-4e72-97ea-97000866a433">
+<span class="eqno">(1)<a class="headerlink" href="#equation-4746ca29-27e8-4e72-97ea-97000866a433" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = 4 \times x + 1
 \end{equation}\]</div>
 <p>This equation is linear as it describes a line on a two-dimensional graph. The line comes from plugging in different values into the unknown <span class="math notranslate nohighlight">\(x\)</span> to find out what the model does to the value of <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>We can have a system of equations with the same form with three unknowns for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0adbf8ac-522b-42ff-9850-62ebd43b1cae">
-<span class="eqno">(2)<a class="headerlink" href="#equation-0adbf8ac-522b-42ff-9850-62ebd43b1cae" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-37548d3d-f18c-4dcf-aedc-b34536d2161a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-37548d3d-f18c-4dcf-aedc-b34536d2161a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = 0.1 \times x_1 + 0.4 \times x_2 \\
 y = 0.3 \times x_2 + 0.9 \times x_2 \\
 y = 0.2 \times x_1 + 0.3 \times x2
@@ -341,16 +348,94 @@ y = 0.2 \times x_1 + 0.3 \times x2
 <p>The column of <span class="math notranslate nohighlight">\(y\)</span> values can be taken as a column vector of the outputs from the equation.</p>
 <p>The two columns of integer are the data columns, which can be for example <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>, and can be taken as a matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>The two unknown values <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be taken as the coefficients of the equation and form a vector of unknowns <span class="math notranslate nohighlight">\(b\)</span> to be solve. This can be written compactly using linear algebra:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-465c132b-042d-4ebb-b096-51b16c25d63d">
-<span class="eqno">(3)<a class="headerlink" href="#equation-465c132b-042d-4ebb-b096-51b16c25d63d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-be7b2ce3-95f7-4f59-b5f0-6927ea4b4fad">
+<span class="eqno">(3)<a class="headerlink" href="#equation-be7b2ce3-95f7-4f59-b5f0-6927ea4b4fad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = A \cdot b
 \end{equation}\]</div>
 <p>However, in real life, we have generally more unknowns than equations to solve, and we often need to approximate the solutions (ie. finding a solution approximating <span class="math notranslate nohighlight">\(y\)</span>).</p>
 <section id="vectors">
 <h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
+<p>Vectors are built from components, which are ordinary numbers. We can think of a vector as a list of numbers and vector algebra as operations performed on the numbers in the list.</p>
+<p>Vectors are often represent using a lowercase character, such as <span class="math notranslate nohighlight">\(v\)</span> for example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1c3bb74c-d39b-4d0f-b272-2eb614c08a8a">
+<span class="eqno">(4)<a class="headerlink" href="#equation-1c3bb74c-d39b-4d0f-b272-2eb614c08a8a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v = \begin{pmatrix}
+v1 &amp; v2 &amp; v3
+\end{pmatrix}
+\end{equation}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(v_1\)</span>, <span class="math notranslate nohighlight">\(v_2\)</span> and <span class="math notranslate nohighlight">\(v_3\)</span> are scalar values.</p>
+<p>Vectors can also be shown using a column representation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6e5ca05e-0e9f-4fb0-9be1-40caeee0893b">
+<span class="eqno">(5)<a class="headerlink" href="#equation-6e5ca05e-0e9f-4fb0-9be1-40caeee0893b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v = 
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3
+\end{pmatrix}
+\end{equation}\]</div>
+<p>It is a common practice to represent the target variable as a vector with the lowercase <span class="math notranslate nohighlight">\(y\)</span> when describing a ML algorithm.</p>
 </section>
 <section id="norms">
 <h3>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<p>Calculating the length or magnitude of vectors is ofen required either directly as a regularization method in machine learning or as part of broader vector or matrix operations. Vector lengths or magnitude are also called the vector norm. In summary:</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is calculated as the sum of the absolute values of the vector</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm is calculated as the square root of the sum of the squared vector values</p></li>
+<li><p>The max norm is calculated as the maximum vector values.</p></li>
+</ul>
+<section id="vector-norm">
+<h4>Vector Norm<a class="headerlink" href="#vector-norm" title="Permalink to this headline">#</a></h4>
+<p>Calculating the size or length of a vector is often required either directly or as part of a broader vector-matrix opertion. The length of the vector is referred to as the vector norm or the vector’s magnitude.</p>
+<p>The length of the vector is always a positive number, expect for a vector of all zero values. It is calculated using some measure that summarizes the distance of the vector from the origin of the vector space.</p>
+</section>
+<section id="vector-l-1-norm">
+<h4>Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm<a class="headerlink" href="#vector-l-1-norm" title="Permalink to this headline">#</a></h4>
+<p>The length of a vector can be calculated using the <span class="math notranslate nohighlight">\(L^1\)</span> norm, where the 1 is a superscript of the <span class="math notranslate nohighlight">\(L\)</span>. The notation for the <span class="math notranslate nohighlight">\(L^1\)</span> norm of a vector is <span class="math notranslate nohighlight">\(||v||_1\)</span>. As such, this length is sometimes called the Manhattan norm.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a13abda6-405c-4ced-b14e-b5cb5061cf9f">
+<span class="eqno">(6)<a class="headerlink" href="#equation-a13abda6-405c-4ced-b14e-b5cb5061cf9f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+L^1(v) = ||v||_1
+\end{equation}\]</div>
+<p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is calculated as the sum of the absolute vector values, where the absolute value of a scalar uses the notation <span class="math notranslate nohighlight">\(|a_1|\)</span>. In effect, the norm is a calculation of the Manhattan distance from the origin of the vector space:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-086df6b2-bd38-42cd-81a8-88e91199d276">
+<span class="eqno">(7)<a class="headerlink" href="#equation-086df6b2-bd38-42cd-81a8-88e91199d276" title="Permalink to this equation">#</a></span>\[\begin{equation}
+||v||_1 = |a_1| + |a_2| + |a_3|
+\end{equation}\]</div>
+<p>In many ML applications, it is important to discriminate between elements that are exactly zero and elements that are small but nonzero. In these cases, we turn to a function that grows at the same rate in all locations, but retains mathematical simplicity: the <span class="math notranslate nohighlight">\(L^1\)</span> norm.</p>
+<p><em>Example: Let’s have the vector <span class="math notranslate nohighlight">\( a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>. We have <span class="math notranslate nohighlight">\(L^1(a) = 6\)</span>.</em></p>
+<p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is often used when fitting ML algorithms as a regularization method, ie a method to keep the coefficients of the model small and thus the model less complex.</p>
+</section>
+<section id="vector-l-2-norm">
+<h4>Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm<a class="headerlink" href="#vector-l-2-norm" title="Permalink to this headline">#</a></h4>
+<p>The length of a vector can be calculated using the <span class="math notranslate nohighlight">\(L^2\)</span> norm. The notation for the <span class="math notranslate nohighlight">\(L^2\)</span> norm vector is the following:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4f73b601-c292-415f-8623-0478c4512d52">
+<span class="eqno">(8)<a class="headerlink" href="#equation-4f73b601-c292-415f-8623-0478c4512d52" title="Permalink to this equation">#</a></span>\[\begin{equation}
+L^2(v) = ||v||_2
+\end{equation}\]</div>
+<p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm calculates the distance of the vector coordinate from the origin of the vector space. As such, it is also known as the Euclidean norm as it is calculated as the Euclidean distance from the origin. The result is a positive distance value. The <span class="math notranslate nohighlight">\(L^2\)</span> norm is calculated as the square root of the sum of the squared vector values:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dcc6a8b4-8903-4727-891f-90a3183ea3c9">
+<span class="eqno">(9)<a class="headerlink" href="#equation-dcc6a8b4-8903-4727-891f-90a3183ea3c9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+||v||_2 = \sqrt{a^2_1 + a_2^2 + a^2_3}
+\end{equation}\]</div>
+<p><em>Example: For a vector <span class="math notranslate nohighlight">\(a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>, we have <span class="math notranslate nohighlight">\(L^2(a) \approx 3.74\)</span>.</em></p>
+<p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm is also used as a regularization method (keeping the coefficients of the model small). The <span class="math notranslate nohighlight">\(L^2\)</span> norm is the most commonly used vector norms method in ML.</p>
+</section>
+<section id="vector-max-norm">
+<h4>Vector Max Norm<a class="headerlink" href="#vector-max-norm" title="Permalink to this headline">#</a></h4>
+<p>The length of a vector can be calculated using the maximum or max norm. It is referred to as <span class="math notranslate nohighlight">\(L^{inf}\)</span>.</p>
+<p>The notation is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-976f7c55-3cfc-4324-b5fb-c64124c1302f">
+<span class="eqno">(10)<a class="headerlink" href="#equation-976f7c55-3cfc-4324-b5fb-c64124c1302f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+L^{inf}(v) = ||v||_{inf}
+\end{equation}\]</div>
+<p>It is calculated as returning the maximum value of the vector:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83603e09-2d84-42bb-8c54-5a646a9f3f1d">
+<span class="eqno">(11)<a class="headerlink" href="#equation-83603e09-2d84-42bb-8c54-5a646a9f3f1d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+||v||_{inf} = \max a_1, a_2, a_3
+\end{equation}\]</div>
+<p><em>Example: For a vector <span class="math notranslate nohighlight">\(a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>, we have <span class="math notranslate nohighlight">\(L^{inf}(a) = 3\)</span>.</em></p>
+<p>It is also used as a regularization method in ML, such as on neural network weights, called max norm regularization.</p>
+</section>
 </section>
 <section id="matrices">
 <h3>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h3>
@@ -428,11 +513,11 @@ y = A \cdot b
       </div>
     </a>
     <a class="right-next"
-       href="../LinearRegressions/intro.html"
+       href="../TestFramework/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Regression: Static Models with Observable Factors</p>
+        <p class="prev-next-title">Testing Asset Pricing Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -453,7 +538,13 @@ y = A \cdot b
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra">Linear Algebra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-1-norm">Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-2-norm">Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-max-norm">Vector Max Norm</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">Matrices</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-matrices">Types of Matrices</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a></li>

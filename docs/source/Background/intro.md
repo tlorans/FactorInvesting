@@ -34,12 +34,104 @@ y = A \cdot b
 \end{equation}
 
 However, in real life, we have generally more unknowns than equations to solve, and we often need to approximate the solutions (ie. finding a solution approximating $y$).
-
-
 ### Vectors
+
+Vectors are built from components, which are ordinary numbers. We can think of a vector as a list of numbers and vector algebra as operations performed on the numbers in the list.
+
+Vectors are often represent using a lowercase character, such as $v$ for example:
+
+\begin{equation}
+v = \begin{pmatrix}
+v1 & v2 & v3
+\end{pmatrix}
+\end{equation}
+
+Where $v_1$, $v_2$ and $v_3$ are scalar values.
+
+Vectors can also be shown using a column representation:
+
+\begin{equation}
+v = 
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3
+\end{pmatrix}
+\end{equation}
+
+It is a common practice to represent the target variable as a vector with the lowercase $y$ when describing a ML algorithm.
 
 ### Norms
 
+Calculating the length or magnitude of vectors is ofen required either directly as a regularization method in machine learning or as part of broader vector or matrix operations. Vector lengths or magnitude are also called the vector norm. In summary:
+
+- The $L^1$ norm is calculated as the sum of the absolute values of the vector
+- The $L^2$ norm is calculated as the square root of the sum of the squared vector values
+- The max norm is calculated as the maximum vector values.
+
+#### Vector Norm
+
+Calculating the size or length of a vector is often required either directly or as part of a broader vector-matrix opertion. The length of the vector is referred to as the vector norm or the vector's magnitude.
+
+The length of the vector is always a positive number, expect for a vector of all zero values. It is calculated using some measure that summarizes the distance of the vector from the origin of the vector space. 
+
+#### Vector $L^1$ Norm
+
+The length of a vector can be calculated using the $L^1$ norm, where the 1 is a superscript of the $L$. The notation for the $L^1$ norm of a vector is $||v||_1$. As such, this length is sometimes called the Manhattan norm.
+
+\begin{equation}
+L^1(v) = ||v||_1
+\end{equation}
+
+The $L^1$ norm is calculated as the sum of the absolute vector values, where the absolute value of a scalar uses the notation $|a_1|$. In effect, the norm is a calculation of the Manhattan distance from the origin of the vector space:
+
+\begin{equation}
+||v||_1 = |a_1| + |a_2| + |a_3|
+\end{equation}
+
+In many ML applications, it is important to discriminate between elements that are exactly zero and elements that are small but nonzero. In these cases, we turn to a function that grows at the same rate in all locations, but retains mathematical simplicity: the $L^1$ norm.
+
+*Example: Let's have the vector $ a = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$. We have $L^1(a) = 6$.*
+
+The $L^1$ norm is often used when fitting ML algorithms as a regularization method, ie a method to keep the coefficients of the model small and thus the model less complex.
+
+#### Vector $L^2$ Norm
+
+The length of a vector can be calculated using the $L^2$ norm. The notation for the $L^2$ norm vector is the following:
+
+\begin{equation}
+L^2(v) = ||v||_2
+\end{equation}
+
+The $L^2$ norm calculates the distance of the vector coordinate from the origin of the vector space. As such, it is also known as the Euclidean norm as it is calculated as the Euclidean distance from the origin. The result is a positive distance value. The $L^2$ norm is calculated as the square root of the sum of the squared vector values:
+
+\begin{equation}
+||v||_2 = \sqrt{a^2_1 + a_2^2 + a^2_3}
+\end{equation}
+
+*Example: For a vector $a = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$, we have $L^2(a) \approx 3.74$.* 
+
+The $L^2$ norm is also used as a regularization method (keeping the coefficients of the model small). The $L^2$ norm is the most commonly used vector norms method in ML.
+
+#### Vector Max Norm
+
+The length of a vector can be calculated using the maximum or max norm. It is referred to as $L^{inf}$. 
+
+The notation is:
+
+\begin{equation}
+L^{inf}(v) = ||v||_{inf}
+\end{equation}
+
+It is calculated as returning the maximum value of the vector:
+
+\begin{equation}
+||v||_{inf} = \max a_1, a_2, a_3
+\end{equation}
+
+*Example: For a vector $a = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$, we have $L^{inf}(a) = 3$.*
+
+It is also used as a regularization method in ML, such as on neural network weights, called max norm regularization.
 ### Matrices
 
 ### Types of Matrices
