@@ -132,9 +132,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Autoencoders/intro.html">Autoencoders: Conditional Non-Linear Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../StateVariablesNLP/intro.html">Latent Dirichlet Allocation: State Variables with Natural Language Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../IPCANLP/intro.html">IPCA with Natural Language Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -298,29 +295,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trace">Trace</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant">Determinant</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrices">Sparse Matrices</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood">Maximum Likelihood</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-probability">Bayesian Probability</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-theory">Information Theory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus">Calculus</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-and-differential-calculus">Limits and Differential Calculus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-calculus">Multivariate Calculus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-programming">Mathematical Programming</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation">Approximation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient Descent</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
 </ul>
             </nav>
         </div>
@@ -339,14 +319,14 @@ document.write(`
 <p>Linear algebra is the the maths of data, with vectors and matrices of numbers. Classical methods such as linear regression are linear algebra methods, and other methods such as PCA were born from the marriage of linear algebra and stats.</p>
 <p>To understand machine learning, you need to be able to read and understand linear algebra.</p>
 <p>Linear equation is a serie of terms and operations where some terms are unknown, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4a8fd78a-49f3-45e8-8a36-44a093e32e9b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-4a8fd78a-49f3-45e8-8a36-44a093e32e9b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-37d2cd85-d2a3-477d-933c-ca615991549c">
+<span class="eqno">(1)<a class="headerlink" href="#equation-37d2cd85-d2a3-477d-933c-ca615991549c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = 4 \times x + 1
 \end{equation}\]</div>
 <p>This equation is linear as it describes a line on a two-dimensional graph. The line comes from plugging in different values into the unknown <span class="math notranslate nohighlight">\(x\)</span> to find out what the model does to the value of <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>We can have a system of equations with the same form with three unknowns for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d58474d0-f50b-4feb-9067-9481a3840010">
-<span class="eqno">(2)<a class="headerlink" href="#equation-d58474d0-f50b-4feb-9067-9481a3840010" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0f60d5e5-da11-4a16-bfe0-f907b8ed5cb5">
+<span class="eqno">(2)<a class="headerlink" href="#equation-0f60d5e5-da11-4a16-bfe0-f907b8ed5cb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = 0.1 \times x_1 + 0.4 \times x_2 \\
 y = 0.3 \times x_2 + 0.9 \times x_2 \\
 y = 0.2 \times x_1 + 0.3 \times x2
@@ -354,8 +334,8 @@ y = 0.2 \times x_1 + 0.3 \times x2
 <p>The column of <span class="math notranslate nohighlight">\(y\)</span> values can be taken as a column vector of the outputs from the equation.</p>
 <p>The two columns of integer are the data columns, which can be for example <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>, and can be taken as a matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>The two unknown values <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be taken as the coefficients of the equation and form a vector of unknowns <span class="math notranslate nohighlight">\(b\)</span> to be solve. This can be written compactly using linear algebra:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ff66ef3-c76b-4f2a-9ada-b3170afe2ee6">
-<span class="eqno">(3)<a class="headerlink" href="#equation-4ff66ef3-c76b-4f2a-9ada-b3170afe2ee6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e8d88d49-65b4-45a7-a03b-a383d2688d34">
+<span class="eqno">(3)<a class="headerlink" href="#equation-e8d88d49-65b4-45a7-a03b-a383d2688d34" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = A \cdot b
 \end{equation}\]</div>
 <p>However, in real life, we have generally more unknowns than equations to solve, and we often need to approximate the solutions (ie. finding a solution approximating <span class="math notranslate nohighlight">\(y\)</span>).</p>
@@ -363,16 +343,16 @@ y = A \cdot b
 <h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
 <p>Vectors are built from components, which are ordinary numbers. We can think of a vector as a list of numbers and vector algebra as operations performed on the numbers in the list.</p>
 <p>Vectors are often represent using a lowercase character, such as <span class="math notranslate nohighlight">\(v\)</span> for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2161a2a-a81d-4e23-b7be-dddcaac0b47e">
-<span class="eqno">(4)<a class="headerlink" href="#equation-b2161a2a-a81d-4e23-b7be-dddcaac0b47e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-48585bac-383b-4d7a-8fe0-499e144f7132">
+<span class="eqno">(4)<a class="headerlink" href="#equation-48585bac-383b-4d7a-8fe0-499e144f7132" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v = \begin{pmatrix}
 v1 &amp; v2 &amp; v3
 \end{pmatrix}
 \end{equation}\]</div>
 <p>Where <span class="math notranslate nohighlight">\(v_1\)</span>, <span class="math notranslate nohighlight">\(v_2\)</span> and <span class="math notranslate nohighlight">\(v_3\)</span> are scalar values.</p>
 <p>Vectors can also be shown using a column representation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64a9a9c9-c541-4fb2-8a87-277cf8c628f4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-64a9a9c9-c541-4fb2-8a87-277cf8c628f4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3488b91c-ef4d-484d-bd0b-58ca6da9f104">
+<span class="eqno">(5)<a class="headerlink" href="#equation-3488b91c-ef4d-484d-bd0b-58ca6da9f104" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v = 
 \begin{pmatrix}
 v_1 \\
@@ -398,13 +378,13 @@ v_3
 <section id="vector-l-1-norm">
 <h4>Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm<a class="headerlink" href="#vector-l-1-norm" title="Permalink to this headline">#</a></h4>
 <p>The length of a vector can be calculated using the <span class="math notranslate nohighlight">\(L^1\)</span> norm, where the 1 is a superscript of the <span class="math notranslate nohighlight">\(L\)</span>. The notation for the <span class="math notranslate nohighlight">\(L^1\)</span> norm of a vector is <span class="math notranslate nohighlight">\(||v||_1\)</span>. As such, this length is sometimes called the Manhattan norm.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-70df0b8a-dbba-480e-9ec4-891373814711">
-<span class="eqno">(6)<a class="headerlink" href="#equation-70df0b8a-dbba-480e-9ec4-891373814711" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-78d8098f-92e6-4911-a7b3-f4f0a6fe7c70">
+<span class="eqno">(6)<a class="headerlink" href="#equation-78d8098f-92e6-4911-a7b3-f4f0a6fe7c70" title="Permalink to this equation">#</a></span>\[\begin{equation}
 L^1(v) = ||v||_1
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is calculated as the sum of the absolute vector values, where the absolute value of a scalar uses the notation <span class="math notranslate nohighlight">\(|a_1|\)</span>. In effect, the norm is a calculation of the Manhattan distance from the origin of the vector space:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bfd1a81a-9f26-4692-87e7-94e1e4e9a3c4">
-<span class="eqno">(7)<a class="headerlink" href="#equation-bfd1a81a-9f26-4692-87e7-94e1e4e9a3c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a0664ac0-6cc8-4103-ad3c-7546121eabbc">
+<span class="eqno">(7)<a class="headerlink" href="#equation-a0664ac0-6cc8-4103-ad3c-7546121eabbc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ||v||_1 = |a_1| + |a_2| + |a_3|
 \end{equation}\]</div>
 <p>In many ML applications, it is important to discriminate between elements that are exactly zero and elements that are small but nonzero. In these cases, we turn to a function that grows at the same rate in all locations, but retains mathematical simplicity: the <span class="math notranslate nohighlight">\(L^1\)</span> norm.</p>
@@ -414,13 +394,13 @@ L^1(v) = ||v||_1
 <section id="vector-l-2-norm">
 <h4>Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm<a class="headerlink" href="#vector-l-2-norm" title="Permalink to this headline">#</a></h4>
 <p>The length of a vector can be calculated using the <span class="math notranslate nohighlight">\(L^2\)</span> norm. The notation for the <span class="math notranslate nohighlight">\(L^2\)</span> norm vector is the following:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8c0d4df-400e-4637-8dba-4727ec9167aa">
-<span class="eqno">(8)<a class="headerlink" href="#equation-e8c0d4df-400e-4637-8dba-4727ec9167aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1b4f7886-fb7e-40c4-b1c8-512d69149a54">
+<span class="eqno">(8)<a class="headerlink" href="#equation-1b4f7886-fb7e-40c4-b1c8-512d69149a54" title="Permalink to this equation">#</a></span>\[\begin{equation}
 L^2(v) = ||v||_2
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm calculates the distance of the vector coordinate from the origin of the vector space. As such, it is also known as the Euclidean norm as it is calculated as the Euclidean distance from the origin. The result is a positive distance value. The <span class="math notranslate nohighlight">\(L^2\)</span> norm is calculated as the square root of the sum of the squared vector values:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3b2f3fe3-8945-4468-83c8-dc2b38c8f665">
-<span class="eqno">(9)<a class="headerlink" href="#equation-3b2f3fe3-8945-4468-83c8-dc2b38c8f665" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3f965f10-9739-486c-8453-d7be61d11333">
+<span class="eqno">(9)<a class="headerlink" href="#equation-3f965f10-9739-486c-8453-d7be61d11333" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ||v||_2 = \sqrt{a^2_1 + a_2^2 + a^2_3}
 \end{equation}\]</div>
 <p><em>Example: For a vector <span class="math notranslate nohighlight">\(a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>, we have <span class="math notranslate nohighlight">\(L^2(a) \approx 3.74\)</span>.</em></p>
@@ -430,13 +410,13 @@ L^2(v) = ||v||_2
 <h4>Vector Max Norm<a class="headerlink" href="#vector-max-norm" title="Permalink to this headline">#</a></h4>
 <p>The length of a vector can be calculated using the maximum or max norm. It is referred to as <span class="math notranslate nohighlight">\(L^{inf}\)</span>.</p>
 <p>The notation is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7bc3bea9-ab78-474e-a826-b7970976f0ea">
-<span class="eqno">(10)<a class="headerlink" href="#equation-7bc3bea9-ab78-474e-a826-b7970976f0ea" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-913d9caa-1879-4848-92c0-0b71610c30de">
+<span class="eqno">(10)<a class="headerlink" href="#equation-913d9caa-1879-4848-92c0-0b71610c30de" title="Permalink to this equation">#</a></span>\[\begin{equation}
 L^{inf}(v) = ||v||_{inf}
 \end{equation}\]</div>
 <p>It is calculated as returning the maximum value of the vector:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-890041e8-c793-40d2-a50b-39e17d1f9164">
-<span class="eqno">(11)<a class="headerlink" href="#equation-890041e8-c793-40d2-a50b-39e17d1f9164" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c2379c21-0efa-4d1a-9bf6-c4028d07c169">
+<span class="eqno">(11)<a class="headerlink" href="#equation-c2379c21-0efa-4d1a-9bf6-c4028d07c169" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ||v||_{inf} = \max a_1, a_2, a_3
 \end{equation}\]</div>
 <p><em>Example: For a vector <span class="math notranslate nohighlight">\(a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>, we have <span class="math notranslate nohighlight">\(L^{inf}(a) = 3\)</span>.</em></p>
@@ -448,30 +428,30 @@ L^{inf}(v) = ||v||_{inf}
 <section id="orthogonal-matrix">
 <h4>Orthogonal Matrix<a class="headerlink" href="#orthogonal-matrix" title="Permalink to this headline">#</a></h4>
 <p>Two vectors are orthogonal when their dot product equals zero. The length of each vector is 1 then the vector are called orthonormal vecause they are both orthogonal and normalized.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-24b26cde-3db4-4b21-b0c3-47d38593428a">
-<span class="eqno">(12)<a class="headerlink" href="#equation-24b26cde-3db4-4b21-b0c3-47d38593428a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-06f64dae-74fc-47f7-9fc4-7b49e020ae02">
+<span class="eqno">(12)<a class="headerlink" href="#equation-06f64dae-74fc-47f7-9fc4-7b49e020ae02" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v \cdot w = 0
 \end{equation}\]</div>
 <p>An orthogonal matrix is a type of square matrix whose columns and rows are orthonormal unit vectors, ie. perpedicular and have a length of magnitude of 1.</p>
 <p>An orthogonal matrix is a square matrix whose rows are mutually orthonormal and whose columns are mutually orthonomal.</p>
 <p>An Orthogonal matrix is often denoted as <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>The Orthogonal matrix is defined as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-87e8a9f5-cb9c-4750-8096-b2bd04602d7c">
-<span class="eqno">(13)<a class="headerlink" href="#equation-87e8a9f5-cb9c-4750-8096-b2bd04602d7c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-34e2a82a-bba9-4ad9-b21d-8ce9489dd1e7">
+<span class="eqno">(13)<a class="headerlink" href="#equation-34e2a82a-bba9-4ad9-b21d-8ce9489dd1e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Q^T \cdot Q = Q \cdot Q^T = I
 \end{equation}\]</div>
 <p>Orthogonal matrices are used a lot for linear transformations, such as reflections and permtations.</p>
 <p><em>Example: We have the following orthogonal matrix:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-25051da8-30bb-49dd-b4fd-27fcb6685708">
-<span class="eqno">(14)<a class="headerlink" href="#equation-25051da8-30bb-49dd-b4fd-27fcb6685708" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-681a0c70-04eb-408c-ac67-2f245144e7b8">
+<span class="eqno">(14)<a class="headerlink" href="#equation-681a0c70-04eb-408c-ac67-2f245144e7b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Q = 
 \begin{pmatrix}
 1 &amp; 0 \\
 0 &amp; -1
 \end{pmatrix}
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-ea65535d-2674-4db4-96a0-f7593a16c9bf">
-<span class="eqno">(15)<a class="headerlink" href="#equation-ea65535d-2674-4db4-96a0-f7593a16c9bf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7045bab1-1e84-408d-a5fe-14624863eca5">
+<span class="eqno">(15)<a class="headerlink" href="#equation-7045bab1-1e84-408d-a5fe-14624863eca5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Q \cdot Q^T = \begin{pmatrix}
 1 &amp; 0 \\
 0 &amp; 1 
@@ -486,21 +466,21 @@ Q \cdot Q^T = \begin{pmatrix}
 <p>A trace of a square matrix is the sum of the values on the main diagonal of the matrix.</p>
 <p>It is described using the notation <span class="math notranslate nohighlight">\(tr(A)\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is the square matrix on which the operation is performed.</p>
 <p>The trace is calculated as the sum of the diagonal values, for example in the case of <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-58ca9e5c-d88c-42c2-937b-6d6589dba623">
-<span class="eqno">(16)<a class="headerlink" href="#equation-58ca9e5c-d88c-42c2-937b-6d6589dba623" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0322e6cc-4a8c-4300-921d-5deca31926a2">
+<span class="eqno">(16)<a class="headerlink" href="#equation-0322e6cc-4a8c-4300-921d-5deca31926a2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 tr(A) = a_{1,1} + a_{2,2} + a_{3,3}
 \end{equation}\]</div>
 <p><em>Example: we have the following matrix:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-87b2a6fe-3eee-4be5-9c74-b094223f5dc1">
-<span class="eqno">(17)<a class="headerlink" href="#equation-87b2a6fe-3eee-4be5-9c74-b094223f5dc1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d444215b-d70e-45ae-8dba-803c2223e419">
+<span class="eqno">(17)<a class="headerlink" href="#equation-d444215b-d70e-45ae-8dba-803c2223e419" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = \begin{pmatrix}
 1 &amp; 2 &amp; 3 \\
 4 &amp; 5 &amp; 6 \\
 7 &amp; 8 &amp; 9
 \end{pmatrix}
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-7597b6bb-1246-4b82-a2e5-d41460f2691a">
-<span class="eqno">(18)<a class="headerlink" href="#equation-7597b6bb-1246-4b82-a2e5-d41460f2691a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-48505e16-c32d-43a2-a240-7f2a5fdea390">
+<span class="eqno">(18)<a class="headerlink" href="#equation-48505e16-c32d-43a2-a240-7f2a5fdea390" title="Permalink to this equation">#</a></span>\[\begin{equation}
 tr(A) = 15
 \end{equation}\]</div>
 </section>
@@ -508,54 +488,20 @@ tr(A) = 15
 <h4>Determinant<a class="headerlink" href="#determinant" title="Permalink to this headline">#</a></h4>
 <p>The determinant of a square matrix is a scalar representation of the volume of the matrix.</p>
 <p>It is denoted by the <span class="math notranslate nohighlight">\(det(A)\)</span> or <span class="math notranslate nohighlight">\(|A|\)</span> notation, where <span class="math notranslate nohighlight">\(A\)</span> is the matrix on which we are calculating the determinant.</p>
-<p>The determinant of a square matrix is calculated from the elements of the matrix.</p>
+<p>The determinant of a square matrix is calculated as the product of all the eigenvalues of the matrix. The intuition for the determinant is that it describes the way a mtrix will scale another matrix when they are multiplied together.</p>
+<p>For example, a determinant of 1 preserves the space of the other matrix. A determinant of 0 indicates that the matrix cannot be inverted.</p>
+</section>
+<section id="rank">
+<h4>Rank<a class="headerlink" href="#rank" title="Permalink to this headline">#</a></h4>
+<p>The rank of a matrix is the estimate of the number of linearly independent rows or columns in a matrix. The rank of a matrix <span class="math notranslate nohighlight">\(M\)</span> is denoted as <span class="math notranslate nohighlight">\(rank()\)</span>.</p>
+<p>An intution for the rank is to consider it the number of dimensions spanned by all of the vectors within a matrix.</p>
+<p>For example, a rank of <span class="math notranslate nohighlight">\(0\)</span> suffest all vectors span a point, a rank of <span class="math notranslate nohighlight">\(1\)</span> suggests all vectors pan a line, a rank of <span class="math notranslate nohighlight">\(2\)</span> suggests all vectors span a two-dimensional plane.</p>
+<p>The rank is estimated numericall, often using a matrix decomposition method, such as the Singular-Value Decomposition or SVD.</p>
 </section>
 </section>
 <section id="sparse-matrices">
 <h3>Sparse Matrices<a class="headerlink" href="#sparse-matrices" title="Permalink to this headline">#</a></h3>
 </section>
-</section>
-<section id="statistics">
-<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="probability">
-<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">#</a></h2>
-<section id="distributions">
-<h3>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="maximum-likelihood">
-<h3>Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="bayesian-probability">
-<h3>Bayesian Probability<a class="headerlink" href="#bayesian-probability" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="information-theory">
-<h3>Information Theory<a class="headerlink" href="#information-theory" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="classification">
-<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h3>
-</section>
-</section>
-<section id="calculus">
-<h2>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">#</a></h2>
-<section id="limits-and-differential-calculus">
-<h3>Limits and Differential Calculus<a class="headerlink" href="#limits-and-differential-calculus" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="multivariate-calculus">
-<h3>Multivariate Calculus<a class="headerlink" href="#multivariate-calculus" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="mathematical-programming">
-<h3>Mathematical Programming<a class="headerlink" href="#mathematical-programming" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="approximation">
-<h3>Approximation<a class="headerlink" href="#approximation" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="gradient-descent">
-<h3>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h3>
-</section>
-</section>
-<section id="optimization">
-<h2>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -617,29 +563,12 @@ tr(A) = 15
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trace">Trace</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant">Determinant</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrices">Sparse Matrices</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood">Maximum Likelihood</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-probability">Bayesian Probability</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-theory">Information Theory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus">Calculus</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-and-differential-calculus">Limits and Differential Calculus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-calculus">Multivariate Calculus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-programming">Mathematical Programming</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation">Approximation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient Descent</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
 </ul>
   </nav></div>
 

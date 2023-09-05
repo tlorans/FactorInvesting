@@ -206,34 +206,19 @@ The determinant of a square matrix is a scalar representation of the volume of t
 
 It is denoted by the $det(A)$ or $|A|$ notation, where $A$ is the matrix on which we are calculating the determinant.
 
-The determinant of a square matrix is calculated from the elements of the matrix.
+The determinant of a square matrix is calculated as the product of all the eigenvalues of the matrix. The intuition for the determinant is that it describes the way a mtrix will scale another matrix when they are multiplied together. 
+
+For example, a determinant of 1 preserves the space of the other matrix. A determinant of 0 indicates that the matrix cannot be inverted.
+
+#### Rank
+
+The rank of a matrix is the estimate of the number of linearly independent rows or columns in a matrix. The rank of a matrix $M$ is denoted as $rank()$.
+
+An intution for the rank is to consider it the number of dimensions spanned by all of the vectors within a matrix. 
+
+For example, a rank of $0$ suffest all vectors span a point, a rank of $1$ suggests all vectors pan a line, a rank of $2$ suggests all vectors span a two-dimensional plane.
+
+The rank is estimated numericall, often using a matrix decomposition method, such as the Singular-Value Decomposition or SVD. 
+
+
 ### Sparse Matrices
-
-## Statistics 
-
-
-## Probability 
-
-### Distributions
-
-### Maximum Likelihood
-
-### Bayesian Probability
-
-### Information Theory
-
-### Classification
-
-## Calculus
-
-### Limits and Differential Calculus
-
-### Multivariate Calculus 
-
-### Mathematical Programming
-
-### Approximation
-
-### Gradient Descent
-
-## Optimization

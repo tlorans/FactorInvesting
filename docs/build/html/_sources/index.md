@@ -20,8 +20,5 @@ TestFramework/intro.md
 LinearRegressions/intro.md
 PCA/intro.md
 InstrumentedPCA/intro.md
-Autoencoders/intro.md
-StateVariablesNLP/intro.md
-IPCANLP/intro.md
 references
 ```

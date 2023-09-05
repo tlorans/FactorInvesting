@@ -1,6 +1,6 @@
-# Instrumented PCA: Conditional Models with Latent Factors
+# Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics
 
-## Conditional Models with Latent Factors
+## Conditional Models with Latent Factors and Observable Characteristics
 
 ## Instrumented PCA with Linear Algebra
 
