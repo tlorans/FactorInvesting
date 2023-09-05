@@ -1,6 +1,6 @@
 # Testing Asset Pricing Models
 
-Objective asset pricing models: explaining cross-sections of returns and finding the true tangency portfolio (ie. with the maximum sharpe ratio).
+Objective asset pricing models: explaining cross-sections of returns.
 
 ## Characteristics-Managed Portfolios
 
