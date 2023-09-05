@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Factor Models with Machine Learning &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>Latent Dirichlet Allocation: State Variables with Natural Language Processing &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -19,33 +19,32 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Background" href="Background/intro.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'later/StateVariablesNLP/intro';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -73,7 +72,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -111,7 +110,7 @@
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -124,12 +123,12 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Background/intro.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TestFramework/intro.html">Testing Asset Pricing Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Background/intro.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../TestFramework/intro.html">Testing Asset Pricing Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -184,7 +183,7 @@
       
       
       
-      <li><a href="_sources/index.md" target="_blank"
+      <li><a href="../../_sources/later/StateVariablesNLP/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -253,7 +252,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -264,11 +265,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Factor Models with Machine Learning</h1>
+    <h1>Latent Dirichlet Allocation: State Variables with Natural Language Processing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#news-attention-as-an-alternative-for-state-variables-modelling">News Attention as an Alternative for State Variables Modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modelling-with-probability">Topic Modelling with Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-5-business-news-attention">Project 5: Business News Attention</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -278,47 +289,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="factor-models-with-machine-learning">
-<h1>Factor Models with Machine Learning<a class="headerlink" href="#factor-models-with-machine-learning" title="Permalink to this headline">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This course is under heavy development</p>
-</div>
-<p>In this course, I propose a step-by-step implementation of a net zero strategy with Python, following the methodology proposed by Barahhou et al. (2022) <span id="id1">[]</span>.</p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Background/intro.html">Background</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Background/intro.html#linear-algebra">Linear Algebra</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="TestFramework/intro.html">Testing Asset Pricing Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="TestFramework/intro.html#characteristics-managed-portfolios">Characteristics-Managed Portfolios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TestFramework/intro.html#statistical-performance-with-total-and-predictive-r-squared">Statistical Performance with Total and Predictive R-Squared</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TestFramework/intro.html#risk-premia-v-s-mispricing">Risk Premia v.s. Mispricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="LinearRegressions/intro.html#static-models-with-observable-factors">Static Models with Observable Factors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LinearRegressions/intro.html#linear-regression-with-linear-algebra">Linear Regression with Linear Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LinearRegressions/intro.html#project-1-ff-k-factors-asset-pricing">Project 1: FF K-Factors Asset Pricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PCA/intro.html#static-models-with-latent-factors">Static Models with Latent Factors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PCA/intro.html#pca-with-linear-algebra">PCA with Linear Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PCA/intro.html#project-2-pca-k-factors-asset-pricing">Project 2: PCA K-Factors Asset Pricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="InstrumentedPCA/intro.html#conditional-models-with-latent-factors-and-observable-characteristics">Conditional Models with Latent Factors and Observable Characteristics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InstrumentedPCA/intro.html#instrumented-pca-with-linear-algebra">Instrumented PCA with Linear Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InstrumentedPCA/intro.html#project-3-ipca-k-factors-asset-pricing">Project 3: IPCA K-Factors Asset Pricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="latent-dirichlet-allocation-state-variables-with-natural-language-processing">
+<h1>Latent Dirichlet Allocation: State Variables with Natural Language Processing<a class="headerlink" href="#latent-dirichlet-allocation-state-variables-with-natural-language-processing" title="Permalink to this headline">#</a></h1>
+<section id="news-attention-as-an-alternative-for-state-variables-modelling">
+<h2>News Attention as an Alternative for State Variables Modelling<a class="headerlink" href="#news-attention-as-an-alternative-for-state-variables-modelling" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="topic-modelling-with-probability">
+<h2>Topic Modelling with Probability<a class="headerlink" href="#topic-modelling-with-probability" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="project-5-business-news-attention">
+<h2>Project 5: Business News Attention<a class="headerlink" href="#project-5-business-news-attention" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
 
@@ -330,21 +311,28 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="right-next"
-       href="Background/intro.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Background</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#news-attention-as-an-alternative-for-state-variables-modelling">News Attention as an Alternative for State Variables Modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modelling-with-probability">Topic Modelling with Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-5-business-news-attention">Project 5: Business News Attention</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -388,8 +376,8 @@ By Thomas Lorans
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -42,6 +42,8 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'TestFramework/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -129,10 +131,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Testing Asset Pricing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Autoencoders/intro.html">Autoencoders: Conditional Non-Linear Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../StateVariablesNLP/intro.html">Latent Dirichlet Allocation: State Variables with Natural Language Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../IPCANLP/intro.html">IPCA with Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -280,9 +279,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-assets">Test Assets</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-managed-portfolios">Characteristics-Managed Portfolios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-assets">Individual Assets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-managed-portfolios">Characteristics-Managed Portfolios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-normalization">Rank-Normalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-procedure">Sorting Procedure</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-performance-with-total-and-predictive-r-squared">Statistical Performance with Total and Predictive R-Squared</a><ul class="nav section-nav flex-column">
@@ -290,11 +289,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-r-squared">Predictive R-Squared</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-performance-with-sharpe-ratios">Economic Performance with Sharpe Ratios</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-ml-managed-portfolios">Forming ML-managed Portfolios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-ratio">Sharpe Ratio</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-premia-v-s-mispricing">Risk Premia v.s. Mispricing</a></li>
 </ul>
             </nav>
         </div>
@@ -309,32 +304,47 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="testing-asset-pricing-models">
 <h1>Testing Asset Pricing Models<a class="headerlink" href="#testing-asset-pricing-models" title="Permalink to this headline">#</a></h1>
 <p>Objective asset pricing models: explaining cross-sections of returns and finding the true tangency portfolio (ie. with the maximum sharpe ratio).</p>
-<section id="test-assets">
-<h2>Test Assets<a class="headerlink" href="#test-assets" title="Permalink to this headline">#</a></h2>
 <section id="characteristics-managed-portfolios">
-<h3>Characteristics-Managed Portfolios<a class="headerlink" href="#characteristics-managed-portfolios" title="Permalink to this headline">#</a></h3>
+<h2>Characteristics-Managed Portfolios<a class="headerlink" href="#characteristics-managed-portfolios" title="Permalink to this headline">#</a></h2>
+<section id="rank-normalization">
+<h3>Rank-Normalization<a class="headerlink" href="#rank-normalization" title="Permalink to this headline">#</a></h3>
 </section>
-<section id="individual-assets">
-<h3>Individual Assets<a class="headerlink" href="#individual-assets" title="Permalink to this headline">#</a></h3>
+<section id="sorting-procedure">
+<h3>Sorting Procedure<a class="headerlink" href="#sorting-procedure" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 <section id="statistical-performance-with-total-and-predictive-r-squared">
 <h2>Statistical Performance with Total and Predictive R-Squared<a class="headerlink" href="#statistical-performance-with-total-and-predictive-r-squared" title="Permalink to this headline">#</a></h2>
+<p>We follow Kelly et al. (2019)  <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Bryan T Kelly, Seth Pruitt, and Yinan Su. Characteristics are covariances: a unified model of risk and return. Journal of Financial Economics, 134(3):501–524, 2019.">KPS19</a>]</span> to test the asset pricing performance of the factor models with “total <span class="math notranslate nohighlight">\(R^2\)</span>” and “predictive <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<p>To understand the difference between both measures, let’s start with the definition of the “traditional” <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<p>The coefficient of determination, or <span class="math notranslate nohighlight">\(R^2\)</span>, is computed as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-46f54e31-2a31-43ce-8770-b136a18dcb96">
+<span class="eqno">(1)<a class="headerlink" href="#equation-46f54e31-2a31-43ce-8770-b136a18dcb96" title="Permalink to this equation">#</a></span>\[\begin{equation}
+R^2 = 1 - \frac{SSR}{SST}
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(SSR\)</span> stands for sum squared of the residuals and <span class="math notranslate nohighlight">\(SST\)</span> stands for the total sum of squares, that is the su of the distance the data is away from the mean all squared.</p>
+<p>The sum squared regression (SSR) is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7a12d092-735a-4016-8018-7eb1886febd8">
+<span class="eqno">(2)<a class="headerlink" href="#equation-7a12d092-735a-4016-8018-7eb1886febd8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+SSR = \sum(y_i -\hat{y_i})^2
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the true value, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the estimated value.</p>
+<p>The total sum of squares (SST) is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b47f20f2-b69a-44e7-8666-cf345cb05ef4">
+<span class="eqno">(3)<a class="headerlink" href="#equation-b47f20f2-b69a-44e7-8666-cf345cb05ef4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+SST = \sum(y_i - \bar{y})^2
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the mean of the observations.</p>
 <section id="total-r-squared">
 <h3>Total R-Squared<a class="headerlink" href="#total-r-squared" title="Permalink to this headline">#</a></h3>
+<p>The model performance</p>
 </section>
 <section id="predictive-r-squared">
 <h3>Predictive R-Squared<a class="headerlink" href="#predictive-r-squared" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
-<section id="economic-performance-with-sharpe-ratios">
-<h2>Economic Performance with Sharpe Ratios<a class="headerlink" href="#economic-performance-with-sharpe-ratios" title="Permalink to this headline">#</a></h2>
-<section id="forming-ml-managed-portfolios">
-<h3>Forming ML-managed Portfolios<a class="headerlink" href="#forming-ml-managed-portfolios" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="sharpe-ratio">
-<h3>Sharpe Ratio<a class="headerlink" href="#sharpe-ratio" title="Permalink to this headline">#</a></h3>
-</section>
+<section id="risk-premia-v-s-mispricing">
+<h2>Risk Premia v.s. Mispricing<a class="headerlink" href="#risk-premia-v-s-mispricing" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -380,9 +390,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-assets">Test Assets</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-managed-portfolios">Characteristics-Managed Portfolios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-assets">Individual Assets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-managed-portfolios">Characteristics-Managed Portfolios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-normalization">Rank-Normalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-procedure">Sorting Procedure</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-performance-with-total-and-predictive-r-squared">Statistical Performance with Total and Predictive R-Squared</a><ul class="nav section-nav flex-column">
@@ -390,11 +400,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-r-squared">Predictive R-Squared</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-performance-with-sharpe-ratios">Economic Performance with Sharpe Ratios</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-ml-managed-portfolios">Forming ML-managed Portfolios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-ratio">Sharpe Ratio</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-premia-v-s-mispricing">Risk Premia v.s. Mispricing</a></li>
 </ul>
   </nav></div>
 
