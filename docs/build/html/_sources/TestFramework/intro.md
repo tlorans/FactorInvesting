@@ -4,8 +4,17 @@ Objective asset pricing models: explaining cross-sections of returns and finding
 
 ## Characteristics-Managed Portfolios
 
-### Rank-Normalization
+### Characteristics Rescaling
 
+Let's write $x_i$ for the raw input and $\tilde{x}_i$ for the transformed data. 
+
+We normalize the characteristics following a min-max rescaling over $[-1, 1]$, such as:
+
+\begin{equation}
+\tilde{x}_{i,t} = 2 \frac{x_{i,t} - \min(x_t)}{\max(x_t)-\min(x_t)} - 1
+\end{equation}
+
+Note the $t$ subscript. The rescaling method is applied separately month by month. This ensures that for each rebalancing date of our characteristics-managed portfolios, the characterisics will have a similar shape and carrying information about the cross-section fo returns.
 ### Sorting Procedure
 
 ## Statistical Performance with Total and Predictive R-Squared
@@ -92,3 +101,11 @@ And thus the following complete formula for the predictive $R^2$:
 \text{Predictive $R^2$} = 1 - \frac{\sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2}{\sum_{i,t} r_{i,t}^2}
 \end{equation}
 ## Risk Premia v.s. Mispricing
+
+This test investigate whether ou factor models accurately "price" characteristics-managed portfolios (or anomaly portfolios) uncoditionally, following Gu et al. (2021) {cite:p}`gu2021autoencoder`.
+
+As we implement all our models without intercepts, we can directly test whether the zero-intercept no-arbitrage restriction is satisfied. If it is, the time series average of model residuals for each portfolios, that is the pricing errors, should be indistinguishable from zero (two side test). The uncoditional pricing errors are defined as:
+
+\begin{equation}
+\alpha_i = \mathbb{E}[u_{i,t}] = \mathbb{E}[r_i,t] - \mathbb{E}[\beta_{i,t-1}'f_t]
+\end{equation}
