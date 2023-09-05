@@ -132,12 +132,81 @@ It is calculated as returning the maximum value of the vector:
 *Example: For a vector $a = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$, we have $L^{inf}(a) = 3$.*
 
 It is also used as a regularization method in ML, such as on neural network weights, called max norm regularization.
-### Matrices
-
 ### Types of Matrices
 
+#### Orthogonal Matrix
+
+Two vectors are orthogonal when their dot product equals zero. The length of each vector is 1 then the vector are called orthonormal vecause they are both orthogonal and normalized.
+
+\begin{equation}
+v \cdot w = 0
+\end{equation}
+
+An orthogonal matrix is a type of square matrix whose columns and rows are orthonormal unit vectors, ie. perpedicular and have a length of magnitude of 1.
+
+An orthogonal matrix is a square matrix whose rows are mutually orthonormal and whose columns are mutually orthonomal.
+
+An Orthogonal matrix is often denoted as $Q$. 
+
+The Orthogonal matrix is defined as follows:
+
+\begin{equation}
+Q^T \cdot Q = Q \cdot Q^T = I
+\end{equation}
+
+Orthogonal matrices are used a lot for linear transformations, such as reflections and permtations. 
+
+*Example: We have the following orthogonal matrix:*
+
+\begin{equation}
+Q = 
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+Q \cdot Q^T = \begin{pmatrix}
+1 & 0 \\
+0 & 1 
+\end{pmatrix}
+\end{equation}
 ### Matrix Operations
 
+#### Trace 
+
+A trace of a square matrix is the sum of the values on the main diagonal of the matrix.
+
+It is described using the notation $tr(A)$ where $A$ is the square matrix on which the operation is performed.
+
+The trace is calculated as the sum of the diagonal values, for example in the case of $3 \times 3$ matrix:
+
+\begin{equation}
+tr(A) = a_{1,1} + a_{2,2} + a_{3,3}
+\end{equation}
+
+*Example: we have the following matrix:*
+
+\begin{equation}
+A = \begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+tr(A) = 15
+\end{equation}
+
+#### Determinant
+
+The determinant of a square matrix is a scalar representation of the volume of the matrix. 
+
+It is denoted by the $det(A)$ or $|A|$ notation, where $A$ is the matrix on which we are calculating the determinant.
+
+The determinant of a square matrix is calculated from the elements of the matrix.
 ### Sparse Matrices
 
 ## Statistics 
