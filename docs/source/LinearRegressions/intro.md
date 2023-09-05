@@ -9,4 +9,4 @@
 
 ### Solving Linear Regression via QR Decomposition
 
-## Project 1: FF Asset Pricing
+## Project 1: FF K-Factors Asset Pricing
