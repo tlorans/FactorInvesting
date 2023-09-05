@@ -79,4 +79,16 @@ In that case, the estimated $\hat{r}_{i,t}$ is the predicted one from previous m
 \end{equation}
 
 where $\hat{\lambda}_{t-1}$ is the sample average of $\hat{f}$ up to the previous month ($t-1$).
+
+In that case, we have the following SSR:
+
+\begin{equation}
+SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2
+\end{equation}
+
+And thus the following complete formula for the predictive $R^2$:
+
+\begin{equation}
+\text{Predictive $R^2$} = 1 - \frac{\sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2}{\sum_{i,t} r_{i,t}^2}
+\end{equation}
 ## Risk Premia v.s. Mispricing
