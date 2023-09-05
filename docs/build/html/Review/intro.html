@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Autoencoders: Conditional Non-Linear Models with Latent Factors &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>Review &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -42,11 +42,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Autoencoders/intro';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Review/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Latent Dirichlet Allocation: State Variables with Natural Language Processing" href="../StateVariablesNLP/intro.html" />
-    <link rel="prev" title="Instrumented PCA: Conditional Models with Latent Factors" href="../InstrumentedPCA/intro.html" />
+    <link rel="next" title="Linear Regression : Static Models with Observable Factors" href="../LinearRegressions/intro.html" />
+    <link rel="prev" title="Factor Models with Machine Learning" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -125,13 +127,12 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Background/intro.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression : Static Models with Observable Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Autoencoders: Conditional Non-Linear Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Autoencoders/intro.html">Autoencoders: Conditional Non-Linear Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../StateVariablesNLP/intro.html">Latent Dirichlet Allocation: State Variables with Natural Language Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../IPCANLP/intro.html">IPCA with Natural Language Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -187,7 +188,7 @@
       
       
       
-      <li><a href="../_sources/Autoencoders/intro.md" target="_blank"
+      <li><a href="../_sources/Review/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,7 +270,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Autoencoders: Conditional Non-Linear Models with Latent Factors</h1>
+    <h1>Review</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -279,9 +280,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-non-linear-models-with-latent-factors">Conditional Non-Linear Models with Latent Factors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-with-calculus-and-optimization">Neural Networks with Calculus and Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-4-ca-k-factors-asset-pricing">Project 4: CA K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-background">Linear Algebra Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">Matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-matrices">Types of Matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrices">Sparse Matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-background">Probability Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-background">Calculus Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-and-differential-calculus">Limits and Differential Calculus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-calculus">Multivariate Calculus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-programming">Mathematical Programming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation">Approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient Descent</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -293,16 +309,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="autoencoders-conditional-non-linear-models-with-latent-factors">
-<h1>Autoencoders: Conditional Non-Linear Models with Latent Factors<a class="headerlink" href="#autoencoders-conditional-non-linear-models-with-latent-factors" title="Permalink to this headline">#</a></h1>
-<section id="conditional-non-linear-models-with-latent-factors">
-<h2>Conditional Non-Linear Models with Latent Factors<a class="headerlink" href="#conditional-non-linear-models-with-latent-factors" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="review">
+<h1>Review<a class="headerlink" href="#review" title="Permalink to this headline">#</a></h1>
+<section id="linear-algebra-background">
+<h2>Linear Algebra Background<a class="headerlink" href="#linear-algebra-background" title="Permalink to this headline">#</a></h2>
+<p>Linear algebra is the the maths of data, with vectors and matrices of numbers. Classical methods such as linear regression are linear algebra methods, and other methods such as PCA were born from the marriage of linear algebra and stats.</p>
+<p>To understand machine learning, you need to be able to read and understand linear algebra.</p>
+<p>Linear equation is a serie of terms and operations where some terms are unknown, for example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7be8147-5132-42d9-bc89-32c2b5d7a800">
+<span class="eqno">(1)<a class="headerlink" href="#equation-f7be8147-5132-42d9-bc89-32c2b5d7a800" title="Permalink to this equation">#</a></span>\[\begin{equation}
+y = 4 \times x + 1
+\end{equation}\]</div>
+<p>This equation is linear as it describes a line on a two-dimensional graph. The line comes from plugging in different values into the unknown <span class="math notranslate nohighlight">\(x\)</span> to find out what the model does to the value of <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>We can have a system of equations with the same form with three unknowns for example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-41c69a8e-77a8-45dd-a267-a798a99be365">
+<span class="eqno">(2)<a class="headerlink" href="#equation-41c69a8e-77a8-45dd-a267-a798a99be365" title="Permalink to this equation">#</a></span>\[\begin{equation}
+y = 0.1 \times x_1 + 0.4 \times x_2 \\
+y = 0.3 \times x_2 + 0.9 \times x_2 \\
+y = 0.2 \times x_1 + 0.3 \times x2
+\end{equation}\]</div>
+<p>The column of <span class="math notranslate nohighlight">\(y\)</span> values can be taken as a column vector of the outputs from the equation.</p>
+<p>The two columns of integer are the data columns, which can be for example <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>, and can be taken as a matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>The two unknown values <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be taken as the coefficients of the equation and form a vector of unknowns <span class="math notranslate nohighlight">\(b\)</span> to be solve. This can be written compactly using linear algebra:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3d53e358-ef1a-4e1f-a839-5b93a0d9239e">
+<span class="eqno">(3)<a class="headerlink" href="#equation-3d53e358-ef1a-4e1f-a839-5b93a0d9239e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+y = A \cdot b
+\end{equation}\]</div>
+<p>However, in real life, we have generally more unknowns than equations to solve, and we often need to approximate the solutions (ie. finding a solution approximating <span class="math notranslate nohighlight">\(y\)</span>).</p>
+<section id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
 </section>
-<section id="neural-networks-with-calculus-and-optimization">
-<h2>Neural Networks with Calculus and Optimization<a class="headerlink" href="#neural-networks-with-calculus-and-optimization" title="Permalink to this headline">#</a></h2>
+<section id="norms">
+<h3>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
 </section>
-<section id="project-4-ca-k-factors-asset-pricing">
-<h2>Project 4: CA K-Factors Asset Pricing<a class="headerlink" href="#project-4-ca-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
+<section id="matrices">
+<h3>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="types-of-matrices">
+<h3>Types of Matrices<a class="headerlink" href="#types-of-matrices" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="matrix-operations">
+<h3>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="sparse-matrices">
+<h3>Sparse Matrices<a class="headerlink" href="#sparse-matrices" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="probability-background">
+<h2>Probability Background<a class="headerlink" href="#probability-background" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="calculus-background">
+<h2>Calculus Background<a class="headerlink" href="#calculus-background" title="Permalink to this headline">#</a></h2>
+<section id="limits-and-differential-calculus">
+<h3>Limits and Differential Calculus<a class="headerlink" href="#limits-and-differential-calculus" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="multivariate-calculus">
+<h3>Multivariate Calculus<a class="headerlink" href="#multivariate-calculus" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="mathematical-programming">
+<h3>Mathematical Programming<a class="headerlink" href="#mathematical-programming" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="approximation">
+<h3>Approximation<a class="headerlink" href="#approximation" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="gradient-descent">
+<h3>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -316,20 +388,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../InstrumentedPCA/intro.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Instrumented PCA: Conditional Models with Latent Factors</p>
+        <p class="prev-next-title">Factor Models with Machine Learning</p>
       </div>
     </a>
     <a class="right-next"
-       href="../StateVariablesNLP/intro.html"
+       href="../LinearRegressions/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Latent Dirichlet Allocation: State Variables with Natural Language Processing</p>
+        <p class="prev-next-title">Linear Regression : Static Models with Observable Factors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -348,9 +420,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-non-linear-models-with-latent-factors">Conditional Non-Linear Models with Latent Factors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-with-calculus-and-optimization">Neural Networks with Calculus and Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-4-ca-k-factors-asset-pricing">Project 4: CA K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-background">Linear Algebra Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">Matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-matrices">Types of Matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrices">Sparse Matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-background">Probability Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-background">Calculus Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-and-differential-calculus">Limits and Differential Calculus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-calculus">Multivariate Calculus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-programming">Mathematical Programming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation">Approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient Descent</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

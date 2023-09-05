@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Autoencoders: Conditional Non-Linear Models with Latent Factors &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>Testing Asset Pricing Models &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Autoencoders/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TestFramework/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Latent Dirichlet Allocation: State Variables with Natural Language Processing" href="../StateVariablesNLP/intro.html" />
-    <link rel="prev" title="Instrumented PCA: Conditional Models with Latent Factors" href="../InstrumentedPCA/intro.html" />
+    <link rel="next" title="Linear Regression: Static Models with Observable Factors" href="../LinearRegressions/intro.html" />
+    <link rel="prev" title="Background" href="../Background/intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -126,10 +126,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Background/intro.html">Background</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Testing Asset Pricing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Autoencoders: Conditional Non-Linear Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Autoencoders/intro.html">Autoencoders: Conditional Non-Linear Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../StateVariablesNLP/intro.html">Latent Dirichlet Allocation: State Variables with Natural Language Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../IPCANLP/intro.html">IPCA with Natural Language Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
@@ -187,7 +188,7 @@
       
       
       
-      <li><a href="../_sources/Autoencoders/intro.md" target="_blank"
+      <li><a href="../_sources/TestFramework/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,7 +270,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Autoencoders: Conditional Non-Linear Models with Latent Factors</h1>
+    <h1>Testing Asset Pricing Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -279,9 +280,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-non-linear-models-with-latent-factors">Conditional Non-Linear Models with Latent Factors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-with-calculus-and-optimization">Neural Networks with Calculus and Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-4-ca-k-factors-asset-pricing">Project 4: CA K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-performance-with-total-and-predictive-r-squared">Statistical Performance with Total and Predictive R-Squared</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-performance-with-sharpe-ratios">Economic Performance with Sharpe Ratios</a></li>
 </ul>
             </nav>
         </div>
@@ -293,16 +293,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="autoencoders-conditional-non-linear-models-with-latent-factors">
-<h1>Autoencoders: Conditional Non-Linear Models with Latent Factors<a class="headerlink" href="#autoencoders-conditional-non-linear-models-with-latent-factors" title="Permalink to this headline">#</a></h1>
-<section id="conditional-non-linear-models-with-latent-factors">
-<h2>Conditional Non-Linear Models with Latent Factors<a class="headerlink" href="#conditional-non-linear-models-with-latent-factors" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="testing-asset-pricing-models">
+<h1>Testing Asset Pricing Models<a class="headerlink" href="#testing-asset-pricing-models" title="Permalink to this headline">#</a></h1>
+<section id="statistical-performance-with-total-and-predictive-r-squared">
+<h2>Statistical Performance with Total and Predictive R-Squared<a class="headerlink" href="#statistical-performance-with-total-and-predictive-r-squared" title="Permalink to this headline">#</a></h2>
 </section>
-<section id="neural-networks-with-calculus-and-optimization">
-<h2>Neural Networks with Calculus and Optimization<a class="headerlink" href="#neural-networks-with-calculus-and-optimization" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="project-4-ca-k-factors-asset-pricing">
-<h2>Project 4: CA K-Factors Asset Pricing<a class="headerlink" href="#project-4-ca-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
+<section id="economic-performance-with-sharpe-ratios">
+<h2>Economic Performance with Sharpe Ratios<a class="headerlink" href="#economic-performance-with-sharpe-ratios" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -316,20 +313,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../InstrumentedPCA/intro.html"
+       href="../Background/intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Instrumented PCA: Conditional Models with Latent Factors</p>
+        <p class="prev-next-title">Background</p>
       </div>
     </a>
     <a class="right-next"
-       href="../StateVariablesNLP/intro.html"
+       href="../LinearRegressions/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Latent Dirichlet Allocation: State Variables with Natural Language Processing</p>
+        <p class="prev-next-title">Linear Regression: Static Models with Observable Factors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -348,9 +345,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-non-linear-models-with-latent-factors">Conditional Non-Linear Models with Latent Factors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-with-calculus-and-optimization">Neural Networks with Calculus and Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-4-ca-k-factors-asset-pricing">Project 4: CA K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-performance-with-total-and-predictive-r-squared">Statistical Performance with Total and Predictive R-Squared</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-performance-with-sharpe-ratios">Economic Performance with Sharpe Ratios</a></li>
 </ul>
   </nav></div>
 

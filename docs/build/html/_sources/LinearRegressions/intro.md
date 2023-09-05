@@ -1,4 +1,4 @@
-# Linear Regression : Static Models with Observable Factors
+# Linear Regression: Static Models with Observable Factors
 ## Static Models with Observable Factors
 
 ## Linear Regression with Linear Algebra
