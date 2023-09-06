@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Background &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Background/old';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Factor Models with Machine Learning 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TestFramework/intro.html">Testing Asset Pricing Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Background/old.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Background</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra">Linear Algebra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-1-norm">Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-2-norm">Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-max-norm">Vector Max Norm</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-matrices">Types of Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrix">Orthogonal Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trace">Trace</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant">Determinant</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrices">Sparse Matrices</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h1>
+<section id="linear-algebra">
+<h2>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">#</a></h2>
+<p>Linear algebra is the the maths of data, with vectors and matrices of numbers. Classical methods such as linear regression are linear algebra methods, and other methods such as PCA were born from the marriage of linear algebra and stats.</p>
+<p>To understand machine learning, you need to be able to read and understand linear algebra.</p>
+<p>Linear equation is a serie of terms and operations where some terms are unknown, for example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6fa1f5e0-de3a-4e98-81a3-4b2c771c6db3">
+<span class="eqno">(1)<a class="headerlink" href="#equation-6fa1f5e0-de3a-4e98-81a3-4b2c771c6db3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+y = 4 \times x + 1
+\end{equation}\]</div>
+<p>This equation is linear as it describes a line on a two-dimensional graph. The line comes from plugging in different values into the unknown <span class="math notranslate nohighlight">\(x\)</span> to find out what the model does to the value of <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>We can have a system of equations with the same form with three unknowns for example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-53f0caa3-8a23-4912-802c-ec2357e91596">
+<span class="eqno">(2)<a class="headerlink" href="#equation-53f0caa3-8a23-4912-802c-ec2357e91596" title="Permalink to this equation">#</a></span>\[\begin{equation}
+y = 0.1 \times x_1 + 0.4 \times x_2 \\
+y = 0.3 \times x_2 + 0.9 \times x_2 \\
+y = 0.2 \times x_1 + 0.3 \times x2
+\end{equation}\]</div>
+<p>The column of <span class="math notranslate nohighlight">\(y\)</span> values can be taken as a column vector of the outputs from the equation.</p>
+<p>The two columns of integer are the data columns, which can be for example <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>, and can be taken as a matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>The two unknown values <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be taken as the coefficients of the equation and form a vector of unknowns <span class="math notranslate nohighlight">\(b\)</span> to be solve. This can be written compactly using linear algebra:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-70a9cafa-b567-438e-9dec-4f52e92cc444">
+<span class="eqno">(3)<a class="headerlink" href="#equation-70a9cafa-b567-438e-9dec-4f52e92cc444" title="Permalink to this equation">#</a></span>\[\begin{equation}
+y = A \cdot b
+\end{equation}\]</div>
+<p>However, in real life, we have generally more unknowns than equations to solve, and we often need to approximate the solutions (ie. finding a solution approximating <span class="math notranslate nohighlight">\(y\)</span>).</p>
+<section id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
+<p>Vectors are built from components, which are ordinary numbers. We can think of a vector as a list of numbers and vector algebra as operations performed on the numbers in the list.</p>
+<p>Vectors are often represent using a lowercase character, such as <span class="math notranslate nohighlight">\(v\)</span> for example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7b86cc92-ca53-48de-b772-750ba8073a59">
+<span class="eqno">(4)<a class="headerlink" href="#equation-7b86cc92-ca53-48de-b772-750ba8073a59" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v = \begin{pmatrix}
+v1 &amp; v2 &amp; v3
+\end{pmatrix}
+\end{equation}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(v_1\)</span>, <span class="math notranslate nohighlight">\(v_2\)</span> and <span class="math notranslate nohighlight">\(v_3\)</span> are scalar values.</p>
+<p>Vectors can also be shown using a column representation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-58597788-53a0-4ad5-96cf-a63cd06bb6e5">
+<span class="eqno">(5)<a class="headerlink" href="#equation-58597788-53a0-4ad5-96cf-a63cd06bb6e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v = 
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3
+\end{pmatrix}
+\end{equation}\]</div>
+<p>It is a common practice to represent the target variable as a vector with the lowercase <span class="math notranslate nohighlight">\(y\)</span> when describing a ML algorithm.</p>
+</section>
+<section id="norms">
+<h3>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<p>Calculating the length or magnitude of vectors is ofen required either directly as a regularization method in machine learning or as part of broader vector or matrix operations. Vector lengths or magnitude are also called the vector norm. In summary:</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is calculated as the sum of the absolute values of the vector</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm is calculated as the square root of the sum of the squared vector values</p></li>
+<li><p>The max norm is calculated as the maximum vector values.</p></li>
+</ul>
+<section id="vector-norm">
+<h4>Vector Norm<a class="headerlink" href="#vector-norm" title="Permalink to this headline">#</a></h4>
+<p>Calculating the size or length of a vector is often required either directly or as part of a broader vector-matrix opertion. The length of the vector is referred to as the vector norm or the vector’s magnitude.</p>
+<p>The length of the vector is always a positive number, expect for a vector of all zero values. It is calculated using some measure that summarizes the distance of the vector from the origin of the vector space.</p>
+</section>
+<section id="vector-l-1-norm">
+<h4>Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm<a class="headerlink" href="#vector-l-1-norm" title="Permalink to this headline">#</a></h4>
+<p>The length of a vector can be calculated using the <span class="math notranslate nohighlight">\(L^1\)</span> norm, where the 1 is a superscript of the <span class="math notranslate nohighlight">\(L\)</span>. The notation for the <span class="math notranslate nohighlight">\(L^1\)</span> norm of a vector is <span class="math notranslate nohighlight">\(||v||_1\)</span>. As such, this length is sometimes called the Manhattan norm.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-333fe55d-76d9-49b1-95c5-52d0ed3ec224">
+<span class="eqno">(6)<a class="headerlink" href="#equation-333fe55d-76d9-49b1-95c5-52d0ed3ec224" title="Permalink to this equation">#</a></span>\[\begin{equation}
+L^1(v) = ||v||_1
+\end{equation}\]</div>
+<p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is calculated as the sum of the absolute vector values, where the absolute value of a scalar uses the notation <span class="math notranslate nohighlight">\(|a_1|\)</span>. In effect, the norm is a calculation of the Manhattan distance from the origin of the vector space:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ae4efa84-893e-46e9-a801-caefd87375b8">
+<span class="eqno">(7)<a class="headerlink" href="#equation-ae4efa84-893e-46e9-a801-caefd87375b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+||v||_1 = |a_1| + |a_2| + |a_3|
+\end{equation}\]</div>
+<p>In many ML applications, it is important to discriminate between elements that are exactly zero and elements that are small but nonzero. In these cases, we turn to a function that grows at the same rate in all locations, but retains mathematical simplicity: the <span class="math notranslate nohighlight">\(L^1\)</span> norm.</p>
+<p><em>Example: Let’s have the vector <span class="math notranslate nohighlight">\( a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>. We have <span class="math notranslate nohighlight">\(L^1(a) = 6\)</span>.</em></p>
+<p>The <span class="math notranslate nohighlight">\(L^1\)</span> norm is often used when fitting ML algorithms as a regularization method, ie a method to keep the coefficients of the model small and thus the model less complex.</p>
+</section>
+<section id="vector-l-2-norm">
+<h4>Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm<a class="headerlink" href="#vector-l-2-norm" title="Permalink to this headline">#</a></h4>
+<p>The length of a vector can be calculated using the <span class="math notranslate nohighlight">\(L^2\)</span> norm. The notation for the <span class="math notranslate nohighlight">\(L^2\)</span> norm vector is the following:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2db259e4-495a-43d7-ad82-ce83bebdae88">
+<span class="eqno">(8)<a class="headerlink" href="#equation-2db259e4-495a-43d7-ad82-ce83bebdae88" title="Permalink to this equation">#</a></span>\[\begin{equation}
+L^2(v) = ||v||_2
+\end{equation}\]</div>
+<p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm calculates the distance of the vector coordinate from the origin of the vector space. As such, it is also known as the Euclidean norm as it is calculated as the Euclidean distance from the origin. The result is a positive distance value. The <span class="math notranslate nohighlight">\(L^2\)</span> norm is calculated as the square root of the sum of the squared vector values:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8665ccb7-96d0-457d-b413-63f586db09bb">
+<span class="eqno">(9)<a class="headerlink" href="#equation-8665ccb7-96d0-457d-b413-63f586db09bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+||v||_2 = \sqrt{a^2_1 + a_2^2 + a^2_3}
+\end{equation}\]</div>
+<p><em>Example: For a vector <span class="math notranslate nohighlight">\(a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>, we have <span class="math notranslate nohighlight">\(L^2(a) \approx 3.74\)</span>.</em></p>
+<p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm is also used as a regularization method (keeping the coefficients of the model small). The <span class="math notranslate nohighlight">\(L^2\)</span> norm is the most commonly used vector norms method in ML.</p>
+</section>
+<section id="vector-max-norm">
+<h4>Vector Max Norm<a class="headerlink" href="#vector-max-norm" title="Permalink to this headline">#</a></h4>
+<p>The length of a vector can be calculated using the maximum or max norm. It is referred to as <span class="math notranslate nohighlight">\(L^{inf}\)</span>.</p>
+<p>The notation is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8b6b7ef8-a7ad-4c61-8631-69079f900502">
+<span class="eqno">(10)<a class="headerlink" href="#equation-8b6b7ef8-a7ad-4c61-8631-69079f900502" title="Permalink to this equation">#</a></span>\[\begin{equation}
+L^{inf}(v) = ||v||_{inf}
+\end{equation}\]</div>
+<p>It is calculated as returning the maximum value of the vector:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-71853ffa-1bae-4c35-ad6a-68f10a6269bd">
+<span class="eqno">(11)<a class="headerlink" href="#equation-71853ffa-1bae-4c35-ad6a-68f10a6269bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+||v||_{inf} = \max a_1, a_2, a_3
+\end{equation}\]</div>
+<p><em>Example: For a vector <span class="math notranslate nohighlight">\(a = \begin{pmatrix} 1 &amp; 2 &amp; 3 \end{pmatrix}\)</span>, we have <span class="math notranslate nohighlight">\(L^{inf}(a) = 3\)</span>.</em></p>
+<p>It is also used as a regularization method in ML, such as on neural network weights, called max norm regularization.</p>
+</section>
+</section>
+<section id="types-of-matrices">
+<h3>Types of Matrices<a class="headerlink" href="#types-of-matrices" title="Permalink to this headline">#</a></h3>
+<section id="orthogonal-matrix">
+<h4>Orthogonal Matrix<a class="headerlink" href="#orthogonal-matrix" title="Permalink to this headline">#</a></h4>
+<p>Two vectors are orthogonal when their dot product equals zero. The length of each vector is 1 then the vector are called orthonormal vecause they are both orthogonal and normalized.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-da4cfaa9-fe0b-4386-93b1-dc1e879f112a">
+<span class="eqno">(12)<a class="headerlink" href="#equation-da4cfaa9-fe0b-4386-93b1-dc1e879f112a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v \cdot w = 0
+\end{equation}\]</div>
+<p>An orthogonal matrix is a type of square matrix whose columns and rows are orthonormal unit vectors, ie. perpedicular and have a length of magnitude of 1.</p>
+<p>An orthogonal matrix is a square matrix whose rows are mutually orthonormal and whose columns are mutually orthonomal.</p>
+<p>An Orthogonal matrix is often denoted as <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>The Orthogonal matrix is defined as follows:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f0f2ad53-b2c5-4b99-8702-60d3abde6e43">
+<span class="eqno">(13)<a class="headerlink" href="#equation-f0f2ad53-b2c5-4b99-8702-60d3abde6e43" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Q^T \cdot Q = Q \cdot Q^T = I
+\end{equation}\]</div>
+<p>Orthogonal matrices are used a lot for linear transformations, such as reflections and permtations.</p>
+<p><em>Example: We have the following orthogonal matrix:</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-68f9a17c-0cae-481f-bef7-25efa5080f7f">
+<span class="eqno">(14)<a class="headerlink" href="#equation-68f9a17c-0cae-481f-bef7-25efa5080f7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Q = 
+\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-46f20874-577e-47c0-8a69-7800b4066f1c">
+<span class="eqno">(15)<a class="headerlink" href="#equation-46f20874-577e-47c0-8a69-7800b4066f1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Q \cdot Q^T = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1 
+\end{pmatrix}
+\end{equation}\]</div>
+</section>
+</section>
+<section id="matrix-operations">
+<h3>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">#</a></h3>
+<section id="trace">
+<h4>Trace<a class="headerlink" href="#trace" title="Permalink to this headline">#</a></h4>
+<p>A trace of a square matrix is the sum of the values on the main diagonal of the matrix.</p>
+<p>It is described using the notation <span class="math notranslate nohighlight">\(tr(A)\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is the square matrix on which the operation is performed.</p>
+<p>The trace is calculated as the sum of the diagonal values, for example in the case of <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b68721f9-2541-4c95-a9b0-456d25d8f920">
+<span class="eqno">(16)<a class="headerlink" href="#equation-b68721f9-2541-4c95-a9b0-456d25d8f920" title="Permalink to this equation">#</a></span>\[\begin{equation}
+tr(A) = a_{1,1} + a_{2,2} + a_{3,3}
+\end{equation}\]</div>
+<p><em>Example: we have the following matrix:</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-0869723b-18e5-4168-85f1-b85ad21478bf">
+<span class="eqno">(17)<a class="headerlink" href="#equation-0869723b-18e5-4168-85f1-b85ad21478bf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{pmatrix}
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-b7e3e645-f1d2-4cb8-bb6b-df6263d0c904">
+<span class="eqno">(18)<a class="headerlink" href="#equation-b7e3e645-f1d2-4cb8-bb6b-df6263d0c904" title="Permalink to this equation">#</a></span>\[\begin{equation}
+tr(A) = 15
+\end{equation}\]</div>
+</section>
+<section id="determinant">
+<h4>Determinant<a class="headerlink" href="#determinant" title="Permalink to this headline">#</a></h4>
+<p>The determinant of a square matrix is a scalar representation of the volume of the matrix.</p>
+<p>It is denoted by the <span class="math notranslate nohighlight">\(det(A)\)</span> or <span class="math notranslate nohighlight">\(|A|\)</span> notation, where <span class="math notranslate nohighlight">\(A\)</span> is the matrix on which we are calculating the determinant.</p>
+<p>The determinant of a square matrix is calculated as the product of all the eigenvalues of the matrix. The intuition for the determinant is that it describes the way a mtrix will scale another matrix when they are multiplied together.</p>
+<p>For example, a determinant of 1 preserves the space of the other matrix. A determinant of 0 indicates that the matrix cannot be inverted.</p>
+</section>
+<section id="rank">
+<h4>Rank<a class="headerlink" href="#rank" title="Permalink to this headline">#</a></h4>
+<p>The rank of a matrix is the estimate of the number of linearly independent rows or columns in a matrix. The rank of a matrix <span class="math notranslate nohighlight">\(M\)</span> is denoted as <span class="math notranslate nohighlight">\(rank()\)</span>.</p>
+<p>An intution for the rank is to consider it the number of dimensions spanned by all of the vectors within a matrix.</p>
+<p>For example, a rank of <span class="math notranslate nohighlight">\(0\)</span> suffest all vectors span a point, a rank of <span class="math notranslate nohighlight">\(1\)</span> suggests all vectors pan a line, a rank of <span class="math notranslate nohighlight">\(2\)</span> suggests all vectors span a two-dimensional plane.</p>
+<p>The rank is estimated numericall, often using a matrix decomposition method, such as the Singular-Value Decomposition or SVD.</p>
+</section>
+</section>
+<section id="sparse-matrices">
+<h3>Sparse Matrices<a class="headerlink" href="#sparse-matrices" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra">Linear Algebra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-1-norm">Vector <span class="math notranslate nohighlight">\(L^1\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-l-2-norm">Vector <span class="math notranslate nohighlight">\(L^2\)</span> Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-max-norm">Vector Max Norm</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-matrices">Types of Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrix">Orthogonal Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trace">Trace</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant">Determinant</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrices">Sparse Matrices</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Lorans
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Thomas Lorans.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

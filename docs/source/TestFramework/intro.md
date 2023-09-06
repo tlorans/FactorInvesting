@@ -245,9 +245,9 @@ Our full formula is thus:
 \mathfrak{R}^2 = 1 - \frac{\sum^T_{t = 1}(r(t) - \hat{\beta}'(t-1)\hat{f}(t))}{\sum^T_{t=1}(r(t))^2}
 \end{equation}
 
-## Risk Premia v.s. Mispricing
+## Risk Premia vs. Alpha
 
-This test investigate whether ou factor models accurately "price" characteristics-managed portfolios (or anomaly portfolios) uncoditionally, following Gu et al. (2021) {cite:p}`gu2021autoencoder`.
+This test investigate whether ou factor models accurately "price" characteristics-sorted portfolios (or anomaly portfolios) uncoditionally, following Gu et al. (2021) {cite:p}`gu2021autoencoder`.
 
 As we implement all our models without intercepts, we can directly test whether the zero-intercept no-arbitrage restriction is satisfied. If it is, the time series average of model residuals for each portfolios, that is the pricing errors, should be indistinguishable from zero (two side test). The uncoditional pricing errors are defined as:
 
