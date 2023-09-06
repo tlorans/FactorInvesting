@@ -48,6 +48,9 @@ The rescaling method must be applied separately for each rebalancing date.
 
 [Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m)
 
+
+[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example1.jl)
+
 ---
 ### Sorting Procedure
 
