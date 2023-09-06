@@ -79,10 +79,10 @@ The long portolio $\mathcal{L}$ will comprise the stocks in the first quintile $
 | $A_9$ | -0.8343 | 7 | $\mathcal{Q}_4$ |
 | $A_{10}$ | -0.0972 | 4 | $\mathcal{Q}_2$ |
 
-[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m)
+[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example2.m)
 
 
-[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example1.jl)
+[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example2.jl)
 
 ---
 
