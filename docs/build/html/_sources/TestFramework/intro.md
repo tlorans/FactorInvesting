@@ -125,7 +125,6 @@ where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ an
 
 ### Characteristic-Sorted Portfolio Performance
 
-
 We first need to compute $R_t(\mathcal{L})$ and $R_t(\mathcal{S})$, the returns of the long and short portfolios between $t-1$ and $t$, with $t \in ]t_{\tau}, t_{\tau+1}]$:
 
 \begin{equation}
@@ -138,7 +137,7 @@ R_t(\mathcal{S}) = w_{\mathcal{S}}^T r_t
 
 where $w_{\mathcal{L}}$ and $w_{\mathcal{S}}$ are the vectors of weights in the long and short portfolios respectively, and $r_t$ is the vector of assets returns between $t-1$ and $t$.
 
-The performance of the long short porfolio $\mathcal{L} - \mathcal{S}$ satisfies the following definition:
+The performance of the long short porfolio $\mathcal{L} - \mathcal{S}$ satisfies the following definition (Roncalli, 2023 {cite:p}`Roncalli2023`):
 
 \begin{equation}
 (1 + R_t(\mathcal{L})) = (1 + C(t))(1 + R_t(\mathcal{S}))
