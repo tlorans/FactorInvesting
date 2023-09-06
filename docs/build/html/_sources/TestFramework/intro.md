@@ -2,20 +2,53 @@
 
 Objective asset pricing models: explaining cross-sections of returns.
 
-## Characteristics-Managed Portfolios
+## Characteristic-Managed Portfolios
 
-### Characteristics Rescaling
+We are going to construct characteristic-managed portfolios to form test assets.
 
-Let's write $x_i$ for the raw input and $\tilde{x}_i$ for the transformed data. 
+The general approach is the following:
 
-We normalize the characteristics following a min-max rescaling over $[-1, 1]$, such as:
+- start with a universe $\mathcal{U}$ of stocks
+- define a rebalancing period (e.g. every month, every quarter, every year)
+- for each rebalancing date $t_{\tau}$:
+    - define a score $\mathbb{S}_i(t_{\tau})$ for each stock $i$
+    - stocks with high scores are selected to form the long exposure $\mathcal{L}(t_{\tau})$ of the characteritstic
+    - stocks with low scores are selected to form the short exposure $\mathcal{S}(t_{\tau})$ of the characteristic
+- specify a weighting scheme $w_i(t_{\tau})$, for example value weighted or equally weighted
+### Scoring
+
+Let's write $x_i(t_{\tau})$ at the rebalancing date $t_{\tau}$, and $\mathbb{S}_i(t_{\tau})$ is the resulting score.
+
+We can score the characteristics following a min-max rescaling over $[-1, 1]$, such as:
 
 \begin{equation}
-\tilde{x}_{i,t} = 2 \frac{x_{i,t} - \min(x_t)}{\max(x_t)-\min(x_t)} - 1
+\mathbb{S}_i(t_{\tau}) = 2 \frac{x_{i}(t_{\tau}) - \min(x(t_{\tau}))}{\max(x(t_{\tau}))-\min(x(t_{\tau}))} - 1
 \end{equation}
 
-Note the $t$ subscript. The rescaling method is applied separately month by month. This ensures that for each rebalancing date of our characteristics-managed portfolios, the characterisics will have a similar shape and carrying information about the cross-section fo returns.
+The rescaling method must be applied separately for each rebalancing date. 
+
+---
+**Example 1**
+
+*Let's have a numerical example. We have 10 assets and the corresponding characteritic data. We find the following parameters of our scoring function: $\max(x) = 120.9$ and $\min(x) = 2.6$. We then apply the scoring function to each characteristic value.*
+
+| Asset | Characteristic | Score  | 
+|---|---|---|
+| $A_1$  | 34.2  | -0.4658  |
+| $A_2$  |  65.4 | 0.0617  |
+| $A_3$ | 12.3  | -0.8360  |
+| $A_4$ | 32.7  |  -0.4911 |
+| $A_5$ |  98.1 | 0.6145  |
+| $A_6$ |  7.4 |  -0.9189 |
+| $A_7$ |  2.6 | -1  |
+| $A_8$ | 120.9  | 1  |
+| $A_9$ |  12.4 |  -0.8343 |
+| $A_{10}$ |  56.0 |  -0.0972 |
+
+---
 ### Sorting Procedure
+
+### Weighting Scheme
 
 ## Statistical Performance with Total and Predictive R-Squared
 
