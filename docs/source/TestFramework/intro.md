@@ -125,28 +125,28 @@ where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ an
 
 ### Characteristic-Sorted Portfolio Performance
 
-We first need to compute $R_t(\mathcal{L})$ and $R_t(\mathcal{S})$, the returns of the long and short portfolios between $t-1$ and $t$, with $t \in ]t_{\tau}, t_{\tau+1}]$:
+We first need to compute $R_t(\mathcal{L})$ and $R_t(\mathcal{S})$, the returns of the long and short portfolios between $t-1$ and $t$:
 
 \begin{equation}
-R_t(\mathcal{L}) = w_{\mathcal{L}}^T r_t 
+R_{\mathcal{L}}(t) = w_{\mathcal{L}}^T r_t 
 \end{equation}
 
 \begin{equation}
-R_t(\mathcal{S}) = w_{\mathcal{S}}^T r_t 
+R_{\mathcal{S}}(t) = w_{\mathcal{S}}^T r_t 
 \end{equation}
 
-where $w_{\mathcal{L}}$ and $w_{\mathcal{S}}$ are the vectors of weights in the long and short portfolios respectively, and $r_t$ is the vector of assets returns between $t-1$ and $t$.
+where $w_{\mathcal{L}}$ and $w_{\mathcal{S}}$ are the vectors of weights in the long and short portfolios respectively (within two rebalancing dates $\tau$ and $\tau +1$, such as the weights are fixed), and $r_t$ is the vector of assets returns between $t-1$ and $t$.
 
 The performance of the long short porfolio $\mathcal{L} - \mathcal{S}$ satisfies the following definition (Roncalli, 2023 {cite:p}`Roncalli2023`):
 
 \begin{equation}
-(1 + R_t(\mathcal{L})) = (1 + C(t))(1 + R_t(\mathcal{S}))
+(1 + R_{\mathcal{L}}(t)) = (1 + C(t))(1 + R_{\mathcal{S}}(t))
 \end{equation}
 
 Then we can deduce that:
 
 \begin{equation}
-C(t) = \frac{R_t({\mathcal{L}}) - R_t(\mathcal{S})}{1 + R_t(\mathcal{S})}
+C(t) = \frac{R_{\mathcal{L}}(t) - R_{\mathcal{S}}(t)}{1 + R_{\mathcal{S}}(t)}
 \end{equation}
 
 ---
@@ -199,50 +199,38 @@ Then, we can now obtain the characteristic-sorted portfolio performance:
 C(t) = \frac{-0.08 - 0.04}{1 + 0.04} = - 0.0865
 \end{equation}
 
-[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example3.m)
-
-
-[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example3.jl)
 
 ---
 
 ## Statistical Performance with Total and Predictive R-Squared
 
-We follow Kelly et al. (2019) {cite:p}`kelly2019characteristics` to test the asset pricing performance of the factor models with "total $R^2$" and "predictive $R^2$. 
+We follow Kelly et al. (2019) {cite:p}`kelly2019characteristics` to test the asset pricing performance of the factor models with "total $\mathfrak{R}^2$" and "predictive $\mathfrak{R}^2$". 
 
-To understand the difference between both measures, let's start with the definition of the "traditional" $R^2$. 
-
-The coefficient of determination, or $R^2$, is computed as:
+To understand the difference between both measures, let's start with the definition of the "traditional" $\mathfrak{R}^2$, which can be defined as:
 
 \begin{equation}
-R^2 = 1 - \frac{SSR}{SST}
+\mathfrak{R}^2 = 1 - \frac{\sigma^2(\epsilon)}{\sigma^2(r)}
 \end{equation}
 
-where $SSR$ stands for sum squared of the residuals and $SST$ stands for the total sum of squares, that is the su of the distance the data is away from the mean all squared.
+where $\sigma^2(\epsilon)$ corresponds of the sum squared of the residuals of the model (ie. the sum of the difference between actual and estimated returns, all squares) and $\sigma^2(r)$ corresponds to the total sum of squares (ie. the sum of the distance the returns are away from the mean, all squared).
 
-The sum squared regression (SSR) is defined as:
+More formally we have the sum squared of the residuals defined as:
 
 \begin{equation}
-SSR = \sum_i(y_i -\hat{y_i})^2
+\sigma^2(\epsilon) = \sum^T_{t = 1}(r(t) - \hat{r}(t))^2
 \end{equation}
 
-where $y_i$ is the true value, $\hat{y}_i$ is the estimated value.
+with $\hat{r}(t)$ the estimated return according to the asset pricing model.
 
-The total sum of squares (SST) is defined as:
+And the total sum of squares defined usually as:
 
 \begin{equation}
-SST = \sum_i(y_i - \bar{y})^2
+\sigma^2(r) = \sum^T_{t=1}(r(t) - \mu)^2
 \end{equation}
 
-where $\bar{y}$ is the mean of the observations.
+where $\mu$ is the sample average of returns.
 
-In the factor models, the "true" values are the realized returns $r_{i,t}$, where $i$ is the return of the characteristic-managed portfolio $i$.
-
-Following Kelly et al. (2019) {cite:p}`kelly2019characteristics`, we assume the sample average of the observations $\bar{r_i}$ to be equal to 0. Thus, the SST is common to both the total $R^2$ and predictive $R^2$ and defined as:
-
-\begin{equation}
-SST = \sum_{i,t} r_{i,t}^2
-\end{equation}
+Following Kelly et al. (2019) {cite:p}`kelly2019characteristics`, we assume the sample average of the returns $\mu$ to be equal to 0. Thus, $\sigma^2(r) = \sum^T_{t=1}(r(t))^2$.
 
 ### Total R-Squared
 
