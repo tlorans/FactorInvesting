@@ -54,6 +54,38 @@ The rescaling method must be applied separately for each rebalancing date.
 ---
 ### Sorting Procedure
 
+As a simple approach, we can form five quintile portfolios:
+- $\mathcal{Q}_1$ corresponds to the stocks the highest scores (top 20\%)
+- $\mathcal{Q}_2$,$\mathcal{Q}_3$,$\mathcal{Q}_4$, are the second, third and fourth quintile portfolios
+- $\mathcal{Q}_5$ corresponds to the stocks with the lowest scores (bottom 20\%)
+
+The long portolio $\mathcal{L}$ will comprise the stocks in the first quintile $\mathcal{Q}_1$, while the short portfolio $\mathcal{S}$ will comprise the stocks in the last quintile $\mathcal{Q}_5$.
+
+---
+**Example 2**
+
+*We continue the previous example 1. We rank stocks according to their score and assign the corresponding qunatile.*
+
+| Asset | Score | Rank | Quintile  | $\mathcal{L}$ / $\mathcal{S}$ | 
+|---|---|---|---|---|
+| $A_1$  | -0.4658  | 5 | $\mathcal{Q}_3$ | |
+| $A_2$  | 0.0617  | 3 | $\mathcal{Q}_2$ | |
+| $A_3$ | -0.8360  | 8 | $\mathcal{Q}_4$ | |
+| $A_4$ | -0.4911  | 6 | $\mathcal{Q}_3$ | |
+| $A_5$ | 0.6145 | 2 | $\mathcal{Q}_1$ | $\mathcal{L}$ |
+| $A_6$ | -0.9189 | 9 |  $\mathcal{Q}_5$ | $\mathcal{S}$ |
+| $A_7$ | -1  | 10 | $\mathcal{Q}_5$ | $\mathcal{S}$ |
+| $A_8$ | 1  | 1 | $\mathcal{Q}_1$ | $\mathcal{L}$
+| $A_9$ | -0.8343 | 7 | $\mathcal{Q}_4$ |
+| $A_{10}$ | -0.0972 | 4 | $\mathcal{Q}_2$ |
+
+[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m)
+
+
+[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example1.jl)
+
+---
+
 ### Weighting Scheme
 
 ### Portfolio Returns
