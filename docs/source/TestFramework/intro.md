@@ -2,11 +2,11 @@
 
 Objective asset pricing models: explaining cross-sections of returns.
 
-## Characteristic-Managed Portfolios
+## Characteristic-Sorted Portfolios
 
-We are going to construct characteristic-managed portfolios to form test assets.
+We are going to construct characteristic-sorted portfolios to form test assets. Portfolio sorting has been popularized by Fama and French (1993) {cite:p}`fama1993common` to test the impact of characteristics in asset pricing.  The basic premise involves categorizing individual assets into different portfolios based on a chosen variable. If these portfolios are roughly equal in size and vary mainly in the value of this sorting variable, then any performance differences can be ascribed to the influence of that variable. Typically, portfolios are balanced either equally or by asset value to optimize diversification. 
 
-The general approach is the following:
+The general approach can be described as the following, as summarized by Roncalli (2021) {cite:p}`roncallilecture3assetmanagement`:
 
 - start with a universe $\mathcal{U}$ of stocks
 - define a rebalancing period (e.g. every month, every quarter, every year)
@@ -64,7 +64,7 @@ The long portolio $\mathcal{L}$ will comprise the stocks in the first quintile $
 ---
 **Example 2**
 
-*We continue the previous example 1. We rank stocks according to their score and assign the corresponding qunatile.*
+*We continue the previous example 1. We rank stocks according to their score and assign the corresponding quantile. The two stocks with the highest scores belong to the first quantile (the long portfolio), while the two stocks with the lowest scores belong to the last quantile (the short portfolio).*
 
 | Asset | Score | Rank | Quintile  | $\mathcal{L}$ / $\mathcal{S}$ | 
 |---|---|---|---|---|
@@ -87,6 +87,41 @@ The long portolio $\mathcal{L}$ will comprise the stocks in the first quintile $
 ---
 
 ### Weighting Scheme
+
+We now move to the weighting scheme. Generally, each portfolio is equally- or value-weighted in order to maximize the diversification (Roncalli, 2023) {cite:p}`Roncalli2023`. 
+
+In the case of an equal weighting scheme, we have:
+
+\begin{equation}
+w_i = w_j = \frac{1}{n}
+\end{equation}
+
+where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ and $n$ the number of assets in the portfolio.
+
+---
+**Example 3**
+
+*We continue the previous example 2. We define the weights of assets in the long and short portfolios as equally-weighted. We have $n = 2$ for both portfolios.*
+
+| Asset |  $\mathcal{L}$ / $\mathcal{S}$ | Weight |
+|---|---|---|
+| $A_1$  | | |
+| $A_2$  |  | |
+| $A_3$ |  | |
+| $A_4$ |  | |
+| $A_5$ | $\mathcal{L}$ |50\% |
+| $A_6$ |  $\mathcal{S}$ | 50% |
+| $A_7$ | $\mathcal{S}$ | 50% |
+| $A_8$ |  $\mathcal{L}$ | 50% |
+| $A_9$ |  | |
+| $A_{10}$ | | |
+
+[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example2.m)
+
+
+[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example2.jl)
+
+---
 
 ### Portfolio Returns
 
