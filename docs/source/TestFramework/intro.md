@@ -116,10 +116,10 @@ where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ an
 | $A_9$ |  | |
 | $A_{10}$ | | |
 
-[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example2.m)
+[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example3.m)
 
 
-[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example2.jl)
+[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example3.jl)
 
 ---
 
