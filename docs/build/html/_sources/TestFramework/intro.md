@@ -123,7 +123,89 @@ where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ an
 
 ---
 
-### Portfolio Returns
+### Characteristic-Sorted Portfolio Performance
+
+
+We first need to compute $R_t(\mathcal{L})$ and $R_t(\mathcal{S})$, the returns of the long and short portfolios between $t-1$ and $t$, with $t \in ]t_{\tau}, t_{\tau+1}]$:
+
+\begin{equation}
+R_t(\mathcal{L}) = w_{\mathcal{L}}^T r_t 
+\end{equation}
+
+\begin{equation}
+R_t(\mathcal{S}) = w_{\mathcal{S}}^T r_t 
+\end{equation}
+
+where $w_{\mathcal{L}}$ and $w_{\mathcal{S}}$ are the vectors of weights in the long and short portfolios respectively, and $r_t$ is the vector of assets returns between $t-1$ and $t$.
+
+The performance of the long short porfolio $\mathcal{L} - \mathcal{S}$ satisfies the following definition:
+
+\begin{equation}
+(1 + R_t(\mathcal{L})) = (1 + C(t))(1 + R_t(\mathcal{S}))
+\end{equation}
+
+Then we can deduce that:
+
+\begin{equation}
+C(t) = \frac{R_t({\mathcal{L}}) - R_t(\mathcal{S})}{1 + R_t(\mathcal{S})}
+\end{equation}
+
+---
+**Example 4**
+
+*We continue the previous example 3. We have the following vector of assets returns:*
+
+\begin{equation}
+r_t^T = \begin{pmatrix}
+0.03 &
+-0.04 &
+0.01 &
+-0.02 &
+-0.18 &
+0.06 &
+0.02 &
+0.08 &
+-0.01 &
+0.06
+\end{pmatrix}
+\end{equation}
+
+and the following vectors of weights:
+
+\begin{equation}
+w_{\mathcal{L}}^T = \begin{pmatrix}
+0.0 & 0.0 & 0.0 & 0.0 & 0.5 & 0.0 & 0.0 & 0.5 & 0.0 & 0.0
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+w_{\mathcal{S}}^T = \begin{pmatrix}
+0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.5 & 0.5 & 0.0 & 0.0 & 0.0
+\end{pmatrix}
+\end{equation}
+
+We thus have:
+
+\begin{equation}
+R_t(\mathcal{L}) = 0.5 \times -0.18 + 0.5 \times 0.08 = -0.05
+\end{equation}
+
+\begin{equation}
+R_t(\mathcal{S}) = 0.5 \times 0.06 + 0.5 \times 0.02 = 0.04
+\end{equation}
+
+Then, we can now obtain the characteristic-sorted portfolio performance:
+
+\begin{equation}
+C(t) = \frac{-0.08 - 0.04}{1 + 0.04} = - 0.0865
+\end{equation}
+
+[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example3.m)
+
+
+[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example3.jl)
+
+---
 
 ## Statistical Performance with Total and Predictive R-Squared
 
