@@ -202,11 +202,9 @@ C(t) = \frac{-0.08 - 0.04}{1 + 0.04} = - 0.0865
 
 ---
 
-## Statistical Performance with Total and Predictive R-Squared
+## Statistical Performance
 
-We follow Kelly et al. (2019) {cite:p}`kelly2019characteristics` to test the asset pricing performance of the factor models with "total $\mathfrak{R}^2$" and "predictive $\mathfrak{R}^2$". 
-
-To understand the difference between both measures, let's start with the definition of the "traditional" $\mathfrak{R}^2$, which can be defined as:
+We can measure the statistical performance of the asset pricing model with the resulting $\mathfrak{R}^2$, which can be defined as:
 
 \begin{equation}
 \mathfrak{R}^2 = 1 - \frac{\sigma^2(\epsilon)}{\sigma^2(r)}
@@ -232,51 +230,21 @@ where $\mu$ is the sample average of returns.
 
 Following Kelly et al. (2019) {cite:p}`kelly2019characteristics`, we assume the sample average of the returns $\mu$ to be equal to 0. Thus, $\sigma^2(r) = \sum^T_{t=1}(r(t))^2$.
 
-### Total R-Squared
 
-The total $R^2$ quantifies the explanatory power of contemporaneous factor realizations. It summarizes how well the systematic factor risk in a given model specificiation describes the realized riskiness in the panel of individual stocks.
-
-In this framework, the estimated $\hat{r}_{i,t}$ to be compared with the realized return $r_{i,t}$ is defined as:
+In this framework, the estimated $\hat{r}(t)$ to be compared with the realized return $r(t)$ is defined as:
 
 \begin{equation}
-\hat{r}_{i,t} = \hat{\beta}'_{i,t-1}\hat{f}_t
+\hat{r}(t) = \hat{\beta}'(t-1)\hat{f}(t)
 \end{equation}
 
-The SSR is thus defined as:
+with $\hat{\beta}$ the vector of estimated betas.
+
+Our full formula is thus:
 
 \begin{equation}
-SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{f}_t)^2
+\mathfrak{R}^2 = 1 - \frac{\sum^T_{t = 1}(r(t) - \hat{\beta}'(t-1)\hat{f}(t))}{\sum^T_{t=1}(r(t))^2}
 \end{equation}
 
-The full formula of the total $R^2$ is thus:
-
-\begin{equation}
-\text{Total $R^2$} = 1 - \frac{\sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{f}_t)^2}{\sum_{i,t} r_{i,t}^2}
-\end{equation}
-
-### Predictive R-Squared
-
-The second measure that we refer to as the "predictive $R^2$" represents the the accuracy of the asset pricing model predictions of future returns. 
-
-In that case, the estimated $\hat{r}_{i,t}$ is the predicted one from previous month information (including the factor return). We have:
-
-\begin{equation}
-\hat{r}_{i,t} = \hat{\beta}'_{i,t-1} \hat{\lambda}_{t-1}
-\end{equation}
-
-where $\hat{\lambda}_{t-1}$ is the sample average of $\hat{f}$ up to the previous month ($t-1$).
-
-In that case, we have the following SSR:
-
-\begin{equation}
-SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2
-\end{equation}
-
-And thus the following complete formula for the predictive $R^2$:
-
-\begin{equation}
-\text{Predictive $R^2$} = 1 - \frac{\sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2}{\sum_{i,t} r_{i,t}^2}
-\end{equation}
 ## Risk Premia v.s. Mispricing
 
 This test investigate whether ou factor models accurately "price" characteristics-managed portfolios (or anomaly portfolios) uncoditionally, following Gu et al. (2021) {cite:p}`gu2021autoencoder`.
