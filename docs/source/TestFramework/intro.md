@@ -15,6 +15,7 @@ The general approach is the following:
     - stocks with high scores are selected to form the long exposure $\mathcal{L}(t_{\tau})$ of the characteritstic
     - stocks with low scores are selected to form the short exposure $\mathcal{S}(t_{\tau})$ of the characteristic
 - specify a weighting scheme $w_i(t_{\tau})$, for example value weighted or equally weighted
+- compute the returns performance of the characteristic-managed portfolio $\mathcal{C}(t)$
 ### Scoring
 
 Let's write $x_i(t_{\tau})$ at the rebalancing date $t_{\tau}$, and $\mathbb{S}_i(t_{\tau})$ is the resulting score.
@@ -51,6 +52,8 @@ The rescaling method must be applied separately for each rebalancing date.
 ### Sorting Procedure
 
 ### Weighting Scheme
+
+### Portfolio Returns
 
 ## Statistical Performance with Total and Predictive R-Squared
 
