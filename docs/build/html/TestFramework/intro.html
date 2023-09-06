@@ -325,8 +325,8 @@ document.write(`
 <h3>Scoring<a class="headerlink" href="#scoring" title="Permalink to this headline">#</a></h3>
 <p>Let’s write <span class="math notranslate nohighlight">\(x_i(t_{\tau})\)</span> at the rebalancing date <span class="math notranslate nohighlight">\(t_{\tau}\)</span>, and <span class="math notranslate nohighlight">\(\mathbb{S}_i(t_{\tau})\)</span> is the resulting score.</p>
 <p>We can score the characteristics following a min-max rescaling over <span class="math notranslate nohighlight">\([-1, 1]\)</span>, such as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-13ed6afd-9420-494f-a1b0-3217d672a8c9">
-<span class="eqno">(1)<a class="headerlink" href="#equation-13ed6afd-9420-494f-a1b0-3217d672a8c9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-88827d99-3b7f-4bea-a82f-fecfdc01188a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-88827d99-3b7f-4bea-a82f-fecfdc01188a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbb{S}_i(t_{\tau}) = 2 \frac{x_{i}(t_{\tau}) - \min(x(t_{\tau}))}{\max(x(t_{\tau}))-\min(x(t_{\tau}))} - 1
 \end{equation}\]</div>
 <p>The rescaling method must be applied separately for each rebalancing date.</p>
@@ -383,6 +383,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+<p><a class="reference external" href="https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m">Matlab code</a></p>
 </section>
 <hr class="docutils" />
 <section id="sorting-procedure">
@@ -397,45 +398,45 @@ document.write(`
 <p>We follow Kelly et al. (2019) <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Bryan T Kelly, Seth Pruitt, and Yinan Su. Characteristics are covariances: a unified model of risk and return. Journal of Financial Economics, 134(3):501–524, 2019.">KPS19</a>]</span> to test the asset pricing performance of the factor models with “total <span class="math notranslate nohighlight">\(R^2\)</span>” and “predictive <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
 <p>To understand the difference between both measures, let’s start with the definition of the “traditional” <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
 <p>The coefficient of determination, or <span class="math notranslate nohighlight">\(R^2\)</span>, is computed as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c01bc766-a6a7-4bd4-8429-54f8c5593f8b">
-<span class="eqno">(2)<a class="headerlink" href="#equation-c01bc766-a6a7-4bd4-8429-54f8c5593f8b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3b0abf5f-ac67-41cf-8717-eaa6d5031aa3">
+<span class="eqno">(2)<a class="headerlink" href="#equation-3b0abf5f-ac67-41cf-8717-eaa6d5031aa3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R^2 = 1 - \frac{SSR}{SST}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(SSR\)</span> stands for sum squared of the residuals and <span class="math notranslate nohighlight">\(SST\)</span> stands for the total sum of squares, that is the su of the distance the data is away from the mean all squared.</p>
 <p>The sum squared regression (SSR) is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3c091873-7972-44a8-8abd-93cdb48491f3">
-<span class="eqno">(3)<a class="headerlink" href="#equation-3c091873-7972-44a8-8abd-93cdb48491f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-49a9d4ec-8c91-4acc-9045-910faaea5d03">
+<span class="eqno">(3)<a class="headerlink" href="#equation-49a9d4ec-8c91-4acc-9045-910faaea5d03" title="Permalink to this equation">#</a></span>\[\begin{equation}
 SSR = \sum_i(y_i -\hat{y_i})^2
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the true value, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the estimated value.</p>
 <p>The total sum of squares (SST) is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8549fc9-634e-443b-81f5-be490d2ca4c3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-a8549fc9-634e-443b-81f5-be490d2ca4c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bd4003e1-d9d4-468f-84f6-1fd628d8d470">
+<span class="eqno">(4)<a class="headerlink" href="#equation-bd4003e1-d9d4-468f-84f6-1fd628d8d470" title="Permalink to this equation">#</a></span>\[\begin{equation}
 SST = \sum_i(y_i - \bar{y})^2
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the mean of the observations.</p>
 <p>In the factor models, the “true” values are the realized returns <span class="math notranslate nohighlight">\(r_{i,t}\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is the return of the characteristic-managed portfolio <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>Following Kelly et al. (2019) <span id="id2">[<a class="reference internal" href="../references.html#id2" title="Bryan T Kelly, Seth Pruitt, and Yinan Su. Characteristics are covariances: a unified model of risk and return. Journal of Financial Economics, 134(3):501–524, 2019.">KPS19</a>]</span>, we assume the sample average of the observations <span class="math notranslate nohighlight">\(\bar{r_i}\)</span> to be equal to 0. Thus, the SST is common to both the total <span class="math notranslate nohighlight">\(R^2\)</span> and predictive <span class="math notranslate nohighlight">\(R^2\)</span> and defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2ad2816b-930d-489f-8969-5d275d8df790">
-<span class="eqno">(5)<a class="headerlink" href="#equation-2ad2816b-930d-489f-8969-5d275d8df790" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7d95c086-b504-4750-858d-92f84fde1cf3">
+<span class="eqno">(5)<a class="headerlink" href="#equation-7d95c086-b504-4750-858d-92f84fde1cf3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 SST = \sum_{i,t} r_{i,t}^2
 \end{equation}\]</div>
 <section id="total-r-squared">
 <h3>Total R-Squared<a class="headerlink" href="#total-r-squared" title="Permalink to this headline">#</a></h3>
 <p>The total <span class="math notranslate nohighlight">\(R^2\)</span> quantifies the explanatory power of contemporaneous factor realizations. It summarizes how well the systematic factor risk in a given model specificiation describes the realized riskiness in the panel of individual stocks.</p>
 <p>In this framework, the estimated <span class="math notranslate nohighlight">\(\hat{r}_{i,t}\)</span> to be compared with the realized return <span class="math notranslate nohighlight">\(r_{i,t}\)</span> is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0262bee2-f134-408d-aab3-1be1bbfb76e6">
-<span class="eqno">(6)<a class="headerlink" href="#equation-0262bee2-f134-408d-aab3-1be1bbfb76e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b79aaba8-9d9d-4df6-990c-a14507ec86f3">
+<span class="eqno">(6)<a class="headerlink" href="#equation-b79aaba8-9d9d-4df6-990c-a14507ec86f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{r}_{i,t} = \hat{\beta}'_{i,t-1}\hat{f}_t
 \end{equation}\]</div>
 <p>The SSR is thus defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f49cd391-1118-4101-ba10-f0312e88fa1e">
-<span class="eqno">(7)<a class="headerlink" href="#equation-f49cd391-1118-4101-ba10-f0312e88fa1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ff980488-5094-4a2e-a3a0-c0488043a695">
+<span class="eqno">(7)<a class="headerlink" href="#equation-ff980488-5094-4a2e-a3a0-c0488043a695" title="Permalink to this equation">#</a></span>\[\begin{equation}
 SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{f}_t)^2
 \end{equation}\]</div>
 <p>The full formula of the total <span class="math notranslate nohighlight">\(R^2\)</span> is thus:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c2ea0604-c35c-48cc-b24a-8a34188a879d">
-<span class="eqno">(8)<a class="headerlink" href="#equation-c2ea0604-c35c-48cc-b24a-8a34188a879d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-200947bc-0d7f-4b57-ad28-a971cd4713cc">
+<span class="eqno">(8)<a class="headerlink" href="#equation-200947bc-0d7f-4b57-ad28-a971cd4713cc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Total $R^2$} = 1 - \frac{\sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{f}_t)^2}{\sum_{i,t} r_{i,t}^2}
 \end{equation}\]</div>
 </section>
@@ -443,19 +444,19 @@ SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{f}_t)^2
 <h3>Predictive R-Squared<a class="headerlink" href="#predictive-r-squared" title="Permalink to this headline">#</a></h3>
 <p>The second measure that we refer to as the “predictive <span class="math notranslate nohighlight">\(R^2\)</span>” represents the the accuracy of the asset pricing model predictions of future returns.</p>
 <p>In that case, the estimated <span class="math notranslate nohighlight">\(\hat{r}_{i,t}\)</span> is the predicted one from previous month information (including the factor return). We have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-524ebf56-6f04-4f42-934f-6677bc999a8b">
-<span class="eqno">(9)<a class="headerlink" href="#equation-524ebf56-6f04-4f42-934f-6677bc999a8b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-79cc5704-634d-472d-bb83-a2d619185e73">
+<span class="eqno">(9)<a class="headerlink" href="#equation-79cc5704-634d-472d-bb83-a2d619185e73" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{r}_{i,t} = \hat{\beta}'_{i,t-1} \hat{\lambda}_{t-1}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{\lambda}_{t-1}\)</span> is the sample average of <span class="math notranslate nohighlight">\(\hat{f}\)</span> up to the previous month (<span class="math notranslate nohighlight">\(t-1\)</span>).</p>
 <p>In that case, we have the following SSR:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-39943d34-341d-41a6-a463-43c9d94fa89c">
-<span class="eqno">(10)<a class="headerlink" href="#equation-39943d34-341d-41a6-a463-43c9d94fa89c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-470d5e1a-b230-4bb4-a7e8-199541c263eb">
+<span class="eqno">(10)<a class="headerlink" href="#equation-470d5e1a-b230-4bb4-a7e8-199541c263eb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2
 \end{equation}\]</div>
 <p>And thus the following complete formula for the predictive <span class="math notranslate nohighlight">\(R^2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27b7fefb-2d12-4c15-826c-6b18d6cc7c3d">
-<span class="eqno">(11)<a class="headerlink" href="#equation-27b7fefb-2d12-4c15-826c-6b18d6cc7c3d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e4163829-d35e-4744-b4ee-3d2f618dd341">
+<span class="eqno">(11)<a class="headerlink" href="#equation-e4163829-d35e-4744-b4ee-3d2f618dd341" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Predictive $R^2$} = 1 - \frac{\sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2}{\sum_{i,t} r_{i,t}^2}
 \end{equation}\]</div>
 </section>
@@ -464,8 +465,8 @@ SSR = \sum_{i,t}(r_{i,t} - \hat{\beta}'_{i,t-1}\hat{\lambda}_{t-1})^2
 <h2>Risk Premia v.s. Mispricing<a class="headerlink" href="#risk-premia-v-s-mispricing" title="Permalink to this headline">#</a></h2>
 <p>This test investigate whether ou factor models accurately “price” characteristics-managed portfolios (or anomaly portfolios) uncoditionally, following Gu et al. (2021) <span id="id3">[<a class="reference internal" href="../references.html#id3" title="Shihao Gu, Bryan Kelly, and Dacheng Xiu. Autoencoder asset pricing models. Journal of Econometrics, 222(1):429–450, 2021.">GKX21</a>]</span>.</p>
 <p>As we implement all our models without intercepts, we can directly test whether the zero-intercept no-arbitrage restriction is satisfied. If it is, the time series average of model residuals for each portfolios, that is the pricing errors, should be indistinguishable from zero (two side test). The uncoditional pricing errors are defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9e3b4a0d-3fc8-4204-97af-5344718c7974">
-<span class="eqno">(12)<a class="headerlink" href="#equation-9e3b4a0d-3fc8-4204-97af-5344718c7974" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a87f9f24-b12e-4db5-af28-f9602e69713f">
+<span class="eqno">(12)<a class="headerlink" href="#equation-a87f9f24-b12e-4db5-af28-f9602e69713f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \alpha_i = \mathbb{E}[u_{i,t}] = \mathbb{E}[r_i,t] - \mathbb{E}[\beta_{i,t-1}'f_t]
 \end{equation}\]</div>
 </section>

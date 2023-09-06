@@ -45,6 +45,8 @@ The rescaling method must be applied separately for each rebalancing date.
 | $A_9$ |  12.4 |  -0.8343 |
 | $A_{10}$ |  56.0 |  -0.0972 |
 
+[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m)
+
 ---
 ### Sorting Procedure
 
