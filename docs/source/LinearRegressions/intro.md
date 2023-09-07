@@ -16,10 +16,10 @@ R = B \mathcal{F} + \epsilon
 With observable factors, the risk premia of a factor $\mathcal{F}_j$ corresponds to the excess return of the tradable portfolio:
 
 \begin{equation}
-\pi(\mathcal{F}_j) = \mu(\mathcal{F}_j) - R_f
+\mathcal{F}_j = R_j
 \end{equation}
 
-with $\mu(\mathcal{F_j}) = \mathbb{E}[ \mathcal{F}_j ]$. In these models, $\mathcal{F}$ is known, only $B$ the matrix of exposure to these factors need to be estimated. 
+with $R_j$ the excess return of the corresponding sorted portfolio. $\mathcal{F}$ is known, only $B$ the matrix of exposure to these factors need to be estimated. 
 
 We can estimate the matrix of factors exposures $B$ with a linear regression model, such as:
 

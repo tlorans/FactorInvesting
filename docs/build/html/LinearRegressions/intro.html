@@ -297,42 +297,42 @@ document.write(`
 <section id="estimating-static-models-with-observable-factors-with-linear-regression">
 <h2>Estimating Static Models with Observable Factors with Linear Regression<a class="headerlink" href="#estimating-static-models-with-observable-factors-with-linear-regression" title="Permalink to this headline">#</a></h2>
 <p>We start with the previous linear model expressed previously as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9b642876-360b-4f07-9165-93613389da3c">
-<span class="eqno">(1)<a class="headerlink" href="#equation-9b642876-360b-4f07-9165-93613389da3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-61f8a793-0bac-49b3-9b3c-30ea7b3c3af5">
+<span class="eqno">(1)<a class="headerlink" href="#equation-61f8a793-0bac-49b3-9b3c-30ea7b3c3af5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = \alpha + B\mathcal{F} + \epsilon
 \end{equation}\]</div>
 <p>In our case, because we want to test if asset pricing models price correctly each characteristic-sorted portfolio, we are going to estimate:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a600f4d-078b-47ab-b785-0dc116b04b9e">
-<span class="eqno">(2)<a class="headerlink" href="#equation-9a600f4d-078b-47ab-b785-0dc116b04b9e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-880c96d9-33ad-478d-a15d-a6031bee6672">
+<span class="eqno">(2)<a class="headerlink" href="#equation-880c96d9-33ad-478d-a15d-a6031bee6672" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = B \mathcal{F} + \epsilon
 \end{equation}\]</div>
 <p>With observable factors, the risk premia of a factor <span class="math notranslate nohighlight">\(\mathcal{F}_j\)</span> corresponds to the excess return of the tradable portfolio:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b21c168b-094b-4f2e-af8d-e06d593293fe">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b21c168b-094b-4f2e-af8d-e06d593293fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\pi(\mathcal{F}_j) = \mu(\mathcal{F}_j) - R_f
+<div class="amsmath math notranslate nohighlight" id="equation-f3551164-87fd-47d7-a084-af70ea4c75e7">
+<span class="eqno">(3)<a class="headerlink" href="#equation-f3551164-87fd-47d7-a084-af70ea4c75e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\mathcal{F}_j = R_j
 \end{equation}\]</div>
-<p>with <span class="math notranslate nohighlight">\(\mu(\mathcal{F_j}) = \mathbb{E}[ \mathcal{F}_j ]\)</span>. In these models, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is known, only <span class="math notranslate nohighlight">\(B\)</span> the matrix of exposure to these factors need to be estimated.</p>
+<p>with <span class="math notranslate nohighlight">\(R_j\)</span> the excess return of the corresponding sorted portfolio. <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is known, only <span class="math notranslate nohighlight">\(B\)</span> the matrix of exposure to these factors need to be estimated.</p>
 <p>We can estimate the matrix of factors exposures <span class="math notranslate nohighlight">\(B\)</span> with a linear regression model, such as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3d629b9-89fb-49bc-94a9-0e5cbe719f74">
-<span class="eqno">(4)<a class="headerlink" href="#equation-e3d629b9-89fb-49bc-94a9-0e5cbe719f74" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-08f0d824-e5d8-4740-a31d-2a4db0b2bacf">
+<span class="eqno">(4)<a class="headerlink" href="#equation-08f0d824-e5d8-4740-a31d-2a4db0b2bacf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{B} = (\mathcal{F}^T\mathcal{F})^{-1}\mathcal{F}^T R
 \end{equation}\]</div>
 <hr class="docutils" />
 <p><strong>Example X</strong></p>
 <p><em>Let’s assume we want to estimate a 3-factors model (Fama and French, 1992):</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-9178979e-f3f1-4e5e-9212-ca4fea7a35c5">
-<span class="eqno">(5)<a class="headerlink" href="#equation-9178979e-f3f1-4e5e-9212-ca4fea7a35c5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d5e0ad8e-e942-4804-b965-03a6a39adea9">
+<span class="eqno">(5)<a class="headerlink" href="#equation-d5e0ad8e-e942-4804-b965-03a6a39adea9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \beta^m_i \mathcal{F}_m + \beta^{smb}_i \mathcal{F}_{smb} + \beta^{hml}_i \mathcal{F}_{hml}
 \end{equation}\]</div>
 <p><em>Because <span class="math notranslate nohighlight">\(\mathcal{F}_j\)</span> is assumed to be observable with the excess return of the corresponding sorted portfolio, we have <span class="math notranslate nohighlight">\(\mathcal{F}_j = R_j\)</span>. We can thus rewrite the model as:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a296444-df65-4fe7-9a85-2d94767911c2">
-<span class="eqno">(6)<a class="headerlink" href="#equation-2a296444-df65-4fe7-9a85-2d94767911c2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-84a50a98-dc94-4356-aa8b-6d207b3bcf86">
+<span class="eqno">(6)<a class="headerlink" href="#equation-84a50a98-dc94-4356-aa8b-6d207b3bcf86" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \beta^m_i R_m + \beta^{smb}_i R_{smb} + \beta^{hml}_i R_{hml}
 \end{equation}\]</div>
 <p><em>with <span class="math notranslate nohighlight">\(R_{smb}\)</span> is the return of the Size factor and <span class="math notranslate nohighlight">\(R_{hml}\)</span> is the return of the Value factor.</em></p>
 <p><em>In the matrix form we have:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0de9b37-e029-4518-8a8d-767827078583">
-<span class="eqno">(7)<a class="headerlink" href="#equation-f0de9b37-e029-4518-8a8d-767827078583" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d2568290-a17b-4595-a4ec-f1f6beba1d0d">
+<span class="eqno">(7)<a class="headerlink" href="#equation-d2568290-a17b-4595-a4ec-f1f6beba1d0d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 R_1 \\
 R_2 \\
@@ -358,8 +358,8 @@ R_{hml}
 \end{pmatrix}
 \end{equation}\]</div>
 <p><em>We can estimate the matrix <span class="math notranslate nohighlight">\(B\)</span> with linear regression such as:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-a4c6c0f0-e729-4e3b-82e6-8343732362b4">
-<span class="eqno">(8)<a class="headerlink" href="#equation-a4c6c0f0-e729-4e3b-82e6-8343732362b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b020fa61-f725-4920-9b5a-3d0b69335bd6">
+<span class="eqno">(8)<a class="headerlink" href="#equation-b020fa61-f725-4920-9b5a-3d0b69335bd6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 \hat{\beta}_1^m &amp; \hat{\beta}_1^{smb} &amp; \hat{\beta}_1^{hml} \\
 \hat{\beta}_2^m &amp; \hat{\beta}_2^{smb} &amp; \hat{\beta}_2^{hml} \\
