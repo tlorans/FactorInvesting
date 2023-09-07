@@ -46,10 +46,7 @@ The rescaling method must be applied separately for each rebalancing date.
 | $A_9$ |  12.4 |  -0.8343 |
 | $A_{10}$ |  56.0 |  -0.0972 |
 
-[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m)
-
-
-[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example1.jl)
+[Python code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m)
 
 ---
 ### Sorting Procedure
@@ -79,10 +76,7 @@ The long portolio $\mathcal{L}$ will comprise the stocks in the first quintile $
 | $A_9$ | -0.8343 | 7 | $\mathcal{Q}_4$ |
 | $A_{10}$ | -0.0972 | 4 | $\mathcal{Q}_2$ |
 
-[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example2.m)
-
-
-[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example2.jl)
+[Python code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example2.m)
 
 ---
 
@@ -115,11 +109,6 @@ where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ an
 | $A_8$ |  $\mathcal{L}$ | 50% |
 | $A_9$ |  | |
 | $A_{10}$ | | |
-
-[Matlab code](https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example3.m)
-
-
-[Julia code](https://github.com/tlorans/FactorInvesting/blob/main/materials/julia/chap1/example3.jl)
 
 ---
 
