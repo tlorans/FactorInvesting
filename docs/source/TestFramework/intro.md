@@ -114,7 +114,7 @@ where $w_i$ is the weight of the asset $i$, $w_j$ the weight of the asset $j$ an
 
 ### Characteristic-Sorted Portfolio Performance
 
-We first need to compute $R_t(\mathcal{L})$ and $R_t(\mathcal{S})$, the returns of the long and short portfolios between $t-1$ and $t$:
+We first need to compute $R_{\mathcal{L}}(t)$ and $R_{\mathcal{S}}(t)$, the returns of the long and short portfolios between $t-1$ and $t$:
 
 \begin{equation}
 R_{\mathcal{L}}(t) = w_{\mathcal{L}}^T r_t 
@@ -241,5 +241,5 @@ This test investigate whether ou factor models accurately "price" characteristic
 As we implement all our models without intercepts, we can directly test whether the zero-intercept no-arbitrage restriction is satisfied. If it is, the time series average of model residuals for each portfolios, that is the pricing errors, should be indistinguishable from zero (two side test). The uncoditional pricing errors are defined as:
 
 \begin{equation}
-\alpha_i = \mathbb{E}[u_{i,t}] = \mathbb{E}[r_i,t] - \mathbb{E}[\beta_{i,t-1}'f_t]
+\alpha = \mathbb{E}[u_{i,t}] = \mathbb{E}[r_i,t] - \mathbb{E}[\beta_{i,t-1}'f_t]
 \end{equation}

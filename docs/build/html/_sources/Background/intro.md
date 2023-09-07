@@ -41,3 +41,12 @@ R = \alpha + B \mathcal{F} + \epsilon
 \end{equation}
 
 where $R$ is a $(n \times 1)$ vector of asset excess returns, $\alpha$ is a $(n \times 1)$ vector, $B$ is a $(n\times m)$ matrix and $\mathcal{F}$ is a $(m \times 1)$ vector of factor returns.
+
+zero intercept no-arbitrage restiction
+
+## The Great Divide and How Machine Learning Can Help in Factor Modelling
+### Observable vs. Latent Factors
+
+### Static vs. Conditional Models
+
+### Machine Learning as a Tool for Asset Pricing Model Generalization
