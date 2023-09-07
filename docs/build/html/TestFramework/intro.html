@@ -323,8 +323,8 @@ document.write(`
 <h3>Scoring<a class="headerlink" href="#scoring" title="Permalink to this headline">#</a></h3>
 <p>Let’s write <span class="math notranslate nohighlight">\(x_i(t_{\tau})\)</span> at the rebalancing date <span class="math notranslate nohighlight">\(t_{\tau}\)</span>, and <span class="math notranslate nohighlight">\(\mathbb{S}_i(t_{\tau})\)</span> is the resulting score.</p>
 <p>We can score the characteristics following a min-max rescaling over <span class="math notranslate nohighlight">\([-1, 1]\)</span>, such as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01933781-8d05-4cc8-a450-ca63a6919c26">
-<span class="eqno">(1)<a class="headerlink" href="#equation-01933781-8d05-4cc8-a450-ca63a6919c26" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b69d545e-1630-4423-bdbf-a371e2fd3e2c">
+<span class="eqno">(1)<a class="headerlink" href="#equation-b69d545e-1630-4423-bdbf-a371e2fd3e2c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbb{S}_i(t_{\tau}) = 2 \frac{x_{i}(t_{\tau}) - \min(x(t_{\tau}))}{\max(x(t_{\tau}))-\min(x(t_{\tau}))} - 1
 \end{equation}\]</div>
 <p>The rescaling method must be applied separately for each rebalancing date.</p>
@@ -381,7 +381,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p><a class="reference external" href="https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example1.m">Python code</a></p>
+<p><a class="reference external" href="https://github.com/tlorans/FactorInvesting/blob/main/materials/code/example1.py">Python code</a></p>
 </section>
 <hr class="docutils" />
 <section id="sorting-procedure">
@@ -468,15 +468,15 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p><a class="reference external" href="https://github.com/tlorans/FactorInvesting/blob/main/materials/matlab/chap1/example2.m">Python code</a></p>
+<p><a class="reference external" href="https://github.com/tlorans/FactorInvesting/blob/main/materials/code/example2.py">Python code</a></p>
 </section>
 <hr class="docutils" />
 <section id="weighting-scheme">
 <h3>Weighting Scheme<a class="headerlink" href="#weighting-scheme" title="Permalink to this headline">#</a></h3>
 <p>We now move to the weighting scheme. Generally, each portfolio is equally- or value-weighted in order to maximize the diversification (Roncalli, 2023) <span id="id3">[<a class="reference internal" href="../references.html#id6" title="Thierry Roncalli. Handbook in Sustainable Finance. University of Paris-Saclay, 2023. URL: http://www.thierry-roncalli.com/download/HSF.pdf.">Ron23</a>]</span>.</p>
 <p>In the case of an equal weighting scheme, we have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09b85915-5d70-47ac-8764-625eced0d6c4">
-<span class="eqno">(2)<a class="headerlink" href="#equation-09b85915-5d70-47ac-8764-625eced0d6c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9ec35fd2-ccff-47f3-9fb8-a280ceb57bc0">
+<span class="eqno">(2)<a class="headerlink" href="#equation-9ec35fd2-ccff-47f3-9fb8-a280ceb57bc0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i = w_j = \frac{1}{n}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_i\)</span> is the weight of the asset <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(w_j\)</span> the weight of the asset <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(n\)</span> the number of assets in the portfolio.</p>
@@ -538,30 +538,30 @@ w_i = w_j = \frac{1}{n}
 <section id="characteristic-sorted-portfolio-performance">
 <h3>Characteristic-Sorted Portfolio Performance<a class="headerlink" href="#characteristic-sorted-portfolio-performance" title="Permalink to this headline">#</a></h3>
 <p>We first need to compute <span class="math notranslate nohighlight">\(R_t(\mathcal{L})\)</span> and <span class="math notranslate nohighlight">\(R_t(\mathcal{S})\)</span>, the returns of the long and short portfolios between <span class="math notranslate nohighlight">\(t-1\)</span> and <span class="math notranslate nohighlight">\(t\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b19c3c6b-9a06-4702-ae69-c13a1dad5568">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b19c3c6b-9a06-4702-ae69-c13a1dad5568" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-31ad3acc-424e-4658-b8b2-de9f7c0e283a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-31ad3acc-424e-4658-b8b2-de9f7c0e283a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_{\mathcal{L}}(t) = w_{\mathcal{L}}^T r_t 
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-7f7f06c3-54f1-4291-b6f4-ab5f1fbe6c19">
-<span class="eqno">(4)<a class="headerlink" href="#equation-7f7f06c3-54f1-4291-b6f4-ab5f1fbe6c19" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-05901dcc-feed-48c2-81fb-f4c71b4738e6">
+<span class="eqno">(4)<a class="headerlink" href="#equation-05901dcc-feed-48c2-81fb-f4c71b4738e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_{\mathcal{S}}(t) = w_{\mathcal{S}}^T r_t 
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{\mathcal{L}}\)</span> and <span class="math notranslate nohighlight">\(w_{\mathcal{S}}\)</span> are the vectors of weights in the long and short portfolios respectively (within two rebalancing dates <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(\tau +1\)</span>, such as the weights are fixed), and <span class="math notranslate nohighlight">\(r_t\)</span> is the vector of assets returns between <span class="math notranslate nohighlight">\(t-1\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>The performance of the long short porfolio <span class="math notranslate nohighlight">\(\mathcal{L} - \mathcal{S}\)</span> satisfies the following definition (Roncalli, 2023 <span id="id4">[<a class="reference internal" href="../references.html#id6" title="Thierry Roncalli. Handbook in Sustainable Finance. University of Paris-Saclay, 2023. URL: http://www.thierry-roncalli.com/download/HSF.pdf.">Ron23</a>]</span>):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2323c71a-0187-43ba-8756-9f2732b47863">
-<span class="eqno">(5)<a class="headerlink" href="#equation-2323c71a-0187-43ba-8756-9f2732b47863" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-30d7db58-3040-41e2-bd8e-d3b0db888471">
+<span class="eqno">(5)<a class="headerlink" href="#equation-30d7db58-3040-41e2-bd8e-d3b0db888471" title="Permalink to this equation">#</a></span>\[\begin{equation}
 (1 + R_{\mathcal{L}}(t)) = (1 + C(t))(1 + R_{\mathcal{S}}(t))
 \end{equation}\]</div>
 <p>Then we can deduce that:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f56a54a2-0f8f-4e0f-b943-8661292b6b0d">
-<span class="eqno">(6)<a class="headerlink" href="#equation-f56a54a2-0f8f-4e0f-b943-8661292b6b0d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b0aa138a-3621-4dec-b9d8-bbba1c3844d7">
+<span class="eqno">(6)<a class="headerlink" href="#equation-b0aa138a-3621-4dec-b9d8-bbba1c3844d7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C(t) = \frac{R_{\mathcal{L}}(t) - R_{\mathcal{S}}(t)}{1 + R_{\mathcal{S}}(t)}
 \end{equation}\]</div>
 <hr class="docutils" />
 <p><strong>Example 4</strong></p>
 <p><em>We continue the previous example 3. We have the following vector of assets returns:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-4117f405-98b5-463b-8ab3-cec13706cc5c">
-<span class="eqno">(7)<a class="headerlink" href="#equation-4117f405-98b5-463b-8ab3-cec13706cc5c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cd40b6f1-a2a3-4fff-bb5b-8375e61bf85f">
+<span class="eqno">(7)<a class="headerlink" href="#equation-cd40b6f1-a2a3-4fff-bb5b-8375e61bf85f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 r_t^T = \begin{pmatrix}
 0.03 &amp;
 -0.04 &amp;
@@ -576,30 +576,30 @@ r_t^T = \begin{pmatrix}
 \end{pmatrix}
 \end{equation}\]</div>
 <p>and the following vectors of weights:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0dd4342f-4d18-494e-94f8-fa0c93863192">
-<span class="eqno">(8)<a class="headerlink" href="#equation-0dd4342f-4d18-494e-94f8-fa0c93863192" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-84307725-8391-4fb8-aab8-58c4ecb54d0c">
+<span class="eqno">(8)<a class="headerlink" href="#equation-84307725-8391-4fb8-aab8-58c4ecb54d0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_{\mathcal{L}}^T = \begin{pmatrix}
 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.5 &amp; 0.0 &amp; 0.0 &amp; 0.5 &amp; 0.0 &amp; 0.0
 \end{pmatrix}
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-2b7e13bf-f9d4-4f97-8d47-4a5f232f2ea4">
-<span class="eqno">(9)<a class="headerlink" href="#equation-2b7e13bf-f9d4-4f97-8d47-4a5f232f2ea4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-75e79a17-7eb7-4177-8b04-0b306e357e42">
+<span class="eqno">(9)<a class="headerlink" href="#equation-75e79a17-7eb7-4177-8b04-0b306e357e42" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_{\mathcal{S}}^T = \begin{pmatrix}
 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.5 &amp; 0.5 &amp; 0.0 &amp; 0.0 &amp; 0.0
 \end{pmatrix}
 \end{equation}\]</div>
 <p>We thus have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-122e59d9-e2b2-46a0-9a2a-8be1284242dd">
-<span class="eqno">(10)<a class="headerlink" href="#equation-122e59d9-e2b2-46a0-9a2a-8be1284242dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fc9115c2-8cf1-44b2-8a63-83439efdc32b">
+<span class="eqno">(10)<a class="headerlink" href="#equation-fc9115c2-8cf1-44b2-8a63-83439efdc32b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_t(\mathcal{L}) = 0.5 \times -0.18 + 0.5 \times 0.08 = -0.05
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-07ba6808-7ba2-4db7-8993-b859825f0a73">
-<span class="eqno">(11)<a class="headerlink" href="#equation-07ba6808-7ba2-4db7-8993-b859825f0a73" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d3d0f1da-2dc4-4b50-890a-459fc39cca6a">
+<span class="eqno">(11)<a class="headerlink" href="#equation-d3d0f1da-2dc4-4b50-890a-459fc39cca6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_t(\mathcal{S}) = 0.5 \times 0.06 + 0.5 \times 0.02 = 0.04
 \end{equation}\]</div>
 <p>Then, we can now obtain the characteristic-sorted portfolio performance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-373f4fee-6c01-4aae-a2c1-aa582490e5ac">
-<span class="eqno">(12)<a class="headerlink" href="#equation-373f4fee-6c01-4aae-a2c1-aa582490e5ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-26780891-28c6-4707-a4ea-4cc40e83b71b">
+<span class="eqno">(12)<a class="headerlink" href="#equation-26780891-28c6-4707-a4ea-4cc40e83b71b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C(t) = \frac{-0.08 - 0.04}{1 + 0.04} = - 0.0865
 \end{equation}\]</div>
 </section>
@@ -608,33 +608,33 @@ C(t) = \frac{-0.08 - 0.04}{1 + 0.04} = - 0.0865
 <section id="statistical-performance">
 <h2>Statistical Performance<a class="headerlink" href="#statistical-performance" title="Permalink to this headline">#</a></h2>
 <p>We can measure the statistical performance of the asset pricing model with the resulting <span class="math notranslate nohighlight">\(\mathfrak{R}^2\)</span>, which can be defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0931e53b-4f6b-4021-8efe-b1ae2bd0b4f0">
-<span class="eqno">(13)<a class="headerlink" href="#equation-0931e53b-4f6b-4021-8efe-b1ae2bd0b4f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-08191127-069e-4056-a49f-e071f3c22466">
+<span class="eqno">(13)<a class="headerlink" href="#equation-08191127-069e-4056-a49f-e071f3c22466" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathfrak{R}^2 = 1 - \frac{\sigma^2(\epsilon)}{\sigma^2(r)}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma^2(\epsilon)\)</span> corresponds of the sum squared of the residuals of the model (ie. the sum of the difference between actual and estimated returns, all squares) and <span class="math notranslate nohighlight">\(\sigma^2(r)\)</span> corresponds to the total sum of squares (ie. the sum of the distance the returns are away from the mean, all squared).</p>
 <p>More formally we have the sum squared of the residuals defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-20a34725-0e7a-4bd0-bd5f-bff93474d1d8">
-<span class="eqno">(14)<a class="headerlink" href="#equation-20a34725-0e7a-4bd0-bd5f-bff93474d1d8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dda2597d-5813-460d-999e-4f4291d1b183">
+<span class="eqno">(14)<a class="headerlink" href="#equation-dda2597d-5813-460d-999e-4f4291d1b183" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sigma^2(\epsilon) = \sum^T_{t = 1}(r(t) - \hat{r}(t))^2
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(\hat{r}(t)\)</span> the estimated return according to the asset pricing model.</p>
 <p>And the total sum of squares defined usually as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d707d03d-dbc2-4572-b659-118ed159513e">
-<span class="eqno">(15)<a class="headerlink" href="#equation-d707d03d-dbc2-4572-b659-118ed159513e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1df30500-fb13-4424-b04c-285f35a47e1d">
+<span class="eqno">(15)<a class="headerlink" href="#equation-1df30500-fb13-4424-b04c-285f35a47e1d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sigma^2(r) = \sum^T_{t=1}(r(t) - \mu)^2
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the sample average of returns.</p>
 <p>Following Kelly et al. (2019) <span id="id5">[<a class="reference internal" href="../references.html#id2" title="Bryan T Kelly, Seth Pruitt, and Yinan Su. Characteristics are covariances: a unified model of risk and return. Journal of Financial Economics, 134(3):501–524, 2019.">KPS19</a>]</span>, we assume the sample average of the returns <span class="math notranslate nohighlight">\(\mu\)</span> to be equal to 0. Thus, <span class="math notranslate nohighlight">\(\sigma^2(r) = \sum^T_{t=1}(r(t))^2\)</span>.</p>
 <p>In this framework, the estimated <span class="math notranslate nohighlight">\(\hat{r}(t)\)</span> to be compared with the realized return <span class="math notranslate nohighlight">\(r(t)\)</span> is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27396ddb-fd69-4fdd-89fd-5af86892c7cb">
-<span class="eqno">(16)<a class="headerlink" href="#equation-27396ddb-fd69-4fdd-89fd-5af86892c7cb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7ab6366c-98e6-46bc-99d0-47e8c90adb99">
+<span class="eqno">(16)<a class="headerlink" href="#equation-7ab6366c-98e6-46bc-99d0-47e8c90adb99" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{r}(t) = \hat{\beta}'(t-1)\hat{f}(t)
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> the vector of estimated betas.</p>
 <p>Our full formula is thus:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bc782693-27a8-4947-9e9b-725409607299">
-<span class="eqno">(17)<a class="headerlink" href="#equation-bc782693-27a8-4947-9e9b-725409607299" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-11d27cc7-fa46-4d53-9f5c-b8fe9c085b31">
+<span class="eqno">(17)<a class="headerlink" href="#equation-11d27cc7-fa46-4d53-9f5c-b8fe9c085b31" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathfrak{R}^2 = 1 - \frac{\sum^T_{t = 1}(r(t) - \hat{\beta}'(t-1)\hat{f}(t))}{\sum^T_{t=1}(r(t))^2}
 \end{equation}\]</div>
 </section>
@@ -642,8 +642,8 @@ C(t) = \frac{-0.08 - 0.04}{1 + 0.04} = - 0.0865
 <h2>Risk Premia vs. Alpha<a class="headerlink" href="#risk-premia-vs-alpha" title="Permalink to this headline">#</a></h2>
 <p>This test investigate whether ou factor models accurately “price” characteristics-sorted portfolios (or anomaly portfolios) uncoditionally, following Gu et al. (2021) <span id="id6">[<a class="reference internal" href="../references.html#id3" title="Shihao Gu, Bryan Kelly, and Dacheng Xiu. Autoencoder asset pricing models. Journal of Econometrics, 222(1):429–450, 2021.">GKX21</a>]</span>.</p>
 <p>As we implement all our models without intercepts, we can directly test whether the zero-intercept no-arbitrage restriction is satisfied. If it is, the time series average of model residuals for each portfolios, that is the pricing errors, should be indistinguishable from zero (two side test). The uncoditional pricing errors are defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57a4027e-b8b9-4ae0-99da-9f024043552a">
-<span class="eqno">(18)<a class="headerlink" href="#equation-57a4027e-b8b9-4ae0-99da-9f024043552a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dc118c2e-704f-449a-a8bb-e82936d6fde7">
+<span class="eqno">(18)<a class="headerlink" href="#equation-dc118c2e-704f-449a-a8bb-e82936d6fde7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \alpha_i = \mathbb{E}[u_{i,t}] = \mathbb{E}[r_i,t] - \mathbb{E}[\beta_{i,t-1}'f_t]
 \end{equation}\]</div>
 </section>
