@@ -16,6 +16,9 @@ where $R_i$ and $R_m$ are the asset and market returns, $R_f$ is the risk-free r
 \beta^m_i = \frac{cov(R_i, R_m)}{\sigma^2(R_m)}
 \end{equation}
 
+*Define covariance and variance*
+*Make more clear how it helps distinguishing between systematic and idiosyncratic risks and conclusions*
+
 ## Arbitrage Pricing Theory and Factor Models
 
 Ross (1976) {cite:p}`ross2013arbitrage` proposed an alternative model to the CAPM, which is called the arbitrage pricing theory (APT).
@@ -44,9 +47,20 @@ where $R$ is a $(n \times 1)$ vector of asset excess returns, $\alpha$ is a $(n 
 
 zero intercept no-arbitrage restiction
 
-## The Great Divide and How Machine Learning Can Help in Factor Modelling
+## How Machine Learning Can Help in Factor Modelling
 ### Observable vs. Latent Factors
+
+FF model: factors are observable. Characteristic of assets not directly used.
+
+Other stream: factors are latent (PCA)
 
 ### Static vs. Conditional Models
 
+FF and PCA: exposures (beta) are invariant, only ad-hoc procedure for having time-variant estimates (ie. running rolling regressions), it thus ignore covariate
+
+IPCA: conditional model with time-varying beta, taking into account covariates
+
 ### Machine Learning as a Tool for Asset Pricing Model Generalization
+
+Dimensionality reduction
+

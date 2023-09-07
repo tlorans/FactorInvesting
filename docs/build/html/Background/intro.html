@@ -281,7 +281,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-asset-pricing-model">Capital Asset Pricing Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrage-pricing-theory-and-factor-models">Arbitrage Pricing Theory and Factor Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">The Great Divide and How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-machine-learning-can-help-in-factor-modelling">How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observable-vs-latent-factors">Observable vs. Latent Factors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-conditional-models">Static vs. Conditional Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization">Machine Learning as a Tool for Asset Pricing Model Generalization</a></li>
@@ -304,48 +304,55 @@ document.write(`
 <h2>Capital Asset Pricing Model<a class="headerlink" href="#capital-asset-pricing-model" title="Permalink to this headline">#</a></h2>
 <p>The capital asset pricing model (CAPM) was introduced by Sharpe in 1964 <span id="id1">[<a class="reference internal" href="../references.html#id7" title="William F Sharpe. Capital asset prices: a theory of market equilibrium under conditions of risk. The journal of finance, 19(3):425–442, 1964.">Sha64</a>]</span>, and can be viewed as an equilibrium model based on the framework defined by Markowitz (1952 <span id="id2">[<a class="reference internal" href="../references.html#id8" title="HM Markowitz. Portfolio selection, the journal of finance. 7 (1). N, 1:71–91, 1952.">Mar52</a>]</span>).</p>
 <p>In his paper, Markowitz develop the efficient frontier concept, i.e. the set of optimal mean-variance portfolios.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8f7644d2-6bc9-4b26-b2e5-249f25a0d431">
-<span class="eqno">(1)<a class="headerlink" href="#equation-8f7644d2-6bc9-4b26-b2e5-249f25a0d431" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8a2539d2-c8e6-4789-8ac1-5ecfe0f01a0b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8a2539d2-c8e6-4789-8ac1-5ecfe0f01a0b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbb{E}[R_i] - R_f = \beta^m_i(\mathbb{E}[R_m] - R_f)
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R_i\)</span> and <span class="math notranslate nohighlight">\(R_m\)</span> are the asset and market returns, <span class="math notranslate nohighlight">\(R_f\)</span> is the risk-free rate and the coefficient <span class="math notranslate nohighlight">\(\beta^m_i\)</span> is the beta of the asset <span class="math notranslate nohighlight">\(i\)</span> with respect to the market portfolio:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d053317a-2a9e-4229-bfd6-12f26b93f096">
-<span class="eqno">(2)<a class="headerlink" href="#equation-d053317a-2a9e-4229-bfd6-12f26b93f096" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3e2baac7-6fa1-42fa-ab10-8a048478971c">
+<span class="eqno">(2)<a class="headerlink" href="#equation-3e2baac7-6fa1-42fa-ab10-8a048478971c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \beta^m_i = \frac{cov(R_i, R_m)}{\sigma^2(R_m)}
 \end{equation}\]</div>
+<p><em>Define covariance and variance</em>
+<em>Make more clear how it helps distinguishing between systematic and idiosyncratic risks and conclusions</em></p>
 </section>
 <section id="arbitrage-pricing-theory-and-factor-models">
 <h2>Arbitrage Pricing Theory and Factor Models<a class="headerlink" href="#arbitrage-pricing-theory-and-factor-models" title="Permalink to this headline">#</a></h2>
 <p>Ross (1976) <span id="id3">[<a class="reference internal" href="../references.html#id9" title="Stephen A Ross. The arbitrage theory of capital asset pricing. In Handbook of the fundamentals of financial decision making: Part I, pages 11–30. World Scientific, 2013.">Ros13</a>]</span> proposed an alternative model to the CAPM, which is called the arbitrage pricing theory (APT).</p>
 <p>In this model, the return of asset <span class="math notranslate nohighlight">\(i\)</span> is driven by a linear factor model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e2447833-7467-4a6f-b9a5-28aa22f69ccc">
-<span class="eqno">(3)<a class="headerlink" href="#equation-e2447833-7467-4a6f-b9a5-28aa22f69ccc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7e9fd835-6865-4ae3-83e1-bf7ce3e1d08c">
+<span class="eqno">(3)<a class="headerlink" href="#equation-7e9fd835-6865-4ae3-83e1-bf7ce3e1d08c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \alpha_i + \sum^m_{j=1} \beta^j_i \mathcal{F}_j + \epsilon_i
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> is the intecept, <span class="math notranslate nohighlight">\(\beta^j_i\)</span> is the sensitivity of asset <span class="math notranslate nohighlight">\(i\)</span> to factor <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(\mathcal{F}_j\)</span> is the innovation of factor <span class="math notranslate nohighlight">\(j\)</span>. <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is the idiosyncratic risk of asset <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>Using APT, we can show that the risk premium of asset <span class="math notranslate nohighlight">\(i\)</span> is a function of the risk premia of the factors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4d3e9cc6-67a2-4b20-804c-82cf678bb4b2">
-<span class="eqno">(4)<a class="headerlink" href="#equation-4d3e9cc6-67a2-4b20-804c-82cf678bb4b2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f3b11a45-36cf-411a-a974-eb3fb27651cd">
+<span class="eqno">(4)<a class="headerlink" href="#equation-f3b11a45-36cf-411a-a974-eb3fb27651cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \pi_i = \mathbb{E}[R_i] - R_f = \sum^m_{j=1} \beta^j_i \pi (\mathcal{F}_j)
 \end{equation}\]</div>
 <p>We can rewrite it with some linear algebra as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-51974acf-0bbd-42e5-a450-857acc14a34c">
-<span class="eqno">(5)<a class="headerlink" href="#equation-51974acf-0bbd-42e5-a450-857acc14a34c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b2f0bcd-def5-4f15-b961-a24228bf91d9">
+<span class="eqno">(5)<a class="headerlink" href="#equation-9b2f0bcd-def5-4f15-b961-a24228bf91d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = \alpha + B \mathcal{F} + \epsilon
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is a <span class="math notranslate nohighlight">\((n \times 1)\)</span> vector of asset excess returns, <span class="math notranslate nohighlight">\(\alpha\)</span> is a <span class="math notranslate nohighlight">\((n \times 1)\)</span> vector, <span class="math notranslate nohighlight">\(B\)</span> is a <span class="math notranslate nohighlight">\((n\times m)\)</span> matrix and <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a <span class="math notranslate nohighlight">\((m \times 1)\)</span> vector of factor returns.</p>
 <p>zero intercept no-arbitrage restiction</p>
 </section>
-<section id="the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">
-<h2>The Great Divide and How Machine Learning Can Help in Factor Modelling<a class="headerlink" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling" title="Permalink to this headline">#</a></h2>
+<section id="how-machine-learning-can-help-in-factor-modelling">
+<h2>How Machine Learning Can Help in Factor Modelling<a class="headerlink" href="#how-machine-learning-can-help-in-factor-modelling" title="Permalink to this headline">#</a></h2>
 <section id="observable-vs-latent-factors">
 <h3>Observable vs. Latent Factors<a class="headerlink" href="#observable-vs-latent-factors" title="Permalink to this headline">#</a></h3>
+<p>FF model: factors are observable. Characteristic of assets not directly used.</p>
+<p>Other stream: factors are latent (PCA)</p>
 </section>
 <section id="static-vs-conditional-models">
 <h3>Static vs. Conditional Models<a class="headerlink" href="#static-vs-conditional-models" title="Permalink to this headline">#</a></h3>
+<p>FF and PCA: exposures (beta) are invariant, only ad-hoc procedure for having time-variant estimates (ie. running rolling regressions), it thus ignore covariate</p>
+<p>IPCA: conditional model with time-varying beta, taking into account covariates</p>
 </section>
 <section id="machine-learning-as-a-tool-for-asset-pricing-model-generalization">
 <h3>Machine Learning as a Tool for Asset Pricing Model Generalization<a class="headerlink" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization" title="Permalink to this headline">#</a></h3>
+<p>Dimensionality reduction</p>
 </section>
 </section>
 </section>
@@ -394,7 +401,7 @@ R = \alpha + B \mathcal{F} + \epsilon
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-asset-pricing-model">Capital Asset Pricing Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrage-pricing-theory-and-factor-models">Arbitrage Pricing Theory and Factor Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">The Great Divide and How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-machine-learning-can-help-in-factor-modelling">How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observable-vs-latent-factors">Observable vs. Latent Factors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-conditional-models">Static vs. Conditional Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization">Machine Learning as a Tool for Asset Pricing Model Generalization</a></li>
