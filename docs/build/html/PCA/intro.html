@@ -42,6 +42,8 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'PCA/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -294,8 +296,30 @@ document.write(`
 <h1>Principal Component Analysis: Static Models with Latent Factors<a class="headerlink" href="#principal-component-analysis-static-models-with-latent-factors" title="Permalink to this headline">#</a></h1>
 <section id="estimating-static-models-with-latent-factors-with-principal-component-analysis">
 <h2>Estimating Static Models with Latent Factors with Principal Component Analysis<a class="headerlink" href="#estimating-static-models-with-latent-factors-with-principal-component-analysis" title="Permalink to this headline">#</a></h2>
-<p>Unlike the static models with observable factors, an other approach is to assume that factors are implicit variables (ie. not observable). These latent factors can be estimated with the Principal Component Analysis (PCA) method.</p>
+<p>We start again with our linear formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-21708bd2-8716-4416-ab85-dda1ec562000">
+<span class="eqno">(1)<a class="headerlink" href="#equation-21708bd2-8716-4416-ab85-dda1ec562000" title="Permalink to this equation">#</a></span>\[\begin{equation}
+R = B \mathcal{F} + \epsilon
+\end{equation}\]</div>
+<p>Unlike the static models with observable factors, an other approach is to assume that factors are implicit variables (ie. not observable). These latent factors can be estimated with the Principal Component Analysis (PCA) method on the covariance matrix of returns.</p>
+<p>In that approach, both <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> and <span class="math notranslate nohighlight">\(B\)</span> needs to be estimated.</p>
+<p>The first stage of the approach involves applying an eigen-decomposition to the sample covariance matrix, such as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0e1ef420-788f-4a41-accf-675d802c8d2a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-0e1ef420-788f-4a41-accf-675d802c8d2a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\hat{\Sigma}_R = V \Lambda V^T
+\end{equation}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(V\)</span> is the matrix comprised of the eigenvectors and <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix comprised of the eigen values.</p>
+<p>Then, principal components are sorted according to their eigenvalue. Each <span class="math notranslate nohighlight">\(kth\)</span> principal component has the the <span class="math notranslate nohighlight">\(kth\)</span> largest variance, conditional on being orthogonal to all previous principal components.</p>
+<p>The vector of factors <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is now to be estimated:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-58e907b5-edc7-43ca-a8d8-5600560e3086">
+<span class="eqno">(3)<a class="headerlink" href="#equation-58e907b5-edc7-43ca-a8d8-5600560e3086" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\hat{\mathcal{F}} = R\hat{B}(\hat{B}^T \hat{B})^{-1}
+\end{equation}\]</div>
+<hr class="docutils" />
+<p><strong>Example X</strong></p>
+<p><em>To better understand the process involved with dimensionality reduction using PCA. let’s consider a simple case where <span class="math notranslate nohighlight">\(K=1\)</span>. It means that we are interest into finding the most relevant dimension. We need to finding the direction <span class="math notranslate nohighlight">\(p\)</span> which allows the best possible average reconstruction of the returns, that is the solution of the problem:</em></p>
 </section>
+<hr class="docutils" />
 <section id="pca-k-factors-asset-pricing">
 <h2>PCA K-Factors Asset Pricing<a class="headerlink" href="#pca-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
 </section>
