@@ -297,50 +297,58 @@ document.write(`
 <section id="linear-regression-via-singular-value-decomposition-and-pseudo-inverse">
 <h2>Linear Regression via Singular Value Decomposition and Pseudo-Inverse<a class="headerlink" href="#linear-regression-via-singular-value-decomposition-and-pseudo-inverse" title="Permalink to this headline">#</a></h2>
 <p>We start with the previous linear model expressed previously as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-58a74ded-f5bb-48f8-92ed-72fd79178b6b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-58a74ded-f5bb-48f8-92ed-72fd79178b6b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-612718ed-453f-4f36-aea2-b79f256184c9">
+<span class="eqno">(1)<a class="headerlink" href="#equation-612718ed-453f-4f36-aea2-b79f256184c9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = B \mathcal{F} + \epsilon
 \end{equation}\]</div>
 <p>With observable factors, the risk premia of a factor <span class="math notranslate nohighlight">\(\mathcal{F}_k\)</span> corresponds to the excess return of the tradable portfolio (<span class="math notranslate nohighlight">\(\mathcal{F}_k = R_k)\)</span>, with <span class="math notranslate nohighlight">\(R_k\)</span> the excess return of the corresponding sorted portfolio).
 In this framework, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is known, only <span class="math notranslate nohighlight">\(B\)</span> the matrix of exposure to these factors need to be estimated.</p>
 <p>We thus have a system of linear equations where <span class="math notranslate nohighlight">\(B\)</span> is a matrix of unknown exposure to the vector of factors <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. We need to find a solution where the values for <span class="math notranslate nohighlight">\(B\)</span> in the model minimize the squared error between the approximation of returns <span class="math notranslate nohighlight">\(\hat{R}\)</span> by the resulting model and the realized returns <span class="math notranslate nohighlight">\(R\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f89edc99-bb9a-4440-8aa5-458bf8cd4285">
-<span class="eqno">(2)<a class="headerlink" href="#equation-f89edc99-bb9a-4440-8aa5-458bf8cd4285" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-39d599f4-6b60-4c81-bba0-298da1e4766e">
+<span class="eqno">(2)<a class="headerlink" href="#equation-39d599f4-6b60-4c81-bba0-298da1e4766e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 || B \mathcal{F} - R ||^2
 \end{equation}\]</div>
 <p>This is called the linear least squares.</p>
 <p>In matrix notation, this problem is formulated with the so-called normal equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5846bbb5-2da4-4ad9-9e6a-818e1ed62463">
-<span class="eqno">(3)<a class="headerlink" href="#equation-5846bbb5-2da4-4ad9-9e6a-818e1ed62463" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-68aef9d7-3240-443b-8524-ab71345bf14a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-68aef9d7-3240-443b-8524-ab71345bf14a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathcal{F}^T \mathcal{F} B = \mathcal{F}^T R
 \end{equation}\]</div>
 <p>And reformulated in order to specify the solution for <span class="math notranslate nohighlight">\(B\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0411cf1e-9593-4654-8c3c-7ce171bc32d4">
-<span class="eqno">(4)<a class="headerlink" href="#equation-0411cf1e-9593-4654-8c3c-7ce171bc32d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9dbb890b-4a44-42ee-9337-45ee5814cd0e">
+<span class="eqno">(4)<a class="headerlink" href="#equation-9dbb890b-4a44-42ee-9337-45ee5814cd0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{B} = (\mathcal{F}^T\mathcal{F})^{-1}\mathcal{F}^T R
 \end{equation}\]</div>
 <p>It can be solved directly by computing the inverse, or it can be solved through the Singular Value Decomposition and the Pseudo-Inverse, such as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29550fc0-a0aa-4123-a1dc-bd92d9468264">
-<span class="eqno">(5)<a class="headerlink" href="#equation-29550fc0-a0aa-4123-a1dc-bd92d9468264" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1ab31098-943c-4aab-800b-d53c2b6be60d">
+<span class="eqno">(5)<a class="headerlink" href="#equation-1ab31098-943c-4aab-800b-d53c2b6be60d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+B \mathcal{F} = R
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-726a4ceb-ef57-4280-84b7-b90a2a109a93">
+<span class="eqno">(6)<a class="headerlink" href="#equation-726a4ceb-ef57-4280-84b7-b90a2a109a93" title="Permalink to this equation">#</a></span>\[\begin{equation}
+B USV^T = R
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-898a12f2-7ece-4123-adaa-e30b9b37e27c">
+<span class="eqno">(7)<a class="headerlink" href="#equation-898a12f2-7ece-4123-adaa-e30b9b37e27c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{B} = \mathcal{F}^{+} R
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathcal{F}^{+}\)</span> is the pseudoinverse of the vector of factors <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
 <hr class="docutils" />
 <p><strong>Example X</strong></p>
 <p><em>Let’s assume we want to estimate a 3-factors model (Fama and French, 1992):</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-235f73c9-6577-4da9-b28d-5b96aeea8df4">
-<span class="eqno">(6)<a class="headerlink" href="#equation-235f73c9-6577-4da9-b28d-5b96aeea8df4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d75fcbe1-b12d-411f-a56f-b8f15f432d9b">
+<span class="eqno">(8)<a class="headerlink" href="#equation-d75fcbe1-b12d-411f-a56f-b8f15f432d9b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \beta^m_i \mathcal{F}_m + \beta^{smb}_i \mathcal{F}_{smb} + \beta^{hml}_i \mathcal{F}_{hml}
 \end{equation}\]</div>
 <p><em>Because <span class="math notranslate nohighlight">\(\mathcal{F}_j\)</span> is assumed to be observable with the excess return of the corresponding sorted portfolio, we have <span class="math notranslate nohighlight">\(\mathcal{F}_j = R_j\)</span>. We can thus rewrite the model as:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9b8910a-4838-4968-82cb-6b7d2fe9ecdd">
-<span class="eqno">(7)<a class="headerlink" href="#equation-e9b8910a-4838-4968-82cb-6b7d2fe9ecdd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67b12b4a-12b0-4668-bbca-72ebc399bbaf">
+<span class="eqno">(9)<a class="headerlink" href="#equation-67b12b4a-12b0-4668-bbca-72ebc399bbaf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \beta^m_i R_m + \beta^{smb}_i R_{smb} + \beta^{hml}_i R_{hml}
 \end{equation}\]</div>
 <p><em>with <span class="math notranslate nohighlight">\(R_{smb}\)</span> is the return of the Size factor and <span class="math notranslate nohighlight">\(R_{hml}\)</span> is the return of the Value factor.</em></p>
 <p><em>In the matrix form we have:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-9014acf4-ff44-4c5d-a061-a181554cfe9f">
-<span class="eqno">(8)<a class="headerlink" href="#equation-9014acf4-ff44-4c5d-a061-a181554cfe9f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7c3a5282-8e8d-453a-b5ec-e578e3c1d30e">
+<span class="eqno">(10)<a class="headerlink" href="#equation-7c3a5282-8e8d-453a-b5ec-e578e3c1d30e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 R_1 \\
 R_2 \\
@@ -366,8 +374,8 @@ R_{hml}
 \end{pmatrix}
 \end{equation}\]</div>
 <p><em>We can estimate the matrix <span class="math notranslate nohighlight">\(B\)</span> with linear regression such as:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ff78317-07b7-4e34-acdc-fb08cc884c03">
-<span class="eqno">(9)<a class="headerlink" href="#equation-3ff78317-07b7-4e34-acdc-fb08cc884c03" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b63a7613-1061-47a8-83ed-02c49bc36204">
+<span class="eqno">(11)<a class="headerlink" href="#equation-b63a7613-1061-47a8-83ed-02c49bc36204" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 \hat{\beta}_1^m &amp; \hat{\beta}_1^{smb} &amp; \hat{\beta}_1^{hml} \\
 \hat{\beta}_2^m &amp; \hat{\beta}_2^{smb} &amp; \hat{\beta}_2^{hml} \\

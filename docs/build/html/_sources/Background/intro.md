@@ -1,25 +1,8 @@
-# The Risk Factor Framework
+# Background
 
-## Capital Asset Pricing Model
+## The Risk Factor Framework
 
-The capital asset pricing model (CAPM) was introduced by Sharpe in 1964 {cite:p}`sharpe1964capital`, and can be viewed as an equilibrium model based on the framework defined by Markowitz (1952 {cite:p}`markowitz1952portfolio`).
-
-In his paper, Markowitz develop the efficient frontier concept, i.e. the set of optimal mean-variance portfolios.
-
-\begin{equation}
-\mathbb{E}[R_i] - R_f = \beta^m_i(\mathbb{E}[R_m] - R_f)
-\end{equation}
-
-where $R_i$ and $R_m$ are the asset and market returns, $R_f$ is the risk-free rate and the coefficient $\beta^m_i$ is the beta of the asset $i$ with respect to the market portfolio:
-
-\begin{equation}
-\beta^m_i = \frac{cov(R_i, R_m)}{\sigma^2(R_m)}
-\end{equation}
-
-*Define covariance and variance*
-*Make more clear how it helps distinguishing between systematic and idiosyncratic risks and conclusions*
-
-## Arbitrage Pricing Theory and Factor Models
+### Arbitrage Pricing Theory
 
 Ross (1976) {cite:p}`ross2013arbitrage` proposed an alternative model to the CAPM, which is called the arbitrage pricing theory (APT).
 
@@ -47,20 +30,35 @@ where $R$ is a $(N \times 1)$ vector of asset excess returns, $\alpha$ is a $(N 
 
 Assuming the no-arbitrage condition stated by the APT theory, we have $\alpha = 0$.
 
-## The Great Divide and How Machine Learning Can Help in Factor Modelling
-### Observable vs. Latent Factors
+### The Great Divide and How Machine Learning Can Help in Factor Modelling
+#### Observable vs. Latent Factors
 
 FF model: factors are observable. Characteristic of assets not directly used.
 
 Other stream: factors are latent (PCA)
 
-### Static vs. Conditional Models
+#### Static vs. Conditional Models
 
 FF and PCA: exposures (beta) are invariant, only ad-hoc procedure for having time-variant estimates (ie. running rolling regressions), it thus ignore covariate
 
 IPCA: conditional model with time-varying beta, taking into account covariates
 
-### Machine Learning as a Tool for Asset Pricing Model Generalization
+#### Machine Learning as a Tool for Asset Pricing Model Generalization
 
 Dimensionality reduction
+
+## Singular Value Decomposition Tutorial
+
+Singular Value Decomposition is a theorem for linear algebra which says that a rectangular matrix A can be broken down into the product of three matrices:
+- an orthogonal matrix $U$, 
+- a diagonal matrix $S$
+- the transpose of an orthogonal matrix $V$.
+
+The theorem can be presented like this:
+
+\begin{equation}
+A = U S V^T
+\end{equation}
+
+where $U^TU = I$, $V^TV = I$. The columns of $U$ are orthonormal eigenvectors of $AA^T$. The columns of $V$ are orthonormal eigenvectors $A^TA$ and $S$ is a diagonal matrix containing the square roots of eigenvalues from $U$ or $V$ in descending order.
 

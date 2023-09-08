@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Factor Models with Machine Learning &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>&lt;no title&gt; &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -42,10 +42,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Background" href="Background/intro.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Autoencoders: Nonlinear Static Models with Latent Factors" href="Autoencoder/intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -111,7 +114,7 @@
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -184,7 +187,7 @@
       
       
       
-      <li><a href="_sources/index.md" target="_blank"
+      <li><a href="_sources/appendix.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -253,7 +256,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -264,11 +269,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Factor Models with Machine Learning</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -278,46 +291,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="factor-models-with-machine-learning">
-<h1>Factor Models with Machine Learning<a class="headerlink" href="#factor-models-with-machine-learning" title="Permalink to this headline">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This course is under heavy development</p>
-</div>
-<p>In this course, I propose a step-by-step implementation of a net zero strategy with Python, following the methodology proposed by Barahhou et al. (2022) <span id="id1">[]</span>.</p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Background/intro.html">Background</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Background/intro.html#the-risk-factor-framework">The Risk Factor Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Background/intro.html#singular-value-decomposition-tutorial">Singular Value Decomposition Tutorial</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="TestFramework/intro.html">Testing Asset Pricing Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="TestFramework/intro.html#characteristic-sorted-portfolios">Characteristic-Sorted Portfolios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TestFramework/intro.html#statistical-performance">Statistical Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TestFramework/intro.html#risk-premia-vs-alpha">Risk Premia vs. Alpha</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="LinearRegressions/intro.html">Linear Regression: Linear Static Models with Observable Factors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="LinearRegressions/intro.html#linear-regression-via-singular-value-decomposition-and-pseudo-inverse">Linear Regression via Singular Value Decomposition and Pseudo-Inverse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LinearRegressions/intro.html#linear-regression-k-factors-asset-pricing">Linear Regression K-Factors Asset Pricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="PCA/intro.html">Principal Component Analysis: Linear Static Models with Latent Factors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PCA/intro.html#pca-via-singular-value-decomposition">PCA via Singular Value Decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PCA/intro.html#pca-k-factors-asset-pricing">PCA K-Factors Asset Pricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Autoencoder/intro.html">Autoencoders: Nonlinear Static Models with Latent Factors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Autoencoder/intro.html#singular-value-decomposition-with-autoencoders">Singular Value Decomposition with Autoencoders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Autoencoder/intro.html#autoencoders-k-factors-asset-pricing">Autoencoders K-Factors Asset Pricing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
-</ul>
-</div>
-</section>
+  <hr class="docutils" />
+<p><strong>Eigenvectors and Eigenvalues</strong></p>
+<p><em>An eigenvector is a nonzero vector that satifies the equation:</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-c6fc26bb-558c-4e08-9a13-f004f3e0912c">
+<span class="eqno">(1)<a class="headerlink" href="#equation-c6fc26bb-558c-4e08-9a13-f004f3e0912c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Av = \lambda v
+\end{equation}\]</div>
+<p><em>Where <span class="math notranslate nohighlight">\(A\)</span> is a square matrix, <span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar and <span class="math notranslate nohighlight">\(v\)</span> is the eigenvector. <span class="math notranslate nohighlight">\(\lambda\)</span> is called an eigenvalue. Eigenvalues are also known as latent roots and eigenvectors as latent vectors.</em></p>
+<hr class="docutils" />
+<hr class="docutils" />
+<p><strong>Diagonal Matrix</strong></p>
+<p><em>A matrix A is orthogonal if:</em></p>
+<hr class="docutils" />
+<hr class="docutils" />
+<p><strong>Orthogonal Matrix</strong></p>
+<p><em>A matrix A is orthogonal if:</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-ac20d655-bc4a-4967-a87c-bc2a8513a9c5">
+<span class="eqno">(2)<a class="headerlink" href="#equation-ac20d655-bc4a-4967-a87c-bc2a8513a9c5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+AA^T = A^TA = I
+\end{equation}\]</div>
+<p><em>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix.</em></p>
+<p>For example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8775ea1a-0420-435c-9825-6a4be3202827">
+<span class="eqno">(3)<a class="headerlink" href="#equation-8775ea1a-0420-435c-9825-6a4be3202827" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A = 
+\end{equation}\]</div>
+<hr class="docutils" />
 
 
                 </article>
@@ -328,12 +328,21 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Autoencoder/intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Autoencoders: Nonlinear Static Models with Latent Factors</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="Background/intro.html"
+       href="references.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Background</p>
+        <p class="prev-next-title">References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -343,6 +352,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

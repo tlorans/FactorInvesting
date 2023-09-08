@@ -34,6 +34,14 @@ And reformulated in order to specify the solution for $B$ as:
 It can be solved directly by computing the inverse, or it can be solved through the Singular Value Decomposition and the Pseudo-Inverse, such as:
 
 \begin{equation}
+B \mathcal{F} = R
+\end{equation}
+
+\begin{equation}
+B USV^T = R
+\end{equation}
+
+\begin{equation}
 \hat{B} = \mathcal{F}^{+} R
 \end{equation}
 

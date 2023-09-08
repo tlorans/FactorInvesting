@@ -20,5 +20,6 @@ TestFramework/intro.md
 LinearRegressions/intro.md
 PCA/intro.md
 Autoencoder/intro.md
+appendix.md
 references
 ```

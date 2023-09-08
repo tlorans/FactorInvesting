@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>The Risk Factor Framework &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>Background &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -127,11 +127,11 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Risk Factor Framework</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TestFramework/intro.html">Testing Asset Pricing Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Static Models with Observable Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Linear Static Models with Observable Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Linear Static Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Autoencoder/intro.html">Autoencoders: Nonlinear Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -269,7 +269,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The Risk Factor Framework</h1>
+    <h1>Background</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -279,14 +279,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-asset-pricing-model">Capital Asset Pricing Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrage-pricing-theory-and-factor-models">Arbitrage Pricing Theory and Factor Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">The Great Divide and How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observable-vs-latent-factors">Observable vs. Latent Factors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-conditional-models">Static vs. Conditional Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization">Machine Learning as a Tool for Asset Pricing Model Generalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-risk-factor-framework">The Risk Factor Framework</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrage-pricing-theory">Arbitrage Pricing Theory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">The Great Divide and How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observable-vs-latent-factors">Observable vs. Latent Factors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-conditional-models">Static vs. Conditional Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization">Machine Learning as a Tool for Asset Pricing Model Generalization</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-tutorial">Singular Value Decomposition Tutorial</a></li>
 </ul>
             </nav>
         </div>
@@ -298,62 +301,64 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-risk-factor-framework">
-<h1>The Risk Factor Framework<a class="headerlink" href="#the-risk-factor-framework" title="Permalink to this headline">#</a></h1>
-<section id="capital-asset-pricing-model">
-<h2>Capital Asset Pricing Model<a class="headerlink" href="#capital-asset-pricing-model" title="Permalink to this headline">#</a></h2>
-<p>The capital asset pricing model (CAPM) was introduced by Sharpe in 1964 <span id="id1">[<a class="reference internal" href="../references.html#id7" title="William F Sharpe. Capital asset prices: a theory of market equilibrium under conditions of risk. The journal of finance, 19(3):425–442, 1964.">Sha64</a>]</span>, and can be viewed as an equilibrium model based on the framework defined by Markowitz (1952 <span id="id2">[<a class="reference internal" href="../references.html#id8" title="HM Markowitz. Portfolio selection, the journal of finance. 7 (1). N, 1:71–91, 1952.">Mar52</a>]</span>).</p>
-<p>In his paper, Markowitz develop the efficient frontier concept, i.e. the set of optimal mean-variance portfolios.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66170ee0-b396-4826-ba9b-e4420652a935">
-<span class="eqno">(1)<a class="headerlink" href="#equation-66170ee0-b396-4826-ba9b-e4420652a935" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\mathbb{E}[R_i] - R_f = \beta^m_i(\mathbb{E}[R_m] - R_f)
-\end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(R_i\)</span> and <span class="math notranslate nohighlight">\(R_m\)</span> are the asset and market returns, <span class="math notranslate nohighlight">\(R_f\)</span> is the risk-free rate and the coefficient <span class="math notranslate nohighlight">\(\beta^m_i\)</span> is the beta of the asset <span class="math notranslate nohighlight">\(i\)</span> with respect to the market portfolio:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-805e10d3-3ab5-4c3a-8bbe-0dbe0958c9db">
-<span class="eqno">(2)<a class="headerlink" href="#equation-805e10d3-3ab5-4c3a-8bbe-0dbe0958c9db" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\beta^m_i = \frac{cov(R_i, R_m)}{\sigma^2(R_m)}
-\end{equation}\]</div>
-<p><em>Define covariance and variance</em>
-<em>Make more clear how it helps distinguishing between systematic and idiosyncratic risks and conclusions</em></p>
-</section>
-<section id="arbitrage-pricing-theory-and-factor-models">
-<h2>Arbitrage Pricing Theory and Factor Models<a class="headerlink" href="#arbitrage-pricing-theory-and-factor-models" title="Permalink to this headline">#</a></h2>
-<p>Ross (1976) <span id="id3">[<a class="reference internal" href="../references.html#id9" title="Stephen A Ross. The arbitrage theory of capital asset pricing. In Handbook of the fundamentals of financial decision making: Part I, pages 11–30. World Scientific, 2013.">Ros13</a>]</span> proposed an alternative model to the CAPM, which is called the arbitrage pricing theory (APT).</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h1>
+<section id="the-risk-factor-framework">
+<h2>The Risk Factor Framework<a class="headerlink" href="#the-risk-factor-framework" title="Permalink to this headline">#</a></h2>
+<section id="arbitrage-pricing-theory">
+<h3>Arbitrage Pricing Theory<a class="headerlink" href="#arbitrage-pricing-theory" title="Permalink to this headline">#</a></h3>
+<p>Ross (1976) <span id="id1">[<a class="reference internal" href="../references.html#id9" title="Stephen A Ross. The arbitrage theory of capital asset pricing. In Handbook of the fundamentals of financial decision making: Part I, pages 11–30. World Scientific, 2013.">Ros13</a>]</span> proposed an alternative model to the CAPM, which is called the arbitrage pricing theory (APT).</p>
 <p>In this model, the return of asset <span class="math notranslate nohighlight">\(i\)</span> is driven by a linear factor model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8725e369-15b1-468c-ad57-09d6877647c8">
-<span class="eqno">(3)<a class="headerlink" href="#equation-8725e369-15b1-468c-ad57-09d6877647c8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d6c5e042-de23-4fcb-bf19-3c2e8975d02a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-d6c5e042-de23-4fcb-bf19-3c2e8975d02a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \alpha_i + \sum^K_{k=1} \beta^k_i \mathcal{F}_k + \epsilon_i
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> is the intecept, <span class="math notranslate nohighlight">\(\beta^k_i\)</span> is the sensitivity of asset <span class="math notranslate nohighlight">\(i\)</span> to factor <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\mathcal{F}_k\)</span> is the innovation of factor <span class="math notranslate nohighlight">\(k\)</span>. <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is the idiosyncratic risk of asset <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>Using APT, we can show that the risk premium of asset <span class="math notranslate nohighlight">\(i\)</span> is a function of the risk premia of the factors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9f43034e-8669-4326-ae5a-74e3b8ad8ea0">
-<span class="eqno">(4)<a class="headerlink" href="#equation-9f43034e-8669-4326-ae5a-74e3b8ad8ea0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8ed87ba9-9582-4663-ab10-e9efd143465e">
+<span class="eqno">(2)<a class="headerlink" href="#equation-8ed87ba9-9582-4663-ab10-e9efd143465e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \pi_i = \mathbb{E}[R_i] - R_f = \sum^K_{k=1} \beta^k_i \pi (\mathcal{F}_k)
 \end{equation}\]</div>
 <p>We can rewrite it with some linear algebra as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9bb1dab4-70fb-426f-9c45-d24775d205fb">
-<span class="eqno">(5)<a class="headerlink" href="#equation-9bb1dab4-70fb-426f-9c45-d24775d205fb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6342b493-6e58-49c4-9949-dc68c5c6ded7">
+<span class="eqno">(3)<a class="headerlink" href="#equation-6342b493-6e58-49c4-9949-dc68c5c6ded7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = \alpha + B \mathcal{F} + \epsilon
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is a <span class="math notranslate nohighlight">\((N \times 1)\)</span> vector of asset excess returns, <span class="math notranslate nohighlight">\(\alpha\)</span> is a <span class="math notranslate nohighlight">\((N \times 1)\)</span> vector, <span class="math notranslate nohighlight">\(B\)</span> is a <span class="math notranslate nohighlight">\((N\times K)\)</span> matrix, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a <span class="math notranslate nohighlight">\((K \times 1)\)</span> vector of factor returns and <span class="math notranslate nohighlight">\(\epsilon\)</span> is a <span class="math notranslate nohighlight">\((N \times 1)\)</span> vector of erros.</p>
 <p>Assuming the no-arbitrage condition stated by the APT theory, we have <span class="math notranslate nohighlight">\(\alpha = 0\)</span>.</p>
 </section>
 <section id="the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">
-<h2>The Great Divide and How Machine Learning Can Help in Factor Modelling<a class="headerlink" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling" title="Permalink to this headline">#</a></h2>
+<h3>The Great Divide and How Machine Learning Can Help in Factor Modelling<a class="headerlink" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling" title="Permalink to this headline">#</a></h3>
 <section id="observable-vs-latent-factors">
-<h3>Observable vs. Latent Factors<a class="headerlink" href="#observable-vs-latent-factors" title="Permalink to this headline">#</a></h3>
+<h4>Observable vs. Latent Factors<a class="headerlink" href="#observable-vs-latent-factors" title="Permalink to this headline">#</a></h4>
 <p>FF model: factors are observable. Characteristic of assets not directly used.</p>
 <p>Other stream: factors are latent (PCA)</p>
 </section>
 <section id="static-vs-conditional-models">
-<h3>Static vs. Conditional Models<a class="headerlink" href="#static-vs-conditional-models" title="Permalink to this headline">#</a></h3>
+<h4>Static vs. Conditional Models<a class="headerlink" href="#static-vs-conditional-models" title="Permalink to this headline">#</a></h4>
 <p>FF and PCA: exposures (beta) are invariant, only ad-hoc procedure for having time-variant estimates (ie. running rolling regressions), it thus ignore covariate</p>
 <p>IPCA: conditional model with time-varying beta, taking into account covariates</p>
 </section>
 <section id="machine-learning-as-a-tool-for-asset-pricing-model-generalization">
-<h3>Machine Learning as a Tool for Asset Pricing Model Generalization<a class="headerlink" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization" title="Permalink to this headline">#</a></h3>
+<h4>Machine Learning as a Tool for Asset Pricing Model Generalization<a class="headerlink" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization" title="Permalink to this headline">#</a></h4>
 <p>Dimensionality reduction</p>
 </section>
+</section>
+</section>
+<section id="singular-value-decomposition-tutorial">
+<h2>Singular Value Decomposition Tutorial<a class="headerlink" href="#singular-value-decomposition-tutorial" title="Permalink to this headline">#</a></h2>
+<p>Singular Value Decomposition is a theorem for linear algebra which says that a rectangular matrix A can be broken down into the product of three matrices:</p>
+<ul class="simple">
+<li><p>an orthogonal matrix <span class="math notranslate nohighlight">\(U\)</span>,</p></li>
+<li><p>a diagonal matrix <span class="math notranslate nohighlight">\(S\)</span></p></li>
+<li><p>the transpose of an orthogonal matrix <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+</ul>
+<p>The theorem can be presented like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-28074cbb-46a0-4076-a924-5f9d3b89c42b">
+<span class="eqno">(4)<a class="headerlink" href="#equation-28074cbb-46a0-4076-a924-5f9d3b89c42b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A = U S V^T
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(U^TU = I\)</span>, <span class="math notranslate nohighlight">\(V^TV = I\)</span>. The columns of <span class="math notranslate nohighlight">\(U\)</span> are orthonormal eigenvectors of <span class="math notranslate nohighlight">\(AA^T\)</span>. The columns of <span class="math notranslate nohighlight">\(V\)</span> are orthonormal eigenvectors <span class="math notranslate nohighlight">\(A^TA\)</span> and <span class="math notranslate nohighlight">\(S\)</span> is a diagonal matrix containing the square roots of eigenvalues from <span class="math notranslate nohighlight">\(U\)</span> or <span class="math notranslate nohighlight">\(V\)</span> in descending order.</p>
 </section>
 </section>
 
@@ -399,14 +404,17 @@ R = \alpha + B \mathcal{F} + \epsilon
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-asset-pricing-model">Capital Asset Pricing Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrage-pricing-theory-and-factor-models">Arbitrage Pricing Theory and Factor Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">The Great Divide and How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observable-vs-latent-factors">Observable vs. Latent Factors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-conditional-models">Static vs. Conditional Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization">Machine Learning as a Tool for Asset Pricing Model Generalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-risk-factor-framework">The Risk Factor Framework</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrage-pricing-theory">Arbitrage Pricing Theory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-great-divide-and-how-machine-learning-can-help-in-factor-modelling">The Great Divide and How Machine Learning Can Help in Factor Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observable-vs-latent-factors">Observable vs. Latent Factors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-conditional-models">Static vs. Conditional Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-as-a-tool-for-asset-pricing-model-generalization">Machine Learning as a Tool for Asset Pricing Model Generalization</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-tutorial">Singular Value Decomposition Tutorial</a></li>
 </ul>
   </nav></div>
 

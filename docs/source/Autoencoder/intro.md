@@ -2,4 +2,4 @@
 
 ## Singular Value Decomposition with Autoencoders
 
-## Autoencoders K-Factors Asset PRicing
+## Autoencoders K-Factors Asset Pricing
