@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Regression: Static Models with Observable Factors &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>Linear Regression: Linear Static Models with Observable Factors &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'LinearRegressions/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Principal Component Analysis: Static Models with Latent Factors" href="../PCA/intro.html" />
+    <link rel="next" title="Principal Component Analysis: Linear Static Models with Latent Factors" href="../PCA/intro.html" />
     <link rel="prev" title="Testing Asset Pricing Models" href="../TestFramework/intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -129,9 +129,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Background/intro.html">The Risk Factor Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TestFramework/intro.html">Testing Asset Pricing Models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Regression: Static Models with Observable Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Static Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Regression: Linear Static Models with Observable Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Linear Static Models with Latent Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Autoencoder/intro.html">Autoencoders: Nonlinear Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -269,7 +269,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Linear Regression: Static Models with Observable Factors</h1>
+    <h1>Linear Regression: Linear Static Models with Observable Factors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -279,8 +279,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-static-models-with-observable-factors-with-linear-regression">Estimating Static Models with Observable Factors with Linear Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ff-k-factors-asset-pricing">FF K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-via-singular-value-decomposition-and-pseudo-inverse">Linear Regression via Singular Value Decomposition and Pseudo-Inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-k-factors-asset-pricing">Linear Regression K-Factors Asset Pricing</a></li>
 </ul>
             </nav>
         </div>
@@ -292,47 +292,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-static-models-with-observable-factors">
-<h1>Linear Regression: Static Models with Observable Factors<a class="headerlink" href="#linear-regression-static-models-with-observable-factors" title="Permalink to this headline">#</a></h1>
-<section id="estimating-static-models-with-observable-factors-with-linear-regression">
-<h2>Estimating Static Models with Observable Factors with Linear Regression<a class="headerlink" href="#estimating-static-models-with-observable-factors-with-linear-regression" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-linear-static-models-with-observable-factors">
+<h1>Linear Regression: Linear Static Models with Observable Factors<a class="headerlink" href="#linear-regression-linear-static-models-with-observable-factors" title="Permalink to this headline">#</a></h1>
+<section id="linear-regression-via-singular-value-decomposition-and-pseudo-inverse">
+<h2>Linear Regression via Singular Value Decomposition and Pseudo-Inverse<a class="headerlink" href="#linear-regression-via-singular-value-decomposition-and-pseudo-inverse" title="Permalink to this headline">#</a></h2>
 <p>We start with the previous linear model expressed previously as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61f8a793-0bac-49b3-9b3c-30ea7b3c3af5">
-<span class="eqno">(1)<a class="headerlink" href="#equation-61f8a793-0bac-49b3-9b3c-30ea7b3c3af5" title="Permalink to this equation">#</a></span>\[\begin{equation}
-R = \alpha + B\mathcal{F} + \epsilon
-\end{equation}\]</div>
-<p>In our case, because we want to test if asset pricing models price correctly each characteristic-sorted portfolio, we are going to estimate:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-880c96d9-33ad-478d-a15d-a6031bee6672">
-<span class="eqno">(2)<a class="headerlink" href="#equation-880c96d9-33ad-478d-a15d-a6031bee6672" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-58a74ded-f5bb-48f8-92ed-72fd79178b6b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-58a74ded-f5bb-48f8-92ed-72fd79178b6b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = B \mathcal{F} + \epsilon
 \end{equation}\]</div>
-<p>With observable factors, the risk premia of a factor <span class="math notranslate nohighlight">\(\mathcal{F}_j\)</span> corresponds to the excess return of the tradable portfolio:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f3551164-87fd-47d7-a084-af70ea4c75e7">
-<span class="eqno">(3)<a class="headerlink" href="#equation-f3551164-87fd-47d7-a084-af70ea4c75e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\mathcal{F}_j = R_j
+<p>With observable factors, the risk premia of a factor <span class="math notranslate nohighlight">\(\mathcal{F}_k\)</span> corresponds to the excess return of the tradable portfolio (<span class="math notranslate nohighlight">\(\mathcal{F}_k = R_k)\)</span>, with <span class="math notranslate nohighlight">\(R_k\)</span> the excess return of the corresponding sorted portfolio).
+In this framework, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is known, only <span class="math notranslate nohighlight">\(B\)</span> the matrix of exposure to these factors need to be estimated.</p>
+<p>We thus have a system of linear equations where <span class="math notranslate nohighlight">\(B\)</span> is a matrix of unknown exposure to the vector of factors <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. We need to find a solution where the values for <span class="math notranslate nohighlight">\(B\)</span> in the model minimize the squared error between the approximation of returns <span class="math notranslate nohighlight">\(\hat{R}\)</span> by the resulting model and the realized returns <span class="math notranslate nohighlight">\(R\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f89edc99-bb9a-4440-8aa5-458bf8cd4285">
+<span class="eqno">(2)<a class="headerlink" href="#equation-f89edc99-bb9a-4440-8aa5-458bf8cd4285" title="Permalink to this equation">#</a></span>\[\begin{equation}
+|| B \mathcal{F} - R ||^2
 \end{equation}\]</div>
-<p>with <span class="math notranslate nohighlight">\(R_j\)</span> the excess return of the corresponding sorted portfolio. <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is known, only <span class="math notranslate nohighlight">\(B\)</span> the matrix of exposure to these factors need to be estimated.</p>
-<p>We can estimate the matrix of factors exposures <span class="math notranslate nohighlight">\(B\)</span> with a linear regression model, such as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-08f0d824-e5d8-4740-a31d-2a4db0b2bacf">
-<span class="eqno">(4)<a class="headerlink" href="#equation-08f0d824-e5d8-4740-a31d-2a4db0b2bacf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>This is called the linear least squares.</p>
+<p>In matrix notation, this problem is formulated with the so-called normal equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5846bbb5-2da4-4ad9-9e6a-818e1ed62463">
+<span class="eqno">(3)<a class="headerlink" href="#equation-5846bbb5-2da4-4ad9-9e6a-818e1ed62463" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\mathcal{F}^T \mathcal{F} B = \mathcal{F}^T R
+\end{equation}\]</div>
+<p>And reformulated in order to specify the solution for <span class="math notranslate nohighlight">\(B\)</span> as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0411cf1e-9593-4654-8c3c-7ce171bc32d4">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0411cf1e-9593-4654-8c3c-7ce171bc32d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{B} = (\mathcal{F}^T\mathcal{F})^{-1}\mathcal{F}^T R
 \end{equation}\]</div>
+<p>It can be solved directly by computing the inverse, or it can be solved through the Singular Value Decomposition and the Pseudo-Inverse, such as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-29550fc0-a0aa-4123-a1dc-bd92d9468264">
+<span class="eqno">(5)<a class="headerlink" href="#equation-29550fc0-a0aa-4123-a1dc-bd92d9468264" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\hat{B} = \mathcal{F}^{+} R
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{F}^{+}\)</span> is the pseudoinverse of the vector of factors <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
 <hr class="docutils" />
 <p><strong>Example X</strong></p>
 <p><em>Let’s assume we want to estimate a 3-factors model (Fama and French, 1992):</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d5e0ad8e-e942-4804-b965-03a6a39adea9">
-<span class="eqno">(5)<a class="headerlink" href="#equation-d5e0ad8e-e942-4804-b965-03a6a39adea9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-235f73c9-6577-4da9-b28d-5b96aeea8df4">
+<span class="eqno">(6)<a class="headerlink" href="#equation-235f73c9-6577-4da9-b28d-5b96aeea8df4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \beta^m_i \mathcal{F}_m + \beta^{smb}_i \mathcal{F}_{smb} + \beta^{hml}_i \mathcal{F}_{hml}
 \end{equation}\]</div>
 <p><em>Because <span class="math notranslate nohighlight">\(\mathcal{F}_j\)</span> is assumed to be observable with the excess return of the corresponding sorted portfolio, we have <span class="math notranslate nohighlight">\(\mathcal{F}_j = R_j\)</span>. We can thus rewrite the model as:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-84a50a98-dc94-4356-aa8b-6d207b3bcf86">
-<span class="eqno">(6)<a class="headerlink" href="#equation-84a50a98-dc94-4356-aa8b-6d207b3bcf86" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e9b8910a-4838-4968-82cb-6b7d2fe9ecdd">
+<span class="eqno">(7)<a class="headerlink" href="#equation-e9b8910a-4838-4968-82cb-6b7d2fe9ecdd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \beta^m_i R_m + \beta^{smb}_i R_{smb} + \beta^{hml}_i R_{hml}
 \end{equation}\]</div>
 <p><em>with <span class="math notranslate nohighlight">\(R_{smb}\)</span> is the return of the Size factor and <span class="math notranslate nohighlight">\(R_{hml}\)</span> is the return of the Value factor.</em></p>
 <p><em>In the matrix form we have:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d2568290-a17b-4595-a4ec-f1f6beba1d0d">
-<span class="eqno">(7)<a class="headerlink" href="#equation-d2568290-a17b-4595-a4ec-f1f6beba1d0d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9014acf4-ff44-4c5d-a061-a181554cfe9f">
+<span class="eqno">(8)<a class="headerlink" href="#equation-9014acf4-ff44-4c5d-a061-a181554cfe9f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 R_1 \\
 R_2 \\
@@ -358,8 +366,8 @@ R_{hml}
 \end{pmatrix}
 \end{equation}\]</div>
 <p><em>We can estimate the matrix <span class="math notranslate nohighlight">\(B\)</span> with linear regression such as:</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-b020fa61-f725-4920-9b5a-3d0b69335bd6">
-<span class="eqno">(8)<a class="headerlink" href="#equation-b020fa61-f725-4920-9b5a-3d0b69335bd6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3ff78317-07b7-4e34-acdc-fb08cc884c03">
+<span class="eqno">(9)<a class="headerlink" href="#equation-3ff78317-07b7-4e34-acdc-fb08cc884c03" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 \hat{\beta}_1^m &amp; \hat{\beta}_1^{smb} &amp; \hat{\beta}_1^{hml} \\
 \hat{\beta}_2^m &amp; \hat{\beta}_2^{smb} &amp; \hat{\beta}_2^{hml} \\
@@ -389,8 +397,8 @@ R_n
 \end{equation}\]</div>
 </section>
 <hr class="docutils" />
-<section id="ff-k-factors-asset-pricing">
-<h2>FF K-Factors Asset Pricing<a class="headerlink" href="#ff-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
+<section id="linear-regression-k-factors-asset-pricing">
+<h2>Linear Regression K-Factors Asset Pricing<a class="headerlink" href="#linear-regression-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -417,7 +425,7 @@ R_n
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Principal Component Analysis: Static Models with Latent Factors</p>
+        <p class="prev-next-title">Principal Component Analysis: Linear Static Models with Latent Factors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -436,8 +444,8 @@ R_n
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-static-models-with-observable-factors-with-linear-regression">Estimating Static Models with Observable Factors with Linear Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ff-k-factors-asset-pricing">FF K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-via-singular-value-decomposition-and-pseudo-inverse">Linear Regression via Singular Value Decomposition and Pseudo-Inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-k-factors-asset-pricing">Linear Regression K-Factors Asset Pricing</a></li>
 </ul>
   </nav></div>
 

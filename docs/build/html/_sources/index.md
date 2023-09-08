@@ -19,6 +19,6 @@ Background/intro.md
 TestFramework/intro.md
 LinearRegressions/intro.md
 PCA/intro.md
-InstrumentedPCA/intro.md
+Autoencoder/intro.md
 references
 ```

@@ -1,31 +1,43 @@
-# Linear Regression: Static Models with Observable Factors
-## Estimating Static Models with Observable Factors with Linear Regression
+# Linear Regression: Linear Static Models with Observable Factors
+## Linear Regression via Singular Value Decomposition and Pseudo-Inverse
 
 We start with the previous linear model expressed previously as:
-
-\begin{equation}
-R = \alpha + B\mathcal{F} + \epsilon
-\end{equation}
-
-In our case, because we want to test if asset pricing models price correctly each characteristic-sorted portfolio, we are going to estimate:
 
 \begin{equation}
 R = B \mathcal{F} + \epsilon
 \end{equation}
 
-With observable factors, the risk premia of a factor $\mathcal{F}_j$ corresponds to the excess return of the tradable portfolio:
+
+With observable factors, the risk premia of a factor $\mathcal{F}_k$ corresponds to the excess return of the tradable portfolio ($\mathcal{F}_k = R_k)$, with $R_k$ the excess return of the corresponding sorted portfolio).
+In this framework, $\mathcal{F}$ is known, only $B$ the matrix of exposure to these factors need to be estimated. 
+
+We thus have a system of linear equations where $B$ is a matrix of unknown exposure to the vector of factors $\mathcal{F}$. We need to find a solution where the values for $B$ in the model minimize the squared error between the approximation of returns $\hat{R}$ by the resulting model and the realized returns $R$:
 
 \begin{equation}
-\mathcal{F}_j = R_j
+|| B \mathcal{F} - R ||^2
 \end{equation}
 
-with $R_j$ the excess return of the corresponding sorted portfolio. $\mathcal{F}$ is known, only $B$ the matrix of exposure to these factors need to be estimated. 
+This is called the linear least squares.
 
-We can estimate the matrix of factors exposures $B$ with a linear regression model, such as:
+In matrix notation, this problem is formulated with the so-called normal equation:
+
+\begin{equation}
+\mathcal{F}^T \mathcal{F} B = \mathcal{F}^T R
+\end{equation}
+
+And reformulated in order to specify the solution for $B$ as:
 
 \begin{equation}
 \hat{B} = (\mathcal{F}^T\mathcal{F})^{-1}\mathcal{F}^T R
 \end{equation}
+
+It can be solved directly by computing the inverse, or it can be solved through the Singular Value Decomposition and the Pseudo-Inverse, such as:
+
+\begin{equation}
+\hat{B} = \mathcal{F}^{+} R
+\end{equation}
+
+where $\mathcal{F}^{+}$ is the pseudoinverse of the vector of factors $\mathcal{F}$. 
 
 ---
 **Example X**
@@ -106,7 +118,4 @@ R_n
 
 ---
 
-
-
-
-## FF K-Factors Asset Pricing
+## Linear Regression K-Factors Asset Pricing

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Principal Component Analysis: Linear Static Models with Latent Factors &#8212; Factor Models with Machine Learning 0.1 documentation</title>
+    <title>Autoencoders: Nonlinear Static Models with Latent Factors &#8212; Factor Models with Machine Learning 0.1 documentation</title>
   
   
   
@@ -42,13 +42,11 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'PCA/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Autoencoder/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics" href="../InstrumentedPCA/intro.html" />
-    <link rel="prev" title="Linear Regression: Linear Static Models with Observable Factors" href="../LinearRegressions/intro.html" />
+    <link rel="next" title="References" href="../references.html" />
+    <link rel="prev" title="Principal Component Analysis: Linear Static Models with Latent Factors" href="../PCA/intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -130,8 +128,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../Background/intro.html">The Risk Factor Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TestFramework/intro.html">Testing Asset Pricing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LinearRegressions/intro.html">Linear Regression: Linear Static Models with Observable Factors</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Principal Component Analysis: Linear Static Models with Latent Factors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../InstrumentedPCA/intro.html">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCA/intro.html">Principal Component Analysis: Linear Static Models with Latent Factors</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Autoencoders: Nonlinear Static Models with Latent Factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -187,7 +185,7 @@
       
       
       
-      <li><a href="../_sources/PCA/intro.md" target="_blank"
+      <li><a href="../_sources/Autoencoder/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,7 +267,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Principal Component Analysis: Linear Static Models with Latent Factors</h1>
+    <h1>Autoencoders: Nonlinear Static Models with Latent Factors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -279,8 +277,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-via-singular-value-decomposition">PCA via Singular Value Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-k-factors-asset-pricing">PCA K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-with-autoencoders">Singular Value Decomposition with Autoencoders</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders-k-factors-asset-pricing">Autoencoders K-Factors Asset PRicing</a></li>
 </ul>
             </nav>
         </div>
@@ -292,36 +290,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis-linear-static-models-with-latent-factors">
-<h1>Principal Component Analysis: Linear Static Models with Latent Factors<a class="headerlink" href="#principal-component-analysis-linear-static-models-with-latent-factors" title="Permalink to this headline">#</a></h1>
-<section id="pca-via-singular-value-decomposition">
-<h2>PCA via Singular Value Decomposition<a class="headerlink" href="#pca-via-singular-value-decomposition" title="Permalink to this headline">#</a></h2>
-<p>We start again with our linear formula:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5cc76356-15ec-4ab6-a816-224a832202fd">
-<span class="eqno">(1)<a class="headerlink" href="#equation-5cc76356-15ec-4ab6-a816-224a832202fd" title="Permalink to this equation">#</a></span>\[\begin{equation}
-R = B \mathcal{F} + \epsilon
-\end{equation}\]</div>
-<p>Unlike the static models with observable factors, an other approach is to assume that factors are implicit variables (ie. not observable). These latent factors can be estimated with the Principal Component Analysis (PCA) method on the covariance matrix of returns.</p>
-<p>In that approach, both <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> and <span class="math notranslate nohighlight">\(B\)</span> needs to be estimated.</p>
-<p>The first stage of the approach involves applying an eigen-decomposition to the sample covariance matrix, such as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8de91313-7c85-4a4f-9023-69ac1c3081be">
-<span class="eqno">(2)<a class="headerlink" href="#equation-8de91313-7c85-4a4f-9023-69ac1c3081be" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\hat{\Sigma}_R = V \Lambda V^T
-\end{equation}\]</div>
-<p>Where <span class="math notranslate nohighlight">\(V\)</span> is the matrix comprised of the eigenvectors and <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix comprised of the eigen values.</p>
-<p>Then, principal components are sorted according to their eigenvalue. Each <span class="math notranslate nohighlight">\(kth\)</span> principal component has the the <span class="math notranslate nohighlight">\(kth\)</span> largest variance, conditional on being orthogonal to all previous principal components.</p>
-<p>The vector of factors <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is now to be estimated:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2950ec9-ba82-4ff7-9eaf-123eb7697dd7">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b2950ec9-ba82-4ff7-9eaf-123eb7697dd7" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\hat{\mathcal{F}} = R\hat{B}(\hat{B}^T \hat{B})^{-1}
-\end{equation}\]</div>
-<hr class="docutils" />
-<p><strong>Example X</strong></p>
-<p><em>To better understand the process involved with dimensionality reduction using PCA. let’s consider a simple case where <span class="math notranslate nohighlight">\(K=1\)</span>. It means that we are interest into finding the most relevant dimension. We need to finding the direction <span class="math notranslate nohighlight">\(p\)</span> which allows the best possible average reconstruction of the returns, that is the solution of the problem:</em></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="autoencoders-nonlinear-static-models-with-latent-factors">
+<h1>Autoencoders: Nonlinear Static Models with Latent Factors<a class="headerlink" href="#autoencoders-nonlinear-static-models-with-latent-factors" title="Permalink to this headline">#</a></h1>
+<section id="singular-value-decomposition-with-autoencoders">
+<h2>Singular Value Decomposition with Autoencoders<a class="headerlink" href="#singular-value-decomposition-with-autoencoders" title="Permalink to this headline">#</a></h2>
 </section>
-<hr class="docutils" />
-<section id="pca-k-factors-asset-pricing">
-<h2>PCA K-Factors Asset Pricing<a class="headerlink" href="#pca-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
+<section id="autoencoders-k-factors-asset-pricing">
+<h2>Autoencoders K-Factors Asset PRicing<a class="headerlink" href="#autoencoders-k-factors-asset-pricing" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -335,20 +310,20 @@ R = B \mathcal{F} + \epsilon
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../LinearRegressions/intro.html"
+       href="../PCA/intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Linear Regression: Linear Static Models with Observable Factors</p>
+        <p class="prev-next-title">Principal Component Analysis: Linear Static Models with Latent Factors</p>
       </div>
     </a>
     <a class="right-next"
-       href="../InstrumentedPCA/intro.html"
+       href="../references.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Instrumented PCA: Conditional Models with Latent Factors and Observable Characteristics</p>
+        <p class="prev-next-title">References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -367,8 +342,8 @@ R = B \mathcal{F} + \epsilon
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-via-singular-value-decomposition">PCA via Singular Value Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-k-factors-asset-pricing">PCA K-Factors Asset Pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-with-autoencoders">Singular Value Decomposition with Autoencoders</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders-k-factors-asset-pricing">Autoencoders K-Factors Asset PRicing</a></li>
 </ul>
   </nav></div>
 

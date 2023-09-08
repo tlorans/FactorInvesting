@@ -1,5 +1,5 @@
-# Principal Component Analysis: Static Models with Latent Factors
-## Estimating Static Models with Latent Factors with Principal Component Analysis
+# Principal Component Analysis: Linear Static Models with Latent Factors
+## PCA via Singular Value Decomposition
 
 We start again with our linear formula:
 
