@@ -47,7 +47,11 @@ IPCA: conditional model with time-varying beta, taking into account covariates
 
 Dimensionality reduction
 
-## Singular Value Decomposition Tutorial
+## Singular Value Decomposition
+
+Matrix decomposition or matrix factorization involves describing a given matrix using its constituents elements. The most widely used matrix decomposition method is the Singular Value Decomposition or SVD method. This is a more general method as all matrices have an SVD. 
+
+### SVD Overview
 
 Singular Value Decomposition is a theorem for linear algebra which says that a rectangular matrix A can be broken down into the product of three matrices:
 - an orthogonal matrix $U$, 
@@ -61,4 +65,20 @@ A = U S V^T
 \end{equation}
 
 where $U^TU = I$, $V^TV = I$. The columns of $U$ are orthonormal eigenvectors of $AA^T$. The columns of $V$ are orthonormal eigenvectors $A^TA$ and $S$ is a diagonal matrix containing the square roots of eigenvalues from $U$ or $V$ in descending order.
+
+The SVD involves iterative numerical methods to find $U$, $S$ and $V$.
+
+### Pseudoinverse
+
+The pseudoinverse is the generalization of the matrix inverse for square matrices to rectangular. It is also called the Moore-Penrose Inverse. 
+
+The pseudoinverse is denoted as $A^+$ where $A$ is the matrix that is being inverse. It is calculated using the singular value decomposition of $A$:
+
+\begin{equation}
+A^+ = V D^+ U^T
+\end{equation}
+
+Where $D^+$ is the pseudoinverse ot the diagonal matrix $S$.
+
+We can get $U$ and $V$ from the SVD operation:
 

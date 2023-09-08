@@ -289,7 +289,11 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-tutorial">Singular Value Decomposition Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition">Singular Value Decomposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-overview">SVD Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoinverse">Pseudoinverse</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -309,19 +313,19 @@ document.write(`
 <h3>Arbitrage Pricing Theory<a class="headerlink" href="#arbitrage-pricing-theory" title="Permalink to this headline">#</a></h3>
 <p>Ross (1976) <span id="id1">[<a class="reference internal" href="../references.html#id9" title="Stephen A Ross. The arbitrage theory of capital asset pricing. In Handbook of the fundamentals of financial decision making: Part I, pages 11–30. World Scientific, 2013.">Ros13</a>]</span> proposed an alternative model to the CAPM, which is called the arbitrage pricing theory (APT).</p>
 <p>In this model, the return of asset <span class="math notranslate nohighlight">\(i\)</span> is driven by a linear factor model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d6c5e042-de23-4fcb-bf19-3c2e8975d02a">
-<span class="eqno">(1)<a class="headerlink" href="#equation-d6c5e042-de23-4fcb-bf19-3c2e8975d02a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7f7e7e59-a495-49c1-b9f1-df9be5e7502b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-7f7e7e59-a495-49c1-b9f1-df9be5e7502b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_i = \alpha_i + \sum^K_{k=1} \beta^k_i \mathcal{F}_k + \epsilon_i
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> is the intecept, <span class="math notranslate nohighlight">\(\beta^k_i\)</span> is the sensitivity of asset <span class="math notranslate nohighlight">\(i\)</span> to factor <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\mathcal{F}_k\)</span> is the innovation of factor <span class="math notranslate nohighlight">\(k\)</span>. <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is the idiosyncratic risk of asset <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>Using APT, we can show that the risk premium of asset <span class="math notranslate nohighlight">\(i\)</span> is a function of the risk premia of the factors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ed87ba9-9582-4663-ab10-e9efd143465e">
-<span class="eqno">(2)<a class="headerlink" href="#equation-8ed87ba9-9582-4663-ab10-e9efd143465e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9fdf08dc-2fcc-4186-8676-31b165b228d2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-9fdf08dc-2fcc-4186-8676-31b165b228d2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \pi_i = \mathbb{E}[R_i] - R_f = \sum^K_{k=1} \beta^k_i \pi (\mathcal{F}_k)
 \end{equation}\]</div>
 <p>We can rewrite it with some linear algebra as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6342b493-6e58-49c4-9949-dc68c5c6ded7">
-<span class="eqno">(3)<a class="headerlink" href="#equation-6342b493-6e58-49c4-9949-dc68c5c6ded7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-294c2481-296e-4fe6-b1ed-ab63c4ca2418">
+<span class="eqno">(3)<a class="headerlink" href="#equation-294c2481-296e-4fe6-b1ed-ab63c4ca2418" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = \alpha + B \mathcal{F} + \epsilon
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is a <span class="math notranslate nohighlight">\((N \times 1)\)</span> vector of asset excess returns, <span class="math notranslate nohighlight">\(\alpha\)</span> is a <span class="math notranslate nohighlight">\((N \times 1)\)</span> vector, <span class="math notranslate nohighlight">\(B\)</span> is a <span class="math notranslate nohighlight">\((N\times K)\)</span> matrix, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a <span class="math notranslate nohighlight">\((K \times 1)\)</span> vector of factor returns and <span class="math notranslate nohighlight">\(\epsilon\)</span> is a <span class="math notranslate nohighlight">\((N \times 1)\)</span> vector of erros.</p>
@@ -345,8 +349,11 @@ R = \alpha + B \mathcal{F} + \epsilon
 </section>
 </section>
 </section>
-<section id="singular-value-decomposition-tutorial">
-<h2>Singular Value Decomposition Tutorial<a class="headerlink" href="#singular-value-decomposition-tutorial" title="Permalink to this headline">#</a></h2>
+<section id="singular-value-decomposition">
+<h2>Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this headline">#</a></h2>
+<p>Matrix decomposition or matrix factorization involves describing a given matrix using its constituents elements. The most widely used matrix decomposition method is the Singular Value Decomposition or SVD method. This is a more general method as all matrices have an SVD.</p>
+<section id="svd-overview">
+<h3>SVD Overview<a class="headerlink" href="#svd-overview" title="Permalink to this headline">#</a></h3>
 <p>Singular Value Decomposition is a theorem for linear algebra which says that a rectangular matrix A can be broken down into the product of three matrices:</p>
 <ul class="simple">
 <li><p>an orthogonal matrix <span class="math notranslate nohighlight">\(U\)</span>,</p></li>
@@ -354,11 +361,24 @@ R = \alpha + B \mathcal{F} + \epsilon
 <li><p>the transpose of an orthogonal matrix <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
 </ul>
 <p>The theorem can be presented like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28074cbb-46a0-4076-a924-5f9d3b89c42b">
-<span class="eqno">(4)<a class="headerlink" href="#equation-28074cbb-46a0-4076-a924-5f9d3b89c42b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e20fc788-e040-4da0-8d35-29591cfd99db">
+<span class="eqno">(4)<a class="headerlink" href="#equation-e20fc788-e040-4da0-8d35-29591cfd99db" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = U S V^T
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(U^TU = I\)</span>, <span class="math notranslate nohighlight">\(V^TV = I\)</span>. The columns of <span class="math notranslate nohighlight">\(U\)</span> are orthonormal eigenvectors of <span class="math notranslate nohighlight">\(AA^T\)</span>. The columns of <span class="math notranslate nohighlight">\(V\)</span> are orthonormal eigenvectors <span class="math notranslate nohighlight">\(A^TA\)</span> and <span class="math notranslate nohighlight">\(S\)</span> is a diagonal matrix containing the square roots of eigenvalues from <span class="math notranslate nohighlight">\(U\)</span> or <span class="math notranslate nohighlight">\(V\)</span> in descending order.</p>
+<p>The SVD involves iterative numerical methods to find <span class="math notranslate nohighlight">\(U\)</span>, <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(V\)</span>.</p>
+</section>
+<section id="pseudoinverse">
+<h3>Pseudoinverse<a class="headerlink" href="#pseudoinverse" title="Permalink to this headline">#</a></h3>
+<p>The pseudoinverse is the generalization of the matrix inverse for square matrices to rectangular. It is also called the Moore-Penrose Inverse.</p>
+<p>The pseudoinverse is denoted as <span class="math notranslate nohighlight">\(A^+\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is the matrix that is being inverse. It is calculated using the singular value decomposition of <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f9abb791-56ba-41e2-a365-6bb0192e98c4">
+<span class="eqno">(5)<a class="headerlink" href="#equation-f9abb791-56ba-41e2-a365-6bb0192e98c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A^+ = V D^+ U^T
+\end{equation}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(D^+\)</span> is the pseudoinverse ot the diagonal matrix <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>We can get <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> from the SVD operation:</p>
+</section>
 </section>
 </section>
 
@@ -414,7 +434,11 @@ A = U S V^T
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-tutorial">Singular Value Decomposition Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition">Singular Value Decomposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-overview">SVD Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoinverse">Pseudoinverse</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

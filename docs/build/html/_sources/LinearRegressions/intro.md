@@ -1,5 +1,5 @@
 # Linear Regression: Linear Static Models with Observable Factors
-## Linear Regression via Singular Value Decomposition and Pseudo-Inverse
+## Linear Regression via Moore-Penrose Pseudoinverse
 
 We start with the previous linear model expressed previously as:
 
